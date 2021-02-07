@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'oeuvre',
+    loadChildren: () => import('./oeuvre/oeuvre.module').then( m => m.OeuvrePageModule)
   },
+
 ];
 
 @NgModule({
