@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +11,18 @@ export class HomePage implements OnInit{
 
   URLrandom: string;
   email: '';
+  unCookie;
+  value = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cookie: CookieService) {}
 
   public ngOnInit() {
     this.genererChaineAleatoire();
+    this.value[0] = this.email;
+    this.value[1] = this.URLrandom;
+    this.cookie.set('Test', this.URLrandom );
+    this.unCookie = this.cookie.get('Test');
+    console.log(this.unCookie);
   }
 
   genererChaineAleatoire()

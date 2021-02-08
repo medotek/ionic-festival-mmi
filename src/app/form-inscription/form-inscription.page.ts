@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import firebase from 'firebase';
 
 @Component({
   selector: 'app-form-inscription',
@@ -15,6 +16,21 @@ export class FormInscriptionPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  createNewUser() {
+    return new Promise(
+        (resolve, reject) => {
+          firebase.auth().createUserWithEmailAndPassword(this.mail, this.password).then(
+              () => {
+                resolve();
+              },
+              (error) => {
+                reject(error);
+              }
+          );
+        }
+    );
   }
 
 }
