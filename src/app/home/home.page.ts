@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit{
 
   URLrandom: string;
+  email: '';
 
   constructor(private router: Router) {}
 
@@ -55,7 +56,7 @@ export class HomePage implements OnInit{
   }
 
   redirect() {
-    this.router.navigate(['/test', {id: this.URLrandom}]);
+    this.router.navigate(['/form-inscription', {id: this.URLrandom}]);
   }
 
 }

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>formInscription</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="coontainer">
+    <ion-label>Formulaire d'inscription</ion-label>
+    <div class="formInscription">
+      <div class="champNom">
+        <ion-label>Nom : </ion-label>
+        <ion-input type="text" [(ngModel)]="name" placeholder="Entrez un nom"></ion-input>
+      </div>
+      <div class="champPrenom">
+        <ion-label>Prénom : </ion-label>
+        <ion-input type="text" [(ngModel)]="firstname" placeholder="Entrez un prénom"></ion-input>
+      </div>
+      <div class="champMail">
+        <ion-label>Mail : </ion-label>
+        <ion-input type="text" [(ngModel)]="mail"></ion-input>
+      </div>
+      <div class="champPassword">
+        <ion-label>Mot de passe : </ion-label>
+        <ion-input type="password" [(ngModel)]="password" placeholder="Entrez un mot de passe"></ion-input>
+      </div>
+      <ion-button (click)="createNewUser()" expand="full">Valider</ion-button>
+    </div>
+  </div>
+</ion-content>
