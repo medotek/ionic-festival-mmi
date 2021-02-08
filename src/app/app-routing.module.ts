@@ -10,8 +10,9 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
-    path: 'oeuvre',
+  },
+  {
+    path: 'participation',
     loadChildren: () => import('./oeuvre/oeuvre.module').then( m => m.OeuvrePageModule)
   },
 
