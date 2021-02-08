@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit{
 
   URLrandom: string;
+  email: '';
 
   constructor(private router: Router) {}
 
