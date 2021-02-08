@@ -6,6 +6,9 @@ h1{
   letter-spacing: 0.5rem;
 }
 
+ion-grid {
+  margin-bottom: 2em;
+}
 .blue-bg {
   background-color: #C8E1FF;
   width: 800px;
@@ -35,6 +38,16 @@ ion-input {
   color:black;
 }
 
+ion-select {
+  --ion-text-color: $app-primary;
+  margin-bottom: 2rem;
+  .select-text .select-placeholder {
+    left: 0;
+    color:white;
+  }
+}
+
+
 ion-textarea {
   background-color:#f1f1f1;
   color:black;
@@ -42,9 +55,12 @@ ion-textarea {
   height:200px;
 }
 
-:root {
-  --ion-color-secondary: #FF7B7B;
+
+mat-form-field {
+  width:100%;
+
 }
+
 
 .submit {
   margin: 0;
@@ -68,6 +84,7 @@ ion-textarea {
     margin-bottom:1.5rem;
   }
 }
+
 
 @media only screen and (min-width: 576px) {
   ion-grid {
