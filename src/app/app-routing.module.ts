@@ -10,10 +10,16 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'oeuvre',
     loadChildren: () => import('./oeuvre/oeuvre.module').then( m => m.OeuvrePageModule)
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+  },
+
 
 ];
 
