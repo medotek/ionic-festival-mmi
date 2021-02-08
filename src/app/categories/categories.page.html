@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-input placeholder="Nom de la catégorie" [(ngModel)]="newCategory"></ion-input>
+<ion-button (click)="add()">Créer</ion-button>
+
+<ion-list>
+  <ion-item>
+    <ion-label>Catégorie à supprimer</ion-label>
+    <ion-select [compareWith]="compareWith" [(ngModel)]="categorieSelect">
+      <ion-select-option *ngFor="let categorie of categories" [value]="categorie">{{categorie.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+<ion-button (click)="delete()">Supprimer</ion-button>
+
+</ion-content>
