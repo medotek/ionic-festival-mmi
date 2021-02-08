@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { FormInscriptionPageRoutingModule } from './form-inscription-routing.module';
 
 import { FormInscriptionPage } from './form-inscription.page';
+import { AngularFireModule } from '@angular/fire';
+import {AppRoutingModule} from '../app-routing.module';
+import {environment} from '../../environments/environment';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FormInscriptionPageRoutingModule
+    FormInscriptionPageRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   declarations: [FormInscriptionPage]
 })
