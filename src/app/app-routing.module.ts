@@ -11,6 +11,11 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'form-inscription',
+    loadChildren: () => import('./form-inscription/form-inscription.module').then( m => m.FormInscriptionPageModule)
+  },
+
 ];
 
 @NgModule({

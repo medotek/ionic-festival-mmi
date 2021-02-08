@@ -55,7 +55,7 @@ export class HomePage implements OnInit{
   }
 
   redirect() {
-    this.router.navigate(['/test', {id: this.URLrandom}]);
+    this.router.navigate(['/form-inscription', {id: this.URLrandom}]);
   }
 
 }
