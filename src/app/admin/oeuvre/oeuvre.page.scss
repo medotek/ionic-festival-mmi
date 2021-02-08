@@ -1,3 +1,13 @@
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+ion-title {
+    --color: #3880ff;
+    margin: 20px;
+}
+
 ion-note {
     margin-left: 3%;
 }

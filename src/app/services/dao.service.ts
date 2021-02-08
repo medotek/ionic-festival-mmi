@@ -1,6 +1,7 @@
 import { Oeuvre } from './../Interfaces/oeuvre';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,6 @@ export class DaoService {
     this.dbList = this.database.list('/Oeuvre');
     console.log(this.dbList);
     return this.dbList.push({
-      id: o.id,
       name: o.name,
       categoryId: o.categoryId,
       url: o.url,
@@ -34,8 +34,8 @@ export class DaoService {
 
   //ONE OBJECT
 
-  getOeuvre(id: number) {
-    this.dbObject = this.database.object('/Oeuvre/'+ id.toString());
+  getOeuvre(key: string) {
+    this.dbObject = this.database.object('/Oeuvre/'+ key);
     return this.dbObject;
   }
 
@@ -49,9 +49,9 @@ export class DaoService {
   // UPDATE
   ////
 
-  updateOeuvre(id, o: Oeuvre) {
+  updateOeuvre(key: string, o: Oeuvre) {
+    //TODO: Recuperer l'objet 
     return this.dbObject.update({
-      id: o.id,
       name: o.name,
       categoryId: o.categoryId,
       url: o.url,
@@ -64,9 +64,8 @@ export class DaoService {
   // DELETE
   ////
 
-  deleteOeuvre(id: number) {
-    this.dbObject = this.database.object('/Oeuvre/'+ id.toString());
+  deleteOeuvre(key: string) {
+    this.dbObject = this.database.object('/Oeuvre/'+ key);
     return this.dbObject.remove();
   }
-
 }

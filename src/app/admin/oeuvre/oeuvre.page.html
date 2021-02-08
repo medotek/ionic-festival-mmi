@@ -44,47 +44,49 @@
     <ion-router-outlet id="main-content">
 
       <!-- FORMULAIRE -->
-          <ion-title>CREATE</ion-title>
-          <ion-content>
-            <ion-list lines="full">
-              <form [formGroup]="form" (ngSubmit)="formSubmit()">
-                <ion-item>
-                  <ion-label>Id</ion-label>
-                  <ion-input formControlName="id" type="number" required></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label>Name</ion-label>
-                  <ion-input formControlName="name" type="text" required></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label>Categorie</ion-label>
-                  <ion-input formControlName="categoryId" type="text" required></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label>URL vers le projet</ion-label>
-                  <ion-input formControlName="url" type="text" required></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label>Votes</ion-label>
-                  <ion-input formControlName="voteId" type="number" required></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label>Description</ion-label>
-                  <ion-input formControlName="description" type="text"></ion-input>
-                </ion-item>
-                <ion-row>
-                  <ion-col>
-                    <ion-button type="submit" color="primary" shape="full" expand="block">
-                      Enregistrer l'oeuvre
-                    </ion-button>
-                  </ion-col>
-                </ion-row>
-              </form>
-            </ion-list>
-          </ion-content>
+      <ion-title>CREATE</ion-title>
+      <ion-list lines="inset">
+        <form [formGroup]="form" (ngSubmit)="formSubmit()">
+          <ion-item>
+            <ion-label>Name</ion-label>
+            <ion-input formControlName="name" type="text" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Categorie</ion-label>
+            <ion-input formControlName="categoryId" type="text" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>URL vers le projet</ion-label>
+            <ion-input formControlName="url" type="text" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Votes</ion-label>
+            <ion-input formControlName="voteId" type="number" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Description</ion-label>
+            <ion-input formControlName="description" type="text"></ion-input>
+          </ion-item>
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" color="primary" shape="full" expand="block">
+                Enregistrer l'oeuvre
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-list>
 
       <!-- LISTE DES OEUVRES -->
       <ion-title>OBJETS</ion-title>
+      <ion-list >
+        <ion-item *ngFor="let oeuvre of this.oeuvres" lines="full">
+          <ion-label>{{ oeuvre.name }}</ion-label>
+          <ion-button slot="end" (click)="onDelete(oeuvre.key)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
     </ion-router-outlet>
 
   </ion-split-pane>
