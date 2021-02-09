@@ -10,10 +10,15 @@ import { Category } from '../Interfaces/category';
 export class FestivalPage implements OnInit {
 
   private categories: Category[] = [];
+  private allCategory: Category = {
+    name: "Toutes les participations",
+    key: "0",
+  };
 
   constructor(private categorieService: CategorieCRUDService,) { }
 
   ngOnInit() {
+    this.categories.push(this.allCategory);
     this.getCategories();
   }
 

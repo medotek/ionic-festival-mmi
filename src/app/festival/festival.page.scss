@@ -29,8 +29,8 @@ ion-content{
 }
 
 h1  {
-  z-index: 2;
-  position:absolute;
+  //z-index: 2;
+  //position:absolute;
   transform: translateY(-50%);
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
@@ -56,4 +56,14 @@ ion-segment-button{
 }
 ion-segment-button:hover{
     color: white !important;
+}
+
+.fond{
+    //position: absolute;
+    width: 872px;
+    height: 197px;
+    left: 292px;
+    top: 183px;
+
+    background: linear-gradient(180deg, #FFD27B 0%, rgba(255, 210, 123, 0) 100%);
 }
