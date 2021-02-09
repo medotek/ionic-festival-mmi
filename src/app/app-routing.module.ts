@@ -14,7 +14,8 @@ const routes: Routes = [
   {
     path: 'participation',
     loadChildren: () => import('./oeuvre/oeuvre.module').then( m => m.OeuvrePageModule)
-  },  {
+  },
+  {
     path: 'form-inscription',
     loadChildren: () => import('./form-inscription/form-inscription.module').then( m => m.FormInscriptionPageModule)
   },
@@ -26,8 +27,14 @@ const routes: Routes = [
     path: 'invitation',
     loadChildren: () => import('./invitation/invitation.module').then( m => m.InvitationPageModule)
   },
-
-
+  {
+    path: 'oeuvre',
+    loadChildren: () => import('./oeuvre/oeuvre.module').then( m => m.OeuvrePageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+  },
 ];
 
 @NgModule({
