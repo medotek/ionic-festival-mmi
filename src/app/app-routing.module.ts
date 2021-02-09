@@ -12,6 +12,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'categories',
+    loadChildren: () => import('./categories/categories.module').then( m => m.CategoriesPageModule)
+  },
+  {
     path: 'participation',
     loadChildren: () => import('./oeuvre/oeuvre.module').then( m => m.OeuvrePageModule)
   },
