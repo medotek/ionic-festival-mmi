@@ -1,21 +1,43 @@
+<ion-content>
+    <div class="main">
+        <div class="container">
+            <div id="triangle-main"></div>
+            <div class="bg-img">
+            </div>
+            <h1>
+                <span>Festival MMI<span class="underline"></span></span><br>
+                <span>Grenoble<span class="underline"></span></span><br>
+                <span class="edition">édition 2020/2021</span>
+                <img src="../../assets/triangle-main.svg" alt="triangle">
+                <span class="dot"></span>
+            </h1>
+            <div class="header">
+                <span>logo</span><br>
+                <button class="videalps-button" style="float:right;">
+                    <a (click)="redirect()">Se connecter</a>
+                </button>
+            </div>
 
+            <div class="status-next">Prochainement</div>
+            <div class="date-opening">{{dateOpening}}</div>
 
+            <div class="info1">
+            </div>
+            <div class="info">
+                <div class="about">
+                    <p>Videalps est un festival de réalisations étudiantes du département Métiers du Multimédia et de
+                        l’Internet de l’Institut Universitaire de Technologie de l’Université Grenoble Alpes</p>
 
-<ion-content [fullscreen]="true">
-  <div class="main">
-  <div class="container">
-    <div class="header" style="z-index: 2;">
-      <span>logo</span><br>
-      <ion-button style="float:right;">
-        <a (click)="redirect()">login</a>
-      </ion-button>
+                    <p>Ce festival met à l’honneur les travaux des étudiants afin de les soutenir auprès des
+                        professionnels
+                        de la communication numérique, du développement web, du design graphique ou encore de
+                        l’audiovisuel.</p>
+
+                    <p>Cette première édition dédiée aux créations multimédias succède aux deux précédentes éditions de
+                        Vidé’Alpes (2018, 2019) centrées sur réalisations vidéos.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
-      <div id="triangle-main"></div>
-      <div class="bg-img">
-      </div>
-    <h1>Festival MMI<br>Grenoble <br><span>édition 2020/2021</span></h1>
-
-
-    </div>
-  </div>
 </ion-content>

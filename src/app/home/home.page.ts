@@ -9,6 +9,7 @@ import { AuthenticationService} from '../service/authentication.service';
 })
 export class HomePage implements OnInit{
 
+  dateOpening: string;
   URLrandom: string;
   email: '';
 
@@ -16,6 +17,7 @@ export class HomePage implements OnInit{
 
   public ngOnInit() {
     this.genererChaineAleatoire();
+    this.dateOpening = '21 Avril à 16h00';
   }
 
   genererChaineAleatoire()
