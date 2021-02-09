@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'categories',
-    loadChildren: () => import('./categories/categories.module').then( m => m.CategoriesPageModule)
+    loadChildren: () => import('./admin/categories/categories.module').then( m => m.CategoriesPageModule)
   },
   {
     path: 'participation',

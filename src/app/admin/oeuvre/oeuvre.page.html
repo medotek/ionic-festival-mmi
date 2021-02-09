@@ -1,19 +1,6 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Administrateur: Oeuvre</ion-title>
-    <!--
-    <ion-buttons slot="end">
-      <ion-button [routerLink]="['/create']" color="primary" fill="clear" shape="square">
-        Create
-      </ion-button>
-      <ion-button [routerLink]="['/edit']" color="primary" fill="clear" shape="square">
-        Edit
-      </ion-button>
-      <ion-button [routerLink]="['/delete']" color="primary" fill="clear" shape="square">
-        Delete
-      </ion-button>
-    </ion-buttons>
-    -->
   </ion-toolbar>
 </ion-header>
 
@@ -46,30 +33,30 @@
       <!-- FORMULAIRE -->
       <ion-title *ngIf="this.updateMode == false">CREATE</ion-title>
       <ion-title *ngIf="this.updateMode == true">EDIT: {{ selected.name }}</ion-title>
-      <ion-list lines="inset">
+      <ion-list>
         <form [formGroup]="form" (ngSubmit)="formSubmit()">
-          <ion-item>
-            <ion-label>Name</ion-label>
+          <ion-item lines="full">
+            <ion-label position="floating">Name</ion-label>
             <ion-input formControlName="name" type="text" required></ion-input>
           </ion-item>
-          <ion-item>
-            <ion-label>Categorie</ion-label>
+          <ion-item lines="full">
+            <ion-label position="floating">Categorie</ion-label>
             <ion-input formControlName="categoryId" type="text" required></ion-input>
           </ion-item>
-          <ion-item>
-            <ion-label>URL vers le projet</ion-label>
+          <ion-item lines="full">
+            <ion-label position="floating">URL vers le projet</ion-label>
             <ion-input formControlName="url" type="text" required></ion-input>
           </ion-item>
-          <ion-item>
-            <ion-label>Votes</ion-label>
+          <ion-item lines="full">
+            <ion-label position="floating">Votes</ion-label>
             <ion-input formControlName="voteId" type="number" required></ion-input>
           </ion-item>
-          <ion-item>
-            <ion-label>Description</ion-label>
+          <ion-item lines="full">
+            <ion-label position="floating">Description</ion-label>
             <ion-input formControlName="description" type="text"></ion-input>
           </ion-item>
-          <ion-item>
-            <ion-label>Contributeurs</ion-label>
+          <ion-item lines="full">
+            <ion-label position="floating">Contributeurs</ion-label>
             <ion-input formControlName="contributeurs" type="text"></ion-input>
           </ion-item>
           <ion-row>

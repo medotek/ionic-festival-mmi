@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Administrateur: Categorie</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-split-pane contentId="main-content">
+
+    <!-- MENU LATERAL -->
+    <ion-menu contentId="main-content" type="overlay">
+
+      <ion-content>
+        <ion-list id="menu" inset=true>
+          <ion-list-header>{{ menu.title }}</ion-list-header>
+          <ion-note>{{ menu.subtitle }}</ion-note>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of menu.pages; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none"
+              detail="false">
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+      </ion-content>
+
+    </ion-menu>
+
+    <!-- CONTENU DE LA PAGE -->
+    <ion-router-outlet id="main-content">
+      <ion-content>
+
+        <ion-input placeholder="Nom de la catégorie" [(ngModel)]="newCategory"></ion-input>
+        <ion-button (click)="add()">Créer</ion-button>
+        
+        <ion-list>
+          <ion-item>
+            <ion-label>Catégories</ion-label>
+            <ion-select [compareWith]="compareWith" [(ngModel)]="categorieSelect">
+              <ion-select-option *ngFor="let categorie of categories" [value]="categorie">{{categorie.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <ion-button (click)="delete()">Supprimer</ion-button>
+        </ion-content>
+    </ion-router-outlet>
+
+  </ion-split-pane>
+</ion-content>
+
+
+

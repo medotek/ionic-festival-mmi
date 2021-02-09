@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { FormGroup, FormBuilder } from "@angular/forms";
-import { Category } from '../Interfaces/category';
-import { CategorieCRUDService } from './../services/categorie-crud.service';
+import { Category } from '../../Interfaces/category';
+import { CategorieCRUDService } from '../../services/categorie-crud.service';
 import { AlertController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
+import { Menu } from '../menu';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.page.html',
   styleUrls: ['./categories.page.scss'],
+  providers: [Menu, ]
 })
 export class CategoriesPage implements OnInit {
 
@@ -22,7 +24,7 @@ export class CategoriesPage implements OnInit {
     private categorieService: CategorieCRUDService,
     public fb: FormBuilder,
     public alertController: AlertController,
-    private menu: MenuController) { }
+    protected menu: Menu) { }
 
   ngOnInit() {
     this.getCategories();
