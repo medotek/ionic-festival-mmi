@@ -12,9 +12,22 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'participation',
+    loadChildren: () => import('./oeuvre/oeuvre.module').then( m => m.OeuvrePageModule)
+  },
+  {
     path: 'form-inscription',
     loadChildren: () => import('./form-inscription/form-inscription.module').then( m => m.FormInscriptionPageModule)
   },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
+  {
+    path: 'invitation',
+    loadChildren: () => import('./invitation/invitation.module').then( m => m.InvitationPageModule)
+  },
+
 
 ];
 

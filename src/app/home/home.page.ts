@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService} from '../service/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomePage implements OnInit{
   URLrandom: string;
   email: '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private auth: AuthenticationService) {}
 
   public ngOnInit() {
     this.genererChaineAleatoire();
@@ -28,7 +29,6 @@ export class HomePage implements OnInit{
   }
 
   strRandom(o) {
-    console.log(o);
     let a = 10;
     const b = 'abcdefghijklmnopqrstuvwxyz';
     this.URLrandom = '';
@@ -52,11 +52,10 @@ export class HomePage implements OnInit{
     for (; d < a; d++) {
       this.URLrandom += e[Math.floor(Math.random() * e.length)];
     }
-    console.log(this.URLrandom);
   }
 
   redirect() {
-    this.router.navigate(['/form-inscription', {id: this.URLrandom}]);
+    this.router.navigate(['/form-inscription']);
   }
 
 }

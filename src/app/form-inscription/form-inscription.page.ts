@@ -1,41 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import firebase from 'firebase';
-import { Router } from '@angular/router';
-import {AppRoutingModule} from '../app-routing.module';
-import {AngularFireModule} from '@angular/fire';
-import {environment} from '../../environments/environment';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {AuthenticationService} from '../service/authentication.service';
 
 @Component({
-  selector: 'app-form-inscription',
-  templateUrl: './form-inscription.page.html',
-  styleUrls: ['./form-inscription.page.scss'],
+    selector: 'app-form-inscription',
+    templateUrl: './form-inscription.page.html',
+    styleUrls: ['./form-inscription.page.scss'],
 })
 export class FormInscriptionPage implements OnInit {
 
-  name = '';
-  firstname = '';
-  mail = '';
-  password = '';
-  errorMessage: string;
+    constructor(private router: Router, private route: ActivatedRoute, private authentication: AuthenticationService) {
+    }
 
-  constructor(private router: Router) { }
+    ngOnInit() {
+    }
 
-  ngOnInit() {
-  }
+    signUp(email, password){
+        this.authentication.SignIn(email.value, password.value)
+            .then((res) => {
+                this.router.navigate(['/home']);
+            }).catch((error) => {
+            window.alert(error.message);
+        });
+    }
 
-  createNewUser() {
-      console.log(this.mail + ' ' + this.password);
-      return new Promise(
-          (resolve, reject) => {
-              firebase.auth().createUserWithEmailAndPassword(this.mail, this.password).then(
-                  () => {
-                    this.router.navigate(['/home']);
-                  },
-                  (error) => {
-                      this.errorMessage = error;
-                  }
-              );
-          }
-      );
-  }
+    changePassword() {
+        this.router.navigate(['/forgot-password']);
+    }
 }

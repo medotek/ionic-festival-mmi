@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyAnSO5IEH15UbUh5TCgQcLnvnyIERd8lMo',
-    authDomain: 'videalps-9fb94.firebaseapp.com',
-    databaseURL: 'https://videalps-9fb94-default-rtdb.europe-west1.firebasedatabase.app/',
-    projectId: 'videalps-9fb94',
-    storageBucket: 'videalps-9fb94.appspot.com',
-    messagingSenderId: '400540865456',
-    appId: '1:400540865456:web:b3b5be17572a490ad2bc75'
+    apiKey: "AIzaSyAnSO5IEH15UbUh5TCgQcLnvnyIERd8lMo",
+    authDomain: "videalps-9fb94.firebaseapp.com",
+    databaseURL: "https://videalps-9fb94-default-rtdb.europe-west1.firebasedatabase.app/",
+    projectId: "videalps-9fb94",
+    storageBucket: "videalps-9fb94.appspot.com",
+    messagingSenderId: "400540865456",
+    appId: "1:400540865456:web:b3b5be17572a490ad2bc75"
   }
 };
 
