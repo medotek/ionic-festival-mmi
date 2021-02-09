@@ -6,40 +6,46 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angula
   providedIn: 'root'
 })
 export class CategorieCRUDService {
-  bookingListRef: AngularFireList<any>;
-  bookingRef: AngularFireObject<any>;
+  categoryListRef: AngularFireList<any>;
+  categoryRef: AngularFireObject<any>;
 
   constructor(private db: AngularFireDatabase) { }
 
   // Create
   createCategory(newCategoryName: string) {
-    return this.bookingListRef.push({
+    return this.categoryListRef.push({
       name: newCategoryName,
     })
   }
 
   // Get Single
   getCategory(id: string) {
-    this.bookingRef = this.db.object('/Categorie/' + id);
-    return this.bookingRef;
+    this.categoryRef = this.db.object('/Categorie/' + id);
+    return this.categoryRef;
   }
 
   // Get List
   getCategoryList() {
-    this.bookingListRef = this.db.list('/Categorie');
-    return this.bookingListRef;
+    this.categoryListRef = this.db.list('/Categorie');
+    return this.categoryListRef;
   }
 
   // Update
   updateCategory(id, cat: Category) {
-    return this.bookingRef.update({
+    return this.categoryRef.update({
       name: cat.name,
     })
   }
 
   // Delete
   deleteCategorie(id: string) {
-    this.bookingRef = this.db.object('/Categorie/' + id);
-    this.bookingRef.remove();
+    this.categoryRef = this.db.object('/Categorie/' + id);
+    this.categoryRef.remove();
+  }
+
+  //Get by name
+  getByName(name: string){
+    this.categoryListRef = this.db.list('/Categorie', ref => ref.orderByChild('name').equalTo(name));
+    return this.categoryListRef;
   }
 }

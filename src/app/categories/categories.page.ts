@@ -84,4 +84,17 @@ export class CategoriesPage implements OnInit {
     await alert.present();
   }
 
+  public getByName(){
+    let test = this.categorieService.getByName("Web");
+    test.snapshotChanges().subscribe(res => {
+      res.forEach(item => {
+        let a = item.payload.toJSON();
+
+        console.log(a);
+        console.log(item.key);
+        console.log(a['name']);
+      })
+    })
+  }
+
 }
