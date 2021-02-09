@@ -24,7 +24,8 @@ export class DaoService {
       categoryId: o.categoryId,
       url: o.url,
       voteId: o.voteId,
-      description: o.description
+      description: o.description,
+      contributeurs: o.contributeurs
     })
   }
 
@@ -56,7 +57,8 @@ export class DaoService {
       categoryId: o.categoryId,
       url: o.url,
       voteId: o.voteId,
-      description: o.description
+      description: o.description,
+      contributeurs: o.contributeurs,
     })
   }
 

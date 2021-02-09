@@ -25,7 +25,8 @@ export class OeuvrePage implements OnInit {
       categoryId: [''],
       url: [''],
       voteId: [''],
-      description: ['']
+      description: [''],
+      contributeurs: [''],
     })
 
     this.fetchOeuvres();

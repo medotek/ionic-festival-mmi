@@ -5,5 +5,5 @@ export interface Oeuvre {
     url: string;
     voteId: number;
     description?: string;
-    //TODO: ajouter contributeur
+    contributeurs?: string;
 }
