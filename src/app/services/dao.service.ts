@@ -51,7 +51,7 @@ export class DaoService {
   ////
 
   updateOeuvre(key: string, o: Oeuvre) {
-    //TODO: Recuperer l'objet 
+    this.dbObject = this.database.object('/Oeuvre/'+ key);
     return this.dbObject.update({
       name: o.name,
       categoryId: o.categoryId,

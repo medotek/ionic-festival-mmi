@@ -44,7 +44,8 @@
     <ion-router-outlet id="main-content">
 
       <!-- FORMULAIRE -->
-      <ion-title>CREATE</ion-title>
+      <ion-title *ngIf="this.updateMode == false">CREATE</ion-title>
+      <ion-title *ngIf="this.updateMode == true">EDIT: {{ selected.name }}</ion-title>
       <ion-list lines="inset">
         <form [formGroup]="form" (ngSubmit)="formSubmit()">
           <ion-item>
@@ -93,6 +94,9 @@
             <ion-label color="medium">Description</ion-label>
             <ion-label>{{ oeuvre.description }}</ion-label>
           </ion-col>
+          <ion-button slot="end" (click)="onSwitchMode(oeuvre.key)">
+            <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+          </ion-button>
           <ion-button slot="end" (click)="onDelete(oeuvre.key)">
             <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
           </ion-button>

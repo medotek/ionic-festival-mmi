@@ -13,8 +13,14 @@ import { AlertController } from '@ionic/angular';
   providers: [Menu ],
 })
 export class OeuvrePage implements OnInit {
+  //Page building
   form: FormGroup;
+  updateMode: boolean = false;
+
+  //Content
   oeuvres: Oeuvre[];
+  selected: Oeuvre = null;
+
 
   constructor(protected menu: Menu, private dao: DaoService, private router: Router, public fb: FormBuilder, private alertController:AlertController) {}
 
@@ -47,10 +53,16 @@ export class OeuvrePage implements OnInit {
     if(!this.form.valid) {
       return false;
     } else {
-      this.dao.createOeuvre(this.form.value).then(res => {
-        this.form.reset();
-      })
+      if(this.updateMode) {
+        this.dao.updateOeuvre(this.selected.key, this.form.value).then(res => {
+          this.onSwitchMode(null);
+        })
+      } else {
+        this.dao.createOeuvre(this.form.value).then(res => {
+          this.form.reset();
+        })
         .catch(error => console.log(error));
+      }
     }
   }
 
@@ -68,6 +80,40 @@ export class OeuvrePage implements OnInit {
     //Continue
     console.log("Suppression de l'élément...");
     this.dao.deleteOeuvre(key);
+  }
+
+  onSwitchMode(key: string) {
+    if(!this.updateMode) {
+      console.log("Passage en mode update...");
+      this.updateMode = true;
+      this.dao.getOeuvre(key).snapshotChanges().subscribe(item => {
+        let o = item.payload.toJSON();
+        o['key'] = item.key;
+        this.selected = (o as Oeuvre);
+        this.form = this.fb.group({
+          name: [this.selected.name],
+          categoryId: [this.selected.categoryId],
+          url: [this.selected.url],
+          voteId: [this.selected.voteId],
+          description: [this.selected.description],
+          contributeurs: [this.selected.contributeurs],
+        });
+      });
+    } else {
+      if(key != null && this.selected.key != key) {
+        this.dao.getOeuvre(key).snapshotChanges().subscribe(item => {
+        let o = item.payload.toJSON();
+        o['key'] = item.key;
+        this.selected = (o as Oeuvre);
+        });
+      } else {
+        console.log("Passage en mode create...");
+        this.updateMode = false;
+        this.selected = null;
+        this.form.reset();
+      }
+      
+    }
   }
 
   async deleteAlertPrompt() {
