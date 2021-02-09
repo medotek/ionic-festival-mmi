@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Administrateur: Oeuvre</ion-title>
+    <!--
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/create']" color="primary" fill="clear" shape="square">
+        Create
+      </ion-button>
+      <ion-button [routerLink]="['/edit']" color="primary" fill="clear" shape="square">
+        Edit
+      </ion-button>
+      <ion-button [routerLink]="['/delete']" color="primary" fill="clear" shape="square">
+        Delete
+      </ion-button>
+    </ion-buttons>
+    -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-split-pane contentId="main-content">
+
+    <!-- MENU LATERAL -->
+    <ion-menu contentId="main-content" type="overlay">
+
+      <ion-content>
+        <ion-list id="menu" inset=true>
+          <ion-list-header>{{ menu.title }}</ion-list-header>
+          <ion-note>{{ menu.subtitle }}</ion-note>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of menu.pages; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none"
+              detail="false">
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+      </ion-content>
+
+    </ion-menu>
+
+    <!-- CONTENU DE LA PAGE -->
+    <ion-router-outlet id="main-content">
+
+      <!-- FORMULAIRE -->
+      <ion-title *ngIf="this.updateMode == false">CREATE</ion-title>
+      <ion-title *ngIf="this.updateMode == true">EDIT: {{ selected.name }}</ion-title>
+      <ion-list lines="inset">
+        <form [formGroup]="form" (ngSubmit)="formSubmit()">
+          <ion-item>
+            <ion-label>Name</ion-label>
+            <ion-input formControlName="name" type="text" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Categorie</ion-label>
+            <ion-input formControlName="categoryId" type="text" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>URL vers le projet</ion-label>
+            <ion-input formControlName="url" type="text" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Votes</ion-label>
+            <ion-input formControlName="voteId" type="number" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Description</ion-label>
+            <ion-input formControlName="description" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Contributeurs</ion-label>
+            <ion-input formControlName="contributeurs" type="text"></ion-input>
+          </ion-item>
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" color="primary" shape="full" expand="block">
+                Enregistrer l'oeuvre
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-list>
+
+      <!-- LISTE DES OEUVRES -->
+      <ion-title>OBJETS</ion-title>
+      <ion-list >
+        <ion-item *ngFor="let oeuvre of this.oeuvres" lines="full">
+          <ion-col>
+            <ion-label color="medium">Nom</ion-label>
+            <ion-label>{{ oeuvre.name }}</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label color="medium">Description</ion-label>
+            <ion-label>{{ oeuvre.description }}</ion-label>
+          </ion-col>
+          <ion-button slot="end" (click)="onSwitchMode(oeuvre.key)">
+            <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+          </ion-button>
+          <ion-button slot="end" (click)="onDelete(oeuvre.key)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-router-outlet>
+
+  </ion-split-pane>
+</ion-content>
