@@ -33,9 +33,8 @@ import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     AngularFireAuthModule,
-    AngularFireDatabaseModule,
     AngularFirestoreModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [
       AngularFirestoreModule,
