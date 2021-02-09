@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Oeuvre } from 'src/app/Interfaces/oeuvre';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-oeuvre',
@@ -15,7 +16,7 @@ export class OeuvrePage implements OnInit {
   form: FormGroup;
   oeuvres: Oeuvre[];
 
-  constructor(protected menu: Menu, private dao: DaoService, private router: Router, public fb: FormBuilder) {}
+  constructor(protected menu: Menu, private dao: DaoService, private router: Router, public fb: FormBuilder, private alertController:AlertController) {}
 
   ngOnInit(): void {
     //Formulaire
@@ -33,8 +34,9 @@ export class OeuvrePage implements OnInit {
       this.oeuvres = [];
       res.forEach(item => {
         let o = item.payload.toJSON();
-        o['$key'] = item.key;
+        o['key'] = item.key;
         this.oeuvres.push(o as Oeuvre);
+        console.log(this.oeuvres);
       })
     })
 
@@ -56,9 +58,43 @@ export class OeuvrePage implements OnInit {
     })
   }
 
-  onDelete(key: string): void {
-    //TODO: key is undefined
-    console.log("delete item: "+key);
+  async onDelete(key: string) {
+    const deletion = await this.deleteAlertPrompt();
+
+    //Break out since they hit cancel
+    if(!deletion) return;
+
+    //Continue
+    console.log("Suppression de l'élément...");
+    this.dao.deleteOeuvre(key);
+  }
+
+  async deleteAlertPrompt() {
+    return new Promise(async (resolve) => {
+      const alert = await this.alertController.create({
+        cssClass: 'alert-delete',
+        header: 'Supprimer',
+        subHeader: 'Voulez-vous vraiment supprimer cet élement?',
+        message: "La suppression d'un objet est définitive.",
+        buttons: [{
+          text: 'Retour',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            return resolve(false);
+          },
+        }, 
+        {
+          text: 'Supprimer',
+          handler: () => {
+            return resolve(true);
+          },
+        }]
+      });  
+
+      await alert.present();
+    });
+    
   }
 
 }

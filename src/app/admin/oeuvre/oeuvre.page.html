@@ -81,7 +81,14 @@
       <ion-title>OBJETS</ion-title>
       <ion-list >
         <ion-item *ngFor="let oeuvre of this.oeuvres" lines="full">
-          <ion-label>{{ oeuvre.name }}</ion-label>
+          <ion-col>
+            <ion-label color="medium">Nom</ion-label>
+            <ion-label>{{ oeuvre.name }}</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label color="medium">Description</ion-label>
+            <ion-label>{{ oeuvre.description }}</ion-label>
+          </ion-col>
           <ion-button slot="end" (click)="onDelete(oeuvre.key)">
             <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
           </ion-button>
