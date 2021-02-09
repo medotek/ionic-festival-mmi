@@ -14,7 +14,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage'; // pour accéd
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
@@ -33,7 +33,8 @@ import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    NgbModule,
   ],
   providers: [
       AngularFirestoreModule,
