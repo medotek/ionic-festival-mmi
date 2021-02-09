@@ -1,0 +1,22 @@
+
+<ion-content [fullscreen]="true">
+  <div class="main">
+  <div class="container">
+    <div class="header" style="z-index: 2;">
+      <span style="color: #F2F2F2;">logo</span><br>
+      <ion-button style="float:right;">
+        <a (click)="redirect()">login</a>
+      </ion-button>
+    </div>
+    <h1>LES NOMMÉS DU FESTIVAL</h1>
+    </div>
+  </div>
+
+  <ion-segment class="test">
+    <ion-segment-button class="test" *ngFor="let categorie of categories">
+      {{categorie.name}}
+    </ion-segment-button>
+  </ion-segment>
+
+  
+</ion-content>

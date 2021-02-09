@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+  },  {
+    path: 'festival',
+    loadChildren: () => import('./festival/festival.module').then( m => m.FestivalPageModule)
   },
+
 ];
 
 @NgModule({
