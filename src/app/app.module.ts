@@ -11,6 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire'; // pour se connecter à Firebase
 import { AngularFireDatabaseModule } from '@angular/fire/database'; // pour manipuler la base de données Firebase
 import { AngularFireStorageModule } from '@angular/fire/storage'; // pour accéder aux fonction de stockage et de récupération des fichiers
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,9 +31,17 @@ import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
     AngularFireStorageModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, MatDatepickerModule, {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'}],
+  providers: [
+      AngularFirestoreModule,
+      { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+      MatDatepickerModule,
+      {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'}
+    ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
