@@ -11,12 +11,12 @@
 
 <ion-list>
   <ion-item>
-    <ion-label>Catégorie à supprimer</ion-label>
+    <ion-label>Catégories</ion-label>
     <ion-select [compareWith]="compareWith" [(ngModel)]="categorieSelect">
       <ion-select-option *ngFor="let categorie of categories" [value]="categorie">{{categorie.name}}</ion-select-option>
     </ion-select>
   </ion-item>
 </ion-list>
 <ion-button (click)="delete()">Supprimer</ion-button>
-
 </ion-content>
+

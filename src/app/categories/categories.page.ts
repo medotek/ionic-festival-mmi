@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 import { Category } from '../Interfaces/category';
 import { CategorieCRUDService } from './../services/categorie-crud.service';
 import { AlertController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-categories',
@@ -15,12 +16,13 @@ export class CategoriesPage implements OnInit {
   private categories: Category[] = [];
   private newCategory: string;
 
-  private categorieSelect: string;
+  private categorieSelect: Category;
 
   constructor(public database: AngularFireDatabase, 
     private categorieService: CategorieCRUDService,
     public fb: FormBuilder,
-    public alertController: AlertController) { }
+    public alertController: AlertController,
+    private menu: MenuController) { }
 
   ngOnInit() {
     this.getCategories();
