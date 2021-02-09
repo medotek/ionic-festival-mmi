@@ -90,14 +90,7 @@ export class OeuvrePage implements OnInit {
         let o = item.payload.toJSON();
         o['key'] = item.key;
         this.selected = (o as Oeuvre);
-        this.form = this.fb.group({
-          name: [this.selected.name],
-          categoryId: [this.selected.categoryId],
-          url: [this.selected.url],
-          voteId: [this.selected.voteId],
-          description: [this.selected.description],
-          contributeurs: [this.selected.contributeurs],
-        });
+        this.updateForm(this.selected);
       });
     } else {
       if(key != null && this.selected.key != key) {
@@ -105,6 +98,7 @@ export class OeuvrePage implements OnInit {
         let o = item.payload.toJSON();
         o['key'] = item.key;
         this.selected = (o as Oeuvre);
+        this.updateForm(this.selected);
         });
       } else {
         console.log("Passage en mode create...");
@@ -112,8 +106,18 @@ export class OeuvrePage implements OnInit {
         this.selected = null;
         this.form.reset();
       }
-      
     }
+  }
+
+  updateForm(o: Oeuvre): void {
+    this.form = this.fb.group({
+      name: [o.name],
+      categoryId: [o.categoryId],
+      url: [o.url],
+      voteId: [o.voteId],
+      description: [o.description],
+      contributeurs: [o.contributeurs],
+    });
   }
 
   async deleteAlertPrompt() {
