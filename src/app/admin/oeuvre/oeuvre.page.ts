@@ -1,3 +1,4 @@
+import { Category } from './../../Interfaces/category';
 import { DaoService } from './../../services/dao.service';
 import { Menu } from './../menu';
 import { Component, OnInit } from '@angular/core';
@@ -5,6 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Oeuvre } from 'src/app/Interfaces/oeuvre';
 import { AlertController } from '@ionic/angular';
+import { Category } from 'src/app/Interfaces/category';
 
 @Component({
   selector: 'app-oeuvre',
@@ -18,6 +20,8 @@ export class OeuvrePage implements OnInit {
   updateMode: boolean = false;
 
   //Content
+  categories: Category[];
+  categorieSelect: Category;
   oeuvres: Oeuvre[];
   selected: Oeuvre = null;
 
@@ -36,20 +40,12 @@ export class OeuvrePage implements OnInit {
     })
 
     this.fetchOeuvres();
-    let results = this.dao.getOeuvreList();
-    results.snapshotChanges().subscribe(res => {
-      this.oeuvres = [];
-      res.forEach(item => {
-        let o = item.payload.toJSON();
-        o['key'] = item.key;
-        this.oeuvres.push(o as Oeuvre);
-        console.log(this.oeuvres);
-      })
-    })
-
+    this.fetchCategories();
+    
   }
 
   formSubmit() {
+    console.log(this.form.value);
     if(!this.form.valid) {
       return false;
     } else {
@@ -67,7 +63,34 @@ export class OeuvrePage implements OnInit {
   }
 
   fetchOeuvres() {
-    this.dao.getOeuvreList().valueChanges().subscribe(res => {
+    let results = this.dao.getOeuvreList();
+    results.snapshotChanges().subscribe(res => {
+      this.oeuvres = [];
+      res.forEach(item => {
+        let o = item.payload.toJSON();
+        o['key'] = item.key;
+        this.oeuvres.push(o as Oeuvre);
+        console.log(this.oeuvres);
+      })
+    })
+  }
+
+  fetchCategories() {
+    let results = this.dao.getCategorieList();
+    results.snapshotChanges().subscribe(res => {
+      this.categories = [];
+      res.forEach(item => {
+        let a = item.payload.toJSON();
+
+        let c: Category = {
+          name: '',
+          key: '',
+        };
+
+        c.key = item.key;
+        c.name = a['name'];
+        this.categories.push(c as Category);
+      })
     })
   }
 

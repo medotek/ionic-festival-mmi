@@ -40,8 +40,14 @@
             <ion-input formControlName="name" type="text" required></ion-input>
           </ion-item>
           <ion-item lines="full">
+            <ion-label>Catégories</ion-label>
+            <ion-select [compareWith]="compareWith" [(ngModel)]="categorieSelect" formControlName="categoryId">
+              <ion-select-option *ngFor="let categorie of categories" [value]="categorie.name">{{categorie.name}}</ion-select-option>
+            </ion-select>
+            <!--
             <ion-label position="floating">Categorie</ion-label>
             <ion-input formControlName="categoryId" type="text" required></ion-input>
+            -->
           </ion-item>
           <ion-item lines="full">
             <ion-label position="floating">URL vers le projet</ion-label>
