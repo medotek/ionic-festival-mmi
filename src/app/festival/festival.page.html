@@ -15,15 +15,14 @@
       <h1>LES NOMMÉS DU FESTIVAL</h1>
 
       <ul>
-        <li class="categorie" *ngFor="let categorie of categories" (click)="catName(categorie)">
+        <li class="categorie" *ngFor="let categorie of categories" (click)="categoryName(categorie)">
           {{categorie.name}}
         </li>
       </ul>
 
       <ion-list>
-        <ion-item *ngFor="let oeuvre of oeuvres" class="oeuvre">
+        <ion-item *ngFor="let oeuvre of oeuvres" class="oeuvre" [routerLink]="'/oeuvre-details/' + oeuvre.key">
           <div class="oeuvre-card">
-            <!--<img src="./../../assets/img/moutain.jpg" alt="">-->
             <img src="https://i.ytimg.com/vi/YrcyW38bUVI/hq3.jpg" alt="" class="oeuvre-image">
             <div class="oeuvre-name">{{oeuvre.name}}</div>
             <div class="oeuvre-cat">Catégorie : {{oeuvre.categoryId}}</div>
