@@ -12,11 +12,8 @@ export class InvitationPage implements OnInit {
   words: any[] = [];
   word = '';
   cpt = 0;
-  object: any[] = [];
   header;
-  indice = 0;
   length = 0;
-  mailEnvoye: boolean;
   nombre = 0;
   nbAjout = 0;
 
