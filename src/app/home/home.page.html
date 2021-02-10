@@ -12,27 +12,24 @@
                 <span class="dot"></span>
             </h1>
             <div class="header">
-                <span>logo</span><br>
-                <button class="videalps-button" style="float:right;">
-                    <a (click)="login()">Se connecter</a>
-                </button>
+                <ul>
+                    <li><img class="logo" src="../../assets/img/videalps.png" alt="Videalps logo"><br></li>
+                    <li><button class="videalps-button"><a (click)="login()">Se connecter</a></button></li>
+                </ul>
             </div>
             <div class="status" *ngIf="status == 'intro'">
                 <div class="status-next">Prochainement</div>
                 <div class="date-opening">{{dateOpening}}</div>
             </div>
             <div class="status" *ngIf="status == 'ouverture'">
-                <div class="status-open"> <a (click)="gotoFest()">Accéder au festival</a></div>
                 <div class="triangle-open"></div>
                 <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
             </div>
             <div class="status" *ngIf="status == 'fermeture'">
-                <div class="status-open"> <a (click)="gotoFest()">Accéder au festival</a></div>
                 <div class="triangle-open"></div>
                 <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
             </div>
             <div class="status" *ngIf="status == 'resultat'">
-                <div class="status-open"> <a (click)="gotoFest()">Accéder au festival</a></div>
                 <div class="triangle-open"></div>
                 <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
             </div>

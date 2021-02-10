@@ -4,6 +4,7 @@ import { Category } from '../Interfaces/category';
 import { DaoService } from './../services/dao.service';
 import { Oeuvre } from 'src/app/Interfaces/oeuvre';
 import { StatusCrudService } from '../services/status-crud.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-festival',
@@ -20,9 +21,11 @@ export class FestivalPage implements OnInit {
   };
   private status: any;
 
-  constructor(private categorieService: CategorieCRUDService, 
+
+  constructor(private router: Router, 
+    private categorieService: CategorieCRUDService, 
     private dao: DaoService, 
-    private statusService: StatusCrudService,) { }
+    private statusService: StatusCrudService) { }
 
   ngOnInit() {
     this.categories.push(this.allCategory);
@@ -88,4 +91,8 @@ export class FestivalPage implements OnInit {
     }
   }
 
+
+  login() {
+    this.router.navigate(['/form-inscription']);
+  }
 }

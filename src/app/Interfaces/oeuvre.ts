@@ -6,4 +6,7 @@ export interface Oeuvre {
     voteId: number;
     description?: string;
     contributeurs?: string;
+    technique?: string;
+    realisation?: string;
+    date?: string;
 }

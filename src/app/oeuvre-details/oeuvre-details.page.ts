@@ -11,6 +11,7 @@ import { Oeuvre } from 'src/app/Interfaces/oeuvre';
 export class OeuvreDetailsPage implements OnInit {
 
   private oeuvre: Oeuvre;
+  private oeuvreKey;
 
   constructor(private route: ActivatedRoute, private dao: DaoService,) { }
 
@@ -19,6 +20,7 @@ export class OeuvreDetailsPage implements OnInit {
 
   ionViewWillEnter(){
     let oeuvreId = this.route.snapshot.paramMap.get('id');
+    this.oeuvreKey = oeuvreId;
     let results = this.dao.getOeuvre(oeuvreId);
     results.snapshotChanges().subscribe(res => {
       let o = res.payload.toJSON();
@@ -30,9 +32,16 @@ export class OeuvreDetailsPage implements OnInit {
         voteId: o['voteId'],
         description: o['description'],
         contributeurs: o['contributeurs'],
+        technique: o['technique'],
+        realisation: o['realisation'],
+        date: o['date'],
       };
       this.oeuvre = testOeuvre;
     })
+  }
+  
+  public vote(){
+    console.log(this.oeuvreKey);
   }
 
 }
