@@ -12,12 +12,14 @@ export class HomePage implements OnInit{
   dateOpening: string;
   URLrandom: string;
   email: '';
+  status: string;
 
   constructor(private router: Router, private auth: AuthenticationService) {}
 
   public ngOnInit() {
     this.genererChaineAleatoire();
     this.dateOpening = '21 Avril à 16h00';
+    this.status = 'ouverture';
   }
 
   genererChaineAleatoire()
@@ -56,8 +58,11 @@ export class HomePage implements OnInit{
     }
   }
 
-  redirect() {
+  login() {
     this.router.navigate(['/form-inscription']);
   }
 
+  gotoFest() {
+    this.router.navigate(['/festival']);
+  }
 }

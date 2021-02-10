@@ -14,13 +14,28 @@
             <div class="header">
                 <span>logo</span><br>
                 <button class="videalps-button" style="float:right;">
-                    <a (click)="redirect()">Se connecter</a>
+                    <a (click)="login()">Se connecter</a>
                 </button>
             </div>
-
-            <div class="status-next">Prochainement</div>
-            <div class="date-opening">{{dateOpening}}</div>
-
+            <div class="status" *ngIf="status == 'intro'">
+                <div class="status-next">Prochainement</div>
+                <div class="date-opening">{{dateOpening}}</div>
+            </div>
+            <div class="status" *ngIf="status == 'ouverture'">
+                <div class="status-open"> <a (click)="gotoFest()">Accéder au festival</a></div>
+                <div class="triangle-open"></div>
+                <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
+            </div>
+            <div class="status" *ngIf="status == 'fermeture'">
+                <div class="status-open"> <a (click)="gotoFest()">Accéder au festival</a></div>
+                <div class="triangle-open"></div>
+                <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
+            </div>
+            <div class="status" *ngIf="status == 'resultat'">
+                <div class="status-open"> <a (click)="gotoFest()">Accéder au festival</a></div>
+                <div class="triangle-open"></div>
+                <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
+            </div>
             <div class="info1">
             </div>
             <div class="info">
@@ -35,6 +50,54 @@
 
                     <p>Cette première édition dédiée aux créations multimédias succède aux deux précédentes éditions de
                         Vidé’Alpes (2018, 2019) centrées sur réalisations vidéos.</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="jury">
+
+                    <h2>Le Jury <span></span></h2>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 col-lg-3">
+                            <div class="jury-card">
+                                <img class="img-fluid"
+                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
+                                <div class="jury-name">François Gaillard</div>
+                                <div class="jury-job">Artiste enseignant</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-lg-3">
+                            <div class="jury-card">
+                                <img class="img-fluid"
+                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
+                                <div class="jury-name">François Gaillard</div>
+                                <div class="jury-job">Artiste enseignant</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-lg-3">
+                            <div class="jury-card">
+                                <img class="img-fluid"
+                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
+                                <div class="jury-name">François Gaillard</div>
+                                <div class="jury-job">Artiste enseignant</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-lg-3">
+                            <div class="jury-card">
+                                <img class="img-fluid"
+                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
+                                <div class="jury-name">François Gaillard</div>
+                                <div class="jury-job">Artiste enseignant</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-lg-3">
+                            <div class="jury-card">
+                                <img class="img-fluid"
+                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
+                                <div class="jury-name">François Gaillard</div>
+                                <div class="jury-job">Artiste enseignant</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
