@@ -39,6 +39,11 @@ const routes: Routes = [
     path: 'festival',
     loadChildren: () => import('./festival/festival.module').then( m => m.FestivalPageModule)
   },
+  {
+    path: 'oeuvre-details/:id',
+    loadChildren: () => import('./oeuvre-details/oeuvre-details.module').then( m => m.OeuvreDetailsPageModule)
+  },
+
 
 ];
 

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Détails</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <img src="https://i.ytimg.com/vi/YrcyW38bUVI/hq3.jpg" alt="" class="oeuvre-image">
+    <div style="color:white">{{oeuvre?.name}}</div>
+    <div style="color:white">Auteur : {{oeuvre?.contributeurs}}</div>
+    <div style="color:white">Date : {{oeuvre?.date}}</div>
+    <div style="color:white">Catégorie : {{oeuvre?.categoryId}}</div>
+    <div style="color:white">Description {{oeuvre?.description}}</div>
+    <div style="color:white">Technique utilisées {{oeuvre?.technique}}</div>
+    <div style="color:white">Condition de réalisation {{oeuvre?.realisation}}</div>
+  </div>
+  <ion-button (click)="vote()">Voter pour cette oeuvre</ion-button>
+</ion-content>
