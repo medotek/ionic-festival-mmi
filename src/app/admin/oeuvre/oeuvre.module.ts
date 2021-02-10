@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { OeuvrePageRoutingModule } from './oeuvre-routing.module';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { OeuvrePage } from './oeuvre.page';
 
@@ -14,6 +15,7 @@ import { OeuvrePage } from './oeuvre.page';
     FormsModule,
     IonicModule,
     OeuvrePageRoutingModule,
+    MatDatepickerModule,
     ReactiveFormsModule,
     FormsModule
   ],
