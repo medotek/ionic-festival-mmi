@@ -221,6 +221,7 @@ ion-icon:hover {
   position: absolute;
   bottom: 30px;
   right: 30px;
+  display:none;
 }
 
 .jury {
@@ -284,6 +285,9 @@ ion-icon:hover {
 
 
 @media only screen and (max-width: 575px) {
+  .status-open {
+    display:block;
+  }
   ion-icon {
     display: none;
   }

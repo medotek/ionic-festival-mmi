@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService} from '../service/authentication.service';
+import {StatusCrudService} from '../services/status-crud.service';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +13,14 @@ export class HomePage implements OnInit{
   dateOpening: string;
   URLrandom: string;
   email: '';
-  status: string;
+  private status: any;
 
-  constructor(private router: Router, private auth: AuthenticationService) {}
+  constructor(private router: Router, private auth: AuthenticationService, private statusService: StatusCrudService) {}
 
   public ngOnInit() {
     this.genererChaineAleatoire();
     this.dateOpening = '21 Avril à 16h00';
-    this.status = 'ouverture';
+    this.getStatus();
   }
 
   genererChaineAleatoire()
@@ -64,5 +65,15 @@ export class HomePage implements OnInit{
 
   gotoFest() {
     this.router.navigate(['/festival']);
+  }
+
+  private getStatus() {
+    const test = this.statusService.getStatusList();
+    test.snapshotChanges().subscribe(res => {
+      res.forEach(item => {
+        let a = item.payload.toJSON();
+        this.status = a;
+      });
+    });
   }
 }

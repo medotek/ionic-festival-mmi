@@ -15,10 +15,12 @@ ion-content {
 }
 
 .header {
-  padding-top:1em;
+  padding-top: 1em;
+
   ul {
     list-style: none;
-    padding-left:0;
+    padding-left: 0;
+
     li {
       display: inline-block;
 
@@ -64,11 +66,11 @@ h1 {
   text-align: center;
   color: #f2f2f2;
   letter-spacing: 15px;
-  background: rgb(255,210,123);
-  background: -webkit-linear-gradient(228deg, rgba(255,210,123,1) 0%, rgba(200,225,255,1) 100%);
+  background: rgb(255, 210, 123);
+  background: -webkit-linear-gradient(228deg, rgba(255, 210, 123, 1) 0%, rgba(200, 225, 255, 1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom:2em;
+  margin-bottom: 2em;
 }
 
 .categorie {
@@ -83,7 +85,7 @@ h1 {
 .categorie:hover {
   background-color: #c8e1ff;
   cursor: pointer;
-  color:black;
+  color: black;
 }
 
 .banner {
@@ -112,29 +114,34 @@ h1 {
   top: 50%;
   right: 30px;
   transform: translateY(-50%);
-  color:white;
+  color: white;
   font-size: 35px;
   line-height: 100%;
   text-align: justify;
   letter-spacing: 1px;
+
   span {
     font-weight: bold;
     letter-spacing: 5px;
   }
+
   span:last-child {
-     font-weight: lighter;
-     letter-spacing: 5px;
-   }
+    font-weight: lighter;
+    letter-spacing: 5px;
+  }
 }
 
 .oeuvre-card {
   color: white;
   text-align: center;
+  padding: 10px 0;
 
   .oeuvre-name {
     font-family: Assitant, sans-serif;
+    font-weight: 600;
   }
 }
+
 
 .active {
   background-color: #ffd27b;
@@ -153,18 +160,67 @@ h1 {
 .main {
   margin-bottom: 4em;
 }
+
+ion-select {
+  background-color: #C8E1FF;
+  font-weight: 600;
+}
+
 @media only screen and (max-width: 575px) {
+  h1 {
+    font-size: 25px;
+    text-align: left;
+    padding: 0 10px;
+  }
+  .banner {
+    .palmares {
+      top: 20%;
+    }
+
+    .palmares-info {
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      text-align: center;
+      top: 55%;
+    }
+  }
+
+  .computer {
+    display: none;
+  }
 
 }
 
 @media only screen and (min-width: 576px) {
+  h1 {
+    font-size: 30px;
+  }
+  .computer {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 35px;
+  }
+  .computer {
+    display: block;
+  }
 }
 
 @media only screen and (min-width: 992px) {
+  h1 {
+    font-size: 40px;
+  }
+  .computer {
+    display: block;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
+  .computer {
+    display: block;
+  }
 }
