@@ -30,15 +30,17 @@
     <!-- CONTENU DE LA PAGE -->
     <ion-router-outlet id="main-content">
       <ion-content>
+        <ion-label>Statut actuel : {{currentStatus}}</ion-label>
         <ion-item>
           <ion-label>Choisir un statut</ion-label>
-          <ion-select [multiple]='false'>
-            <ion-select-option value="">Début</ion-select-option>
-            <ion-select-option value="">En cours</ion-select-option>
-            <ion-select-option value="">Vote fermé</ion-select-option>
-            <ion-select-option value="">Résultat</ion-select-option>
+          <ion-select [multiple]='false' [(ngModel)]="newStatut">
+            <ion-select-option value="debut">Début</ion-select-option>
+            <ion-select-option value="enCours">En cours</ion-select-option>
+            <ion-select-option value="votesFermes">Votes fermés</ion-select-option>
+            <ion-select-option value="resultats">Résultats</ion-select-option>
           </ion-select>
         </ion-item>
+        <ion-button (click)="updateStatus()">Valider</ion-button>
       </ion-content>
     </ion-router-outlet>
 

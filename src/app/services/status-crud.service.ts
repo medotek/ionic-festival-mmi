@@ -18,14 +18,15 @@ export class StatusCrudService {
 
   // Get List
   getStatusList() {
-    this.statusListRef = this.db.list('/Status');
+    this.statusListRef = this.db.list('/Status/leStatut');
     return this.statusListRef;
   }
 
   // Update
-  updateStatus(id, cat: string) {
+  updateStatus(status: string) {
+    this.statusRef = this.db.object('/Status/leStatut');
     return this.statusRef.update({
-      name: cat,
+      status: status,
     })
   }
 
