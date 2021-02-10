@@ -1,5 +1,5 @@
-ion-content{
-    --ion-background-color:black;
+ion-content {
+  --ion-background-color: black;
 }
 
 #container {
@@ -9,7 +9,7 @@ ion-content{
   top: 50%;
   transform: translateY(-50%);
 }
-  
+
 #container strong {
   font-size: 20px;
   line-height: 26px;
@@ -28,42 +28,62 @@ ion-content{
   text-decoration: none;
 }
 
-h1  {
+h1 {
   //z-index: 2;
   //position:absolute;
   transform: translateY(-50%);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 900;
-  font-size:50px;
+  font-size: 50px;
   width: 854px;
   height: 55px;
   top: 464px;
   left: 299px;
-  color: #F2F2F2;
+  color: #f2f2f2;
 }
 
-ion-segment-button{
-    width: 94px;
-    height: 22px;
-    /*top: 661px;
-    left: 527px;*/
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    size: 17px;
-    line-height: 22.24px;
-    color: white;
+.categorie {
+  width: 94px;
+  height: 22px;
+  /*top: 661px;
+  left: 527px;*/
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  size: 17px;
+  line-height: 22.24px;
+  color: white;
 }
-ion-segment-button:hover{
-    color: white !important;
+.categorie:hover {
+  background-color: #ffd27b;
 }
 
-.fond{
-    //position: absolute;
-    width: 872px;
-    height: 197px;
-    left: 292px;
-    top: 183px;
+.fond {
+  //position: absolute;
+  text-align: center;
+  width: 872px;
+  height: 197px;
+  left: 292px;
+  top: 183px;
 
-    background: linear-gradient(180deg, #FFD27B 0%, rgba(255, 210, 123, 0) 100%);
+  background: linear-gradient(180deg, #ffd27b 0%, rgba(255, 210, 123, 0) 100%);
+}
+
+.lesPalmares {
+  color: #fff8b8;
+  height: 44px;
+  width: 464px;
+  left: 363px;
+  top: 247px;
+}
+
+.oeuvre-card {
+  color: white;
+  width: 190px;
+  height: 186px;
+  text-align: center;
+}
+
+ul li {
+  display: inline-block;
 }

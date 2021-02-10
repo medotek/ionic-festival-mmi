@@ -70,4 +70,12 @@ export class DaoService {
     this.dbObject = this.database.object('/Oeuvre/'+ key);
     return this.dbObject.remove();
   }
+
+  ////
+  // GET BY CATEGORY NAME
+  ////
+  getByCategoryName(catName: string){
+    this.dbList = this.database.list('/Oeuvre', ref => ref.orderByChild('categoryId').equalTo(catName));
+    return this.dbList;
+  }
 }

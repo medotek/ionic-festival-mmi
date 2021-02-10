@@ -7,19 +7,28 @@
           <a (click)="redirect()">login</a>
         </ion-button>
         <div class="fond">
-          <h1>LE PALMARES</h1>
+          <h1 class="lesPalmares">LE PALMARES</h1>
         </div>
       </div>
       <h1>LES NOMMÉS DU FESTIVAL</h1>
+
+      <ul>
+        <li class="categorie" *ngFor="let categorie of categories" (click)="catName(categorie)">
+          {{categorie.name}}
+        </li>
+      </ul>
+
+      <ion-list>
+        <ion-item *ngFor="let oeuvre of oeuvres" class="oeuvre">
+          <div class="oeuvre-card">
+            <!--<img src="./../../assets/img/moutain.jpg" alt="">-->
+            <img src="https://i.ytimg.com/vi/YrcyW38bUVI/hq3.jpg" alt="" class="oeuvre-image">
+            <div class="oeuvre-name">{{oeuvre.name}}</div>
+            <div class="oeuvre-cat">Catégorie : {{oeuvre.categoryId}}</div>
+          </div>
+        </ion-item>
+      </ion-list>
+
     </div>
-    
   </div>
-
-  <ion-segment class="test">
-    <ion-segment-button class="test" *ngFor="let categorie of categories">
-      {{categorie.name}}
-    </ion-segment-button>
-  </ion-segment>
-
-
 </ion-content>
