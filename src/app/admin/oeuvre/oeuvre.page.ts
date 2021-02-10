@@ -6,7 +6,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Oeuvre } from 'src/app/Interfaces/oeuvre';
 import { AlertController } from '@ionic/angular';
-import { Category } from 'src/app/Interfaces/category';
 
 @Component({
   selector: 'app-oeuvre',
@@ -34,9 +33,12 @@ export class OeuvrePage implements OnInit {
       name: [''],
       categoryId: [''],
       url: [''],
+      date: [''],
       voteId: [''],
       description: [''],
       contributeurs: [''],
+      realisation: [''],
+      technique: [''],
     })
 
     this.fetchOeuvres();
@@ -137,9 +139,12 @@ export class OeuvrePage implements OnInit {
       name: [o.name],
       categoryId: [o.categoryId],
       url: [o.url],
+      date: [o.date],
       voteId: [o.voteId],
       description: [o.description],
       contributeurs: [o.contributeurs],
+      realisation: [o.realisation],
+      technique: [o.technique],
     });
   }
 

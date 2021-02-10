@@ -62,9 +62,12 @@ export class DaoService {
       name: o.name,
       categoryId: o.categoryId,
       url: o.url,
+      date: o.date,
       voteId: o.voteId,
       description: o.description,
-      contributeurs: o.contributeurs
+      contributeurs: o.contributeurs,
+      realisation: o.realisation,
+      technique: o.technique,
     })
   }
 
@@ -84,9 +87,12 @@ export class DaoService {
       name: o.name,
       categoryId: o.categoryId,
       url: o.url,
+      date: o.date,
       voteId: o.voteId,
       description: o.description,
       contributeurs: o.contributeurs,
+      realisation: o.realisation,
+      technique: o.technique,
     })
   }
 
