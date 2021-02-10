@@ -1,36 +1,38 @@
 <ion-content [fullscreen]="true">
-  <div class="main">
-    <div class="container">
-      <div class="header" style="z-index: 2;">
-        <span style="color: #F2F2F2;">logo</span><br>
-        <ion-button style="float:right;">
-          <a (click)="redirect()">login</a>
-        </ion-button>
-        <div class="fond">
-          <h1 class="lesPalmares">LE PALMARES</h1>
-          <h1 class="lesPalmares" *ngIf="status == 'debut';">21 Mai à 16h00</h1>
-          <h1 class="lesPalmares" *ngIf="status == 'resultats';">Voir les résultats</h1>
+    <div class="main">
+        <div class="container">
+            <div class="header" style="z-index: 2;">
+                <ul>
+                    <li>
+                        <img width="150" class="logo" src="../../assets/img/videalps.png" alt="Videalps logo">
+                    </li>
+                    <li><button class="videalps-button"><a (click)="login()">Se connecter</a></button></li>
+
+                </ul>
+            </div>
+            <div class="banner">
+                <div class="palmares">LES RÉSUTATS</div>
+                <div class="palmares-info" *ngIf="status == 'debut';"><span>21 Mai</span><br><span>à</span> 16h00</div>
+                <div class="palmares-resultat" *ngIf="status == 'resultats';">Voir les résultats</div>
+            </div>
+
+
+            <h1>LES NOMMÉS DU FESTIVAL</h1>
+
+            <ul class="oeuvre-category-list">
+                <li class="categorie" *ngFor="let categorie of categories" (click)="catName(categorie)">
+                    {{categorie.name}}
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-md-3 col-lg-3 col-sm-4" *ngFor="let oeuvre of oeuvres">
+                    <div class="oeuvre-card">
+                        <img src="https://i.ytimg.com/vi/YrcyW38bUVI/hq3.jpg" alt="" class="oeuvre-image">
+                        <div class="oeuvre-name">{{oeuvre.name}}</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <h1>LES NOMMÉS DU FESTIVAL</h1>
-
-      <ul>
-        <li class="categorie" *ngFor="let categorie of categories" (click)="catName(categorie)">
-          {{categorie.name}}
-        </li>
-      </ul>
-
-      <ion-list>
-        <ion-item *ngFor="let oeuvre of oeuvres" class="oeuvre">
-          <div class="oeuvre-card">
-            <!--<img src="./../../assets/img/moutain.jpg" alt="">-->
-            <img src="https://i.ytimg.com/vi/YrcyW38bUVI/hq3.jpg" alt="" class="oeuvre-image">
-            <div class="oeuvre-name">{{oeuvre.name}}</div>
-            <div class="oeuvre-cat">Catégorie : {{oeuvre.categoryId}}</div>
-          </div>
-        </ion-item>
-      </ion-list>
-
     </div>
-  </div>
+    <div class="footer"></div>
 </ion-content>
