@@ -17,19 +17,21 @@
                     <li><button class="videalps-button"><a (click)="login()">Se connecter</a></button></li>
                 </ul>
             </div>
-            <div class="status" *ngIf="status == 'intro'">
+            <div class="status" *ngIf="status == 'debut'">
                 <div class="status-next">Prochainement</div>
                 <div class="date-opening">{{dateOpening}}</div>
             </div>
-            <div class="status" *ngIf="status == 'ouverture'">
+            <div class="status" *ngIf="status == 'enCours'">
+
+                <div class="triangle-open"></div>
+                <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
+                <div class="status-open"><a (click)="gotoFest()">Accéder au festival</a></div>
+            </div>
+            <div class="status" *ngIf="status == 'votesFermes'">
                 <div class="triangle-open"></div>
                 <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
             </div>
-            <div class="status" *ngIf="status == 'fermeture'">
-                <div class="triangle-open"></div>
-                <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
-            </div>
-            <div class="status" *ngIf="status == 'resultat'">
+            <div class="status" *ngIf="status == 'resultats'">
                 <div class="triangle-open"></div>
                 <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
             </div>
