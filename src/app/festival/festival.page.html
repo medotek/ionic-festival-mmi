@@ -8,6 +8,8 @@
         </ion-button>
         <div class="fond">
           <h1 class="lesPalmares">LE PALMARES</h1>
+          <h1 class="lesPalmares" *ngIf="status == 'debut';">21 Mai à 16h00</h1>
+          <h1 class="lesPalmares" *ngIf="status == 'resultats';">Voir les résultats</h1>
         </div>
       </div>
       <h1>LES NOMMÉS DU FESTIVAL</h1>

@@ -13,6 +13,10 @@ export class Menu
     {
         title: "Categorie",
         url: "/admin/categories", 
+    },
+    {
+        title: "Statut",
+        url: "/admin/statut", 
     }
     ];
 }

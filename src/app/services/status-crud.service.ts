@@ -5,26 +5,26 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angula
   providedIn: 'root'
 })
 export class StatusCrudService {
-  categoryListRef: AngularFireList<any>;
-  categoryRef: AngularFireObject<any>;
+  statusListRef: AngularFireList<any>;
+  statusRef: AngularFireObject<any>;
 
   constructor(private db: AngularFireDatabase) { }
 
   // Get Single
-  getCategory(id: string) {
-    this.categoryRef = this.db.object('/Status/' + id);
-    return this.categoryRef;
+  getStatus(id: string) {
+    this.statusRef = this.db.object('/Status/' + id);
+    return this.statusRef;
   }
 
   // Get List
-  getCategoryList() {
-    this.categoryListRef = this.db.list('/Status');
-    return this.categoryListRef;
+  getStatusList() {
+    this.statusListRef = this.db.list('/Status');
+    return this.statusListRef;
   }
 
   // Update
-  updateCategory(id, cat: string) {
-    return this.categoryRef.update({
+  updateStatus(id, cat: string) {
+    return this.statusRef.update({
       name: cat,
     })
   }

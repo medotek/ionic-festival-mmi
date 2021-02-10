@@ -30,12 +30,13 @@ export class FestivalPage implements OnInit {
   }
 
   public getStatus(){
-    let test = this.statusService.getCategoryList();
+    let test = this.statusService.getStatusList();
     test.snapshotChanges().subscribe(res => {
       res.forEach(item => {
         let a = item.payload.toJSON();
         this.status = a;
       })
+      console.log(this.status);
     })
   }
 
