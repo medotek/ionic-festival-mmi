@@ -1,9 +1,112 @@
-ion-header{
+ion-header {
     --ion-background-color: black;
     color: white;
 }
 
 ion-content {
     --ion-background-color: black;
-    color: white;
+}
+
+#container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.oeuvre-image {
+    margin: 0px;
+}
+
+hr {
+    background-color: #c8e1ff;
+    margin: 0px;
+    width: 100%;
+}
+
+/*.detailsRight {
+    font-family: Assistant;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #c8e1ff;
+
+    .detailsRight::after {
+        display: inline-block;
+        vertical-align: middle;
+        height: 5px;
+        width: 50%;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: white;
+        content: "";
+    }
+
+    .textDetails {
+        font-family: Assistant;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 33px;
+        letter-spacing: 0.03em;
+        text-align: left;
+        color: white;
+    }
+}*/
+
+.detailsRight {
+    font-family: Assistant;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #c8e1ff;
+
+    div {
+        font-family: Assistant;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 31px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #c8e1ff;
+
+        position: relative;
+
+        span {
+            background-color: black;
+        }
+    }
+
+    div::after {
+        display: inline-block;
+        vertical-align: middle;
+        height: 5px;
+        width: 50%;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: white;
+        content: ""
+    }
+    .textDetails {
+        font-family: Assistant;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 33px;
+        letter-spacing: 0.03em;
+        text-align: left;
+        color: white;
+    }
 }
