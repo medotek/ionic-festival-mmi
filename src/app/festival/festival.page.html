@@ -12,14 +12,14 @@
             </div>
             <div class="banner">
                 <div class="palmares">LES RÉSUTATS</div>
-                <div class="palmares-info" *ngIf="status === 'debut';"><span>21 Mai</span><br><span>à</span> 16h00</div>
+                <div class="palmares-info" *ngIf="status === 'enCours' || 'votesFermes';"><span>21 Mai</span><br><span>à</span> 16h00</div>
                 <div class="palmares-info" *ngIf="status === 'resultats';"><a (click)="login()">Voir les résultats</a></div>
             </div>
 
             <h1>LES NOMMÉS DU FESTIVAL</h1>
 
 
-            <ion-select placeholder="Toutes les participations" okText="Valider" cancelText="Annuler">
+            <ion-select class="mobile" placeholder="Toutes les participations" okText="Valider" cancelText="Annuler">
                 <ion-select-option *ngFor="let categorie of categories" (click)="categoryName(categorie)">
                     {{categorie.name}}
                 </ion-select-option>

@@ -1,5 +1,5 @@
 ion-content {
-  --ion-background-color: black;
+  --ion-background-color: #121212;
 }
 
 #container {
@@ -189,7 +189,9 @@ ion-select {
   .computer {
     display: none;
   }
-
+  .mobile {
+    display: block;
+  }
 }
 
 @media only screen and (min-width: 576px) {
@@ -198,6 +200,9 @@ ion-select {
   }
   .computer {
     display: none;
+  }
+  .mobile {
+    display: block;
   }
 }
 
@@ -208,6 +213,9 @@ ion-select {
   .computer {
     display: block;
   }
+  .mobile {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -217,10 +225,16 @@ ion-select {
   .computer {
     display: block;
   }
+  .mobile {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
   .computer {
     display: block;
+  }
+  .mobile {
+    display: none;
   }
 }
