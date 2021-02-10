@@ -6,6 +6,10 @@
 
 <ion-content>
   <h1>Lancez les invitations</h1>
+  <div class="uploadFile" [style]="{marginBottom : '15px', marginTop: '15px'}">
+    <input type="file" class="upload" (change)="changeListener($event)">
+  </div>
+  <ion-label><B>OU</B></ion-label>
   <form>
     <ion-item lines="full">
       <ion-input type="email" #email required></ion-input>
@@ -13,7 +17,7 @@
 
     <ion-row>
       <ion-col>
-        <ion-button type="submit" (click)="createUser(email)" expand="block">Envoyer le lien d'invitation</ion-button>
+        <ion-button type="submit" (click)="sendMail(email)" expand="block">Envoyer le lien d'invitation</ion-button>
       </ion-col>
     </ion-row>
   </form>
