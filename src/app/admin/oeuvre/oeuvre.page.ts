@@ -6,6 +6,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Oeuvre } from 'src/app/Interfaces/oeuvre';
 import { AlertController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { finalize, tap } from 'rxjs/operators';
+import { AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFirestoreCollection } from '@angular/fire/firestore';
+
+
+
 
 @Component({
   selector: 'app-oeuvre',
@@ -24,6 +31,10 @@ export class OeuvrePage implements OnInit {
   oeuvres: Oeuvre[];
   selected: Oeuvre = null;
 
+  //Image Uploading
+  isAnImage: boolean = false;
+  imageKey: string;
+  files: FileList;
 
   constructor(protected menu: Menu, private dao: DaoService, private router: Router, public fb: FormBuilder, private alertController:AlertController) {}
 
@@ -57,6 +68,11 @@ export class OeuvrePage implements OnInit {
         })
       } else {
         this.dao.createOeuvre(this.form.value).then(res => {
+          if(this.form.value.categoryId == "Photo") {
+            this.imageKey = res.key.toString();
+            console.log(this.imageKey);
+            this.uploadImage(this.files, this.imageKey);
+          }
           this.form.reset();
         })
         .catch(error => console.log(error));
@@ -72,7 +88,6 @@ export class OeuvrePage implements OnInit {
         let o = item.payload.toJSON();
         o['key'] = item.key;
         this.oeuvres.push(o as Oeuvre);
-        console.log(this.oeuvres);
       })
     })
   }
@@ -148,6 +163,35 @@ export class OeuvrePage implements OnInit {
     });
   }
 
+  saveImage(event: FileList) {
+    //Store user's image in class attribute   
+    this.files = event;
+
+    // Image validation
+    for (let i=0; i<this.files.length; i++) {
+
+      //Check that all files are images
+      if (this.files.item(i).type.split('/')[0] !== 'image') { 
+        console.log('File type is not supported!')
+        this.isAnImage = false;
+      }
+    }
+    //When every file passed the check
+    this.isAnImage = true;
+  }
+
+  uploadImage(files: FileList, key: string) {
+    //l'attribut isAnImage est vérifié par la fonction saveImage
+    if(this.isAnImage) {
+      console.log("Se prépare à rentrer dans createImages()");
+      this.dao.createImages(files, key);
+    } else {
+      window.alert("Le fichier trouvé dans le champ image n'est pas une image");
+    }
+  }
+
+
+  //Alert prompt
   async deleteAlertPrompt() {
     return new Promise(async (resolve) => {
       const alert = await this.alertController.create({
@@ -177,3 +221,4 @@ export class OeuvrePage implements OnInit {
   }
 
 }
+

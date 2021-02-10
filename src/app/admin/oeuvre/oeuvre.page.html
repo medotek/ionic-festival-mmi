@@ -49,20 +49,32 @@
             </ion-item>
 
             <!--Change en fonction de la categorie-->
-            <ion-item lines="full" *ngIf="selectedCategorie == 'Web'">
-              <ion-label position="floating">URL du site web</ion-label>
-              <ion-input formControlName="url" type="url" required></ion-input>
-            </ion-item>
-            <ion-item lines="full" *ngIf="selectedCategorie == 'Photo'">
-              <ion-label>Importer des images</ion-label>
-              <ion-button color="primary" shape="round" size="medium">
-                <input type="file" (change)="uploadImage($event.target.files)" />
-              </ion-button>      
-            </ion-item>
-            <ion-item lines="full" *ngIf="selectedCategorie != 'Photo' && selectedCategorie != 'Web'">
-              <ion-label position="floating">Lien Youtube</ion-label>
-              <ion-input type="url" placeholder="https://youtu.be/... ou https://www.youtube.com/watch?v=..."></ion-input>
-            </ion-item>
+            <div lines="full" *ngIf="selectedCategorie == 'Web';then url"></div>
+            <div lines="full" *ngIf="selectedCategorie == 'Animation';then youtube"></div>
+            <div lines="full" *ngIf="selectedCategorie == 'Photo';then image"></div>
+            
+            <ng-template #url>
+              <ion-item>
+                <ion-label position="floating">URL du site web</ion-label>
+                <ion-input formControlName="url" type="url" required></ion-input>
+              </ion-item>
+            </ng-template>
+            <ng-template #youtube>
+              <ion-item>
+                <ion-label position="floating">Lien Youtube</ion-label>
+                <ion-input formControlName="url" type="url" placeholder="https://youtu.be/... ou https://www.youtube.com/watch?v=..."></ion-input>
+              </ion-item>
+            </ng-template>
+            <ng-template #image>
+              <ion-item>
+                <ion-label>Importer des images</ion-label>
+                <ion-button color="primary" shape="round" size="medium">
+                  <input type="file" (change)="saveImage($event.target.files)" multiple/>
+                </ion-button> 
+              </ion-item>
+            </ng-template>
+              
+            
 
 
             <ion-item lines="full">
@@ -108,8 +120,12 @@
               <ion-label>{{ oeuvre.name }}</ion-label>
             </ion-col>
             <ion-col>
-              <ion-label color="medium">Description</ion-label>
-              <ion-label>{{ oeuvre.description }}</ion-label>
+              <ion-label color="medium">Categorie</ion-label>
+              <ion-label>{{ oeuvre.categoryId }}</ion-label>
+            </ion-col>
+            <ion-col>
+              <ion-label color="medium">Date de Réalisation</ion-label>
+              <ion-label>{{ oeuvre.date }}</ion-label>
             </ion-col>
             <ion-button slot="end" (click)="onSwitchMode(oeuvre.key)">
               <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
