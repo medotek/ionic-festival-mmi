@@ -27,7 +27,18 @@ const routes: Routes = [
     path: 'invitation',
     loadChildren: () => import('./invitation/invitation.module').then( m => m.InvitationPageModule)
   },
-
+  {
+    path: 'oeuvre',
+    loadChildren: () => import('./oeuvre/oeuvre.module').then( m => m.OeuvrePageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+  },
+  {
+    path: 'festival',
+    loadChildren: () => import('./festival/festival.module').then( m => m.FestivalPageModule)
+  },
 
 ];
 

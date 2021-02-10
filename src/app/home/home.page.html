@@ -1,19 +1,103 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+    <div class="main">
+        <div class="container">
+            <div id="triangle-main"></div>
+            <div class="bg-img">
+            </div>
+            <h1>
+                <span>Festival MMI<span class="underline"></span></span><br>
+                <span>Grenoble<span class="underline"></span></span><br>
+                <span class="edition">édition 2020/2021</span>
+                <img src="../../assets/triangle-main.svg" alt="triangle">
+                <span class="dot"></span>
+            </h1>
+            <div class="header">
+                <ul>
+                    <li><img class="logo" src="../../assets/img/videalps.png" alt="Videalps logo"><br></li>
+                    <li><button class="videalps-button"><a (click)="login()">Se connecter</a></button></li>
+                </ul>
+            </div>
+            <div class="status" *ngIf="status == 'intro'">
+                <div class="status-next">Prochainement</div>
+                <div class="date-opening">{{dateOpening}}</div>
+            </div>
+            <div class="status" *ngIf="status == 'ouverture'">
+                <div class="triangle-open"></div>
+                <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
+            </div>
+            <div class="status" *ngIf="status == 'fermeture'">
+                <div class="triangle-open"></div>
+                <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
+            </div>
+            <div class="status" *ngIf="status == 'resultat'">
+                <div class="triangle-open"></div>
+                <a (click)="gotoFest()"><ion-icon name="arrow-forward"></ion-icon></a>
+            </div>
+            <div class="info1">
+            </div>
+            <div class="info">
+                <div class="about">
+                    <p>Videalps est un festival de réalisations étudiantes du département Métiers du Multimédia et de
+                        l’Internet de l’Institut Universitaire de Technologie de l’Université Grenoble Alpes</p>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+                    <p>Ce festival met à l’honneur les travaux des étudiants afin de les soutenir auprès des
+                        professionnels
+                        de la communication numérique, du développement web, du design graphique ou encore de
+                        l’audiovisuel.</p>
 
-  <div id="container">
-    <a (click)="redirect()">Test</a>
-  </div>
+                    <p>Cette première édition dédiée aux créations multimédias succède aux deux précédentes éditions de
+                        Vidé’Alpes (2018, 2019) centrées sur réalisations vidéos.</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="jury">
+
+                    <h2>Le Jury <span></span></h2>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 col-lg-3">
+                            <div class="jury-card">
+                                <img class="img-fluid"
+                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
+                                <div class="jury-name">François Gaillard</div>
+                                <div class="jury-job">Artiste enseignant</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-lg-3">
+                            <div class="jury-card">
+                                <img class="img-fluid"
+                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
+                                <div class="jury-name">François Gaillard</div>
+                                <div class="jury-job">Artiste enseignant</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-lg-3">
+                            <div class="jury-card">
+                                <img class="img-fluid"
+                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
+                                <div class="jury-name">François Gaillard</div>
+                                <div class="jury-job">Artiste enseignant</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-lg-3">
+                            <div class="jury-card">
+                                <img class="img-fluid"
+                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
+                                <div class="jury-name">François Gaillard</div>
+                                <div class="jury-job">Artiste enseignant</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-lg-3">
+                            <div class="jury-card">
+                                <img class="img-fluid"
+                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
+                                <div class="jury-name">François Gaillard</div>
+                                <div class="jury-job">Artiste enseignant</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </ion-content>

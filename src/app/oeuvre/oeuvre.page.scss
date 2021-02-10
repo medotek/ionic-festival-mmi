@@ -9,13 +9,17 @@ h1{
 ion-grid {
   margin-bottom: 2em;
 }
+
+
 .blue-bg {
   background-color: #C8E1FF;
   width: 800px;
-  height: 500px;
+  height: 100%;
   position: absolute;
-  right:0;
-  transform:translateX(25%);
+  right:-125%;
+  top:0;
+
+  transform:translateX(100%);
 }
 
 ion-col {

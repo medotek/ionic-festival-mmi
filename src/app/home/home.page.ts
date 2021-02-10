@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService} from '../service/authentication.service';
 
 @Component({
     selector: 'app-home',
@@ -8,14 +9,18 @@ import {Router} from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-    URLrandom: string;
-    email: '';
+  dateOpening: string;
+  URLrandom: string;
+  email: '';
+  status: string;
 
-    constructor(private router: Router) {}
+  constructor(private router: Router, private auth: AuthenticationService) {}
 
-    public ngOnInit() {
-        this.genererChaineAleatoire();
-    }
+  public ngOnInit() {
+    this.genererChaineAleatoire();
+    this.dateOpening = '21 Avril à 16h00';
+    this.status = 'ouverture';
+  }
 
     genererChaineAleatoire() {
         this.strRandom({
@@ -52,8 +57,11 @@ export class HomePage implements OnInit {
         }
     }
 
-    redirect() {
-        this.router.navigate(['/form-inscription']);
-    }
+  login() {
+    this.router.navigate(['/form-inscription']);
+  }
 
+  gotoFest() {
+    this.router.navigate(['/festival']);
+  }
 }
