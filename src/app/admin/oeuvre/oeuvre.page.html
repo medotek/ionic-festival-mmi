@@ -43,17 +43,31 @@
             </ion-item>
             <ion-item lines="full">
               <ion-label>Catégories</ion-label>
-              <ion-select [(ngModel)]="categorieSelect" formControlName="categoryId">
+              <ion-select [(ngModel)]="selectedCategorie" formControlName="categoryId">
                 <ion-select-option *ngFor="let categorie of categories" [value]="categorie.name">{{categorie.name}}</ion-select-option>
               </ion-select>
             </ion-item>
-            <ion-item lines="full">
-              <ion-label position="floating">URL vers le projet</ion-label>
-              <ion-input formControlName="url" type="text" required></ion-input>
+
+            <!--Change en fonction de la categorie-->
+            <ion-item lines="full" *ngIf="selectedCategorie == 'Web'">
+              <ion-label position="floating">URL du site web</ion-label>
+              <ion-input formControlName="url" type="url" required></ion-input>
             </ion-item>
+            <ion-item lines="full" *ngIf="selectedCategorie == 'Photo'">
+              <ion-label>Importer des images</ion-label>
+              <ion-button color="primary" shape="round" size="medium">
+                <input type="file" (change)="uploadImage($event.target.files)" />
+              </ion-button>      
+            </ion-item>
+            <ion-item lines="full" *ngIf="selectedCategorie != 'Photo' && selectedCategorie != 'Web'">
+              <ion-label position="floating">Lien Youtube</ion-label>
+              <ion-input type="url" placeholder="https://youtu.be/... ou https://www.youtube.com/watch?v=..."></ion-input>
+            </ion-item>
+
+
             <ion-item lines="full">
               <ion-label position="floating">Date</ion-label>
-              <ion-input matInput [matDatepicker]="picker" formControlName="date" type="date" placeholder="jj/mm/aaaa"></ion-input>
+              <ion-input formControlName="date" type="date" placeholder="jj/mm/aaaa"></ion-input>
             </ion-item>
             <ion-item lines="full">
               <ion-label position="floating">Votes</ion-label>

@@ -20,7 +20,7 @@ export class OeuvrePage implements OnInit {
 
   //Content
   categories: Category[];
-  categorieSelect: Category;
+  selectedCategorie: string;
   oeuvres: Oeuvre[];
   selected: Oeuvre = null;
 
