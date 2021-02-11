@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService} from './../services/authentication.service';
+import { AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-invitation',
@@ -39,8 +39,9 @@ export class InvitationPage implements OnInit {
 
   sendMail(mail) {
     const email = mail.value;
-    this.createUser(email);
+    // this.createUser(email);
     this.nbAjout = 1;
+    this.addUserInformation(mail);
   }
 
   public changeListener(event) {
@@ -78,7 +79,12 @@ export class InvitationPage implements OnInit {
   }
 
   retreiveMail(tabMail) {
-    this.createUser(tabMail.Email);
+    // this.createUser(tabMail.Email);
+    this.addUserInformation(tabMail);
+  }
+
+  addUserInformation(userInformation) {
+    this.auth.createUser(userInformation);
   }
 
 }
