@@ -74,7 +74,7 @@ export class OeuvrePage implements OnInit {
           url: this.form.get("url").value, 
           date: this.form.get("date").value,
           voteId: this.form.get("voteId").value,  
-          nbImages: this.files.length,
+          nbImages: this.files instanceof FileList ? this.files.length : 0,
           description: this.form.get("description").value,
           contributeurs: this.form.get("contributeurs").value,
           realisation: this.form.get("realisation").value, 
