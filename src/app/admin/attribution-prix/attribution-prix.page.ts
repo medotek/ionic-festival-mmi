@@ -5,6 +5,7 @@ import { Category } from '../../Interfaces/category';
 import { DaoService } from './../../services/dao.service';
 import { Oeuvre } from 'src/app/Interfaces/oeuvre';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { PrixCategorie } from './../../Interfaces/prix-categorie';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
@@ -22,7 +23,8 @@ export class AttributionPrixPage implements OnInit {
   public oeuvreSelected: Oeuvre;
   public form: FormGroup;
   public attributions: any[];
-
+  public commentaire: string;
+  
   constructor(protected menu: Menu,
     private categorieService: CategorieCRUDService,
     private dao: DaoService,
@@ -34,8 +36,8 @@ export class AttributionPrixPage implements OnInit {
       auteur: [''],
       categoryId: [''],
     });
+    this.commentaire = '';
     this.getCategories();
-    //this.getOeuvres();
   }
 
   public getCategories(){
@@ -71,10 +73,17 @@ export class AttributionPrixPage implements OnInit {
 
   public vote(cat:Category, monOeuvre?:Oeuvre){
 
+    let prix: PrixCategorie = {
+      name: cat.name,
+      commentaire: this.commentaire,
+      oeuvreId: monOeuvre.key,
+    };
+
     console.log('voté');
     if(monOeuvre){
-      console.log("Pour " + cat.name + " : " + monOeuvre.name);
+      console.log("Pour " + cat.name + " : " + monOeuvre.key + " avec commentaire : " + this.commentaire);
     }
+    this.dao.createPrix(prix);
   }
 
 }
