@@ -1,0 +1,175 @@
+ion-content {
+  --ion-background-color: black;
+}
+
+ion-header {
+  --ion-background-color: black;
+}
+
+.header {
+  padding-top: 1em;
+  margin-bottom: 2em;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+
+      .videalps-button {
+        border: 2px solid #91ACCD;
+        padding: 5px 10px;
+        background-color: transparent;
+        color: #91ACCD;
+      }
+    }
+
+    li:last-child {
+      float: right;
+      padding: 15px 0;
+    }
+
+  }
+
+}
+
+* {
+  font-family: Assitant, sans-serif;
+  color: white;
+}
+
+h1 {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 60px;
+  letter-spacing: 10px;
+  font-family: Montserrat, sans-serif;
+
+}
+
+p:first-of-type {
+  text-transform: uppercase;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+
+.grid {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+
+
+.category {
+  position: relative;
+
+  width: 100%;
+  padding: 20px;
+}
+
+.category::after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
+
+.category div {
+  background-color: #C4C4C4;
+  position: absolute;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  padding: 20px;
+  font-weight: 900;
+  font-family: Montserrat, sans-serif;
+}
+
+.category div:hover {
+  cursor: pointer;
+}
+
+.category::after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
+
+h2 {
+  text-align: center;
+  font-weight: bold;
+  font-family: Montserrat, sans-serif;
+}
+
+ion-icon {
+  color:white;
+  font-size: 30px;
+  bottom:30px;
+  position: absolute;
+}
+@media only screen and (max-width: 575px) {
+  .grid {
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+  }
+  iframe {
+    width: calc(100vw - 50px);
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .grid {
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+  }
+  iframe {
+    width: calc(100vw - 50px);
+    height: auto;
+    margin: 2em 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .grid {
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  iframe {
+    width: calc(100vw - 50px);
+    height: 450px;
+    margin: 2em 0;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .grid {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  iframe {
+    width: calc(800px - 50px);
+    height: 450px;
+    margin: 2em 0;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .grid {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  iframe {
+    width: calc(800px - 50px);
+    height: 450px;
+    margin: 2em 0;
+  }
+}
+

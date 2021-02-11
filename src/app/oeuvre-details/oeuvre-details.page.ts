@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DaoService } from './../services/dao.service';
 import { Oeuvre } from 'src/app/Interfaces/oeuvre';
 import { AlertController } from '@ionic/angular';
+import { AuthenticationService } from '../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-oeuvre-details',
@@ -16,7 +18,9 @@ export class OeuvreDetailsPage implements OnInit {
 
   constructor(private route: ActivatedRoute, 
     private dao: DaoService,
-    public alertController: AlertController,) { }
+    public alertController: AlertController,
+    private auth: AuthenticationService, 
+    private router: Router,) { }
 
   ngOnInit() {
   }
@@ -39,6 +43,7 @@ export class OeuvreDetailsPage implements OnInit {
         technique: o['technique'],
         realisation: o['realisation'],
         date: o['date'],
+        nbImages: o['nbImages']
       };
       this.oeuvre = testOeuvre;
     })
@@ -77,6 +82,14 @@ export class OeuvreDetailsPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  login() {
+    this.router.navigate(['/form-inscription']);
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
 }

@@ -18,7 +18,6 @@ export class HomePage implements OnInit{
   constructor(private router: Router, private auth: AuthenticationService, private statusService: StatusCrudService) {}
 
   public ngOnInit() {
-    this.genererChaineAleatoire();
     this.dateOpening = '21 Avril à 16h00';
     this.getStatus();
   }
@@ -75,5 +74,9 @@ export class HomePage implements OnInit{
         this.status = a;
       });
     });
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }
