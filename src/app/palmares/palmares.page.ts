@@ -3,7 +3,6 @@ import {Category} from '../Interfaces/category';
 import {Oeuvre} from '../Interfaces/oeuvre';
 import {Router} from '@angular/router';
 import {CategorieCRUDService} from '../services/categorie-crud.service';
-import {StatusCrudService} from '../services/status-crud.service';
 
 @Component({
   selector: 'app-palmares',
@@ -13,12 +12,9 @@ import {StatusCrudService} from '../services/status-crud.service';
 export class PalmaresPage implements OnInit {
 
   private categories: Category[] = [];
-  private statusService: any;
-  private status: any;
 
   constructor(private router: Router,
               private categorieService: CategorieCRUDService,
-              private statusService: StatusCrudService,
   ) { }
 
   ngOnInit() {
@@ -52,18 +48,4 @@ export class PalmaresPage implements OnInit {
       });
     });
   }
-
-  scrollToElement($element): void {
-    console.log($element);
-    $element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
-  }
-
-  login() {
-    this.router.navigate(['/form-inscription']);
-  }
-  home() {
-    this.router.navigate(['/']);
-  }
-
-
 }

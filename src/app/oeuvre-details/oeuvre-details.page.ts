@@ -18,8 +18,8 @@ export class OeuvreDetailsPage implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private dao: DaoService,
-    public alertController: AlertController,
-    private auth: AuthenticationService,
+              public alertController: AlertController,
+              private auth: AuthenticationService,
     private router: Router,) { }
 
   ngOnInit() {
@@ -30,23 +30,25 @@ export class OeuvreDetailsPage implements OnInit {
     this.oeuvreKey = oeuvreId;
     let results = this.dao.getOeuvre(oeuvreId);
     results.snapshotChanges().subscribe(res => {
-      const o = res.payload.toJSON();
-      const testOeuvre: Oeuvre = {
-        name: o.name,
+      let o = res.payload.toJSON();
+      let testOeuvre: Oeuvre = {
+        name: o['name'],
+        auteur: o['auteur'],
+        nbImages: o['auteur'],
         key: oeuvreId,
-        categoryId: o.categoryId,
-        url: o.url,
-        voteId: o.voteId,
-        description: o.description,
-        contributeurs: o.contributeurs,
-        technique: o.technique,
-        realisation: o.realisation,
-        date: o.date,
+        categoryId: o['categoryId'],
+        url: o['url'],
+        description: o['description'],
+        contributeurs: o['contributeurs'],
+        technique: o['technique'],
+        realisation: o['realisation'],
+        date: o['date'],
+        voteNumber: o['voteNumber']
       };
       this.oeuvre = testOeuvre;
     })
   }
-  
+
   public vote(){
     console.log(this.oeuvreKey);
   }
@@ -59,7 +61,4 @@ export class OeuvreDetailsPage implements OnInit {
     this.auth.logout();
   }
 
-  home() {
-    this.router.navigate(['/']);
-  }
 }
