@@ -1,7 +1,9 @@
 ion-content {
-  --ion-background-color: #121212;
+  --ion-background-color: black;
 }
-
+ion-toolbar{
+  --ion-background-color: black;
+}
 #container {
   position: absolute;
   left: 0;
@@ -166,6 +168,37 @@ ion-select {
   font-weight: 600;
 }
 
+.palmares-result {
+  transition:0.3s;
+}
+
+.palmares-result:hover {
+  transition: 0.3s;
+  cursor: pointer;
+  color:rgba(0,0,0,0);
+}
+.gradient-text{
+  background: linear-gradient(to right,  #ffd27b, #c8e1ff);
+  background-size: 200% 200%;
+  animation: rainbow 1s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip:text;
+  color:white;
+  transition: color .2s ease-in-out;
+  text-transform:uppercase;
+  font-weight:900;
+}
+.gradient-text:hover {
+ background-color: red;
+}
+
+@keyframes rainbow {
+  0%{background-position:left}
+  50%{background-position:right}
+  100%{background-position:left}
+}
+
+
 @media only screen and (max-width: 575px) {
   h1 {
     font-size: 25px;
@@ -238,3 +271,4 @@ ion-select {
     display: none;
   }
 }
+
