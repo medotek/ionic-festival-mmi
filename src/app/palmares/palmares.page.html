@@ -27,14 +27,18 @@
                 <div class="category col-md-4 col-sm-4 col-lg-4 col-xs-6" *ngFor="let categorie of categories">
                     <div (click)="scrollToElement(categorie.key)">{{categorie.name}}</div>
                 </div>
-                <div class=" category col-md-4 col-sm-4 col-lg-4 col-xs-6">
+                <div class="category col-md-4 col-sm-4 col-lg-4 col-xs-6">
                     <div (click)="scrollToElement(winner)">FAITES DÉFILER LA PAGE POUR VOIR LES GAGNANTS
                         <br><ion-icon name="arrow-down"></ion-icon>
                     </div>
                 </div>
             </div>
             <div class="section-winner" #winner>
-
+                <div class="category col-md-10 col-sm-10 col-lg-10 col-xs-10" *ngFor="let oeuvre of listOeuvre">
+                    <div #{{categorie.key}}>
+                        {{oeuvre.name}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

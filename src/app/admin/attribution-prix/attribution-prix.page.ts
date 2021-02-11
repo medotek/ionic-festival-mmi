@@ -28,7 +28,8 @@ export class AttributionPrixPage implements OnInit {
   constructor(protected menu: Menu,
     private categorieService: CategorieCRUDService,
     private dao: DaoService,
-    public fb: FormBuilder,) { }
+    public fb: FormBuilder,
+    public alertController: AlertController,) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -78,12 +79,35 @@ export class AttributionPrixPage implements OnInit {
       commentaire: this.commentaire,
       oeuvreId: monOeuvre.key,
     };
+    this.voteAlertConfirm(prix, monOeuvre)
+  }
 
-    console.log('voté');
-    if(monOeuvre){
-      console.log("Pour " + cat.name + " : " + monOeuvre.key + " avec commentaire : " + this.commentaire);
-    }
-    this.dao.createPrix(prix);
+  async voteAlertConfirm(lePrix, oeuvre) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirmation',
+      message: "Êtes-vous sûre de vouloir attribuer le prix : <strong>" + lePrix.name + "</strong> à l'oeuvre : <strong>" + 
+      oeuvre.name + "</strong> ?",
+      buttons: [
+        {
+          text: 'Non',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Ne pas voter');
+          }
+        }, {
+          text: 'Oui',
+          handler: () => {
+            console.log('Voter');
+            this.dao.createPrix(lePrix);
+            window.location.reload();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }
