@@ -42,10 +42,10 @@ export class OeuvrePage implements OnInit {
     //Formulaire
     this.form = this.fb.group({
       name: [''],
+      auteur: [''],
       categoryId: [''],
       url: [''],
       date: [''],
-      voteId: [''],
       description: [''],
       contributeurs: [''],
       realisation: [''],
@@ -152,10 +152,10 @@ export class OeuvrePage implements OnInit {
   updateForm(o: Oeuvre): void {
     this.form = this.fb.group({
       name: [o.name],
+      auteur: [o.auteur],
       categoryId: [o.categoryId],
       url: [o.url],
       date: [o.date],
-      voteId: [o.voteId],
       description: [o.description],
       contributeurs: [o.contributeurs],
       realisation: [o.realisation],

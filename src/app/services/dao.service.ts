@@ -99,10 +99,11 @@ export class DaoService {
     console.log(this.dbList);
     return this.dbList.push({
       name: o.name,
+      auteur: o.auteur,
       categoryId: o.categoryId,
       url: o.url,
       date: o.date,
-      voteId: o.voteId,
+      voteNumber: 0,
       description: o.description,
       contributeurs: o.contributeurs,
       realisation: o.realisation,
@@ -124,10 +125,11 @@ export class DaoService {
     this.dbObject = this.database.object('/Oeuvre/'+ key);
     return this.dbObject.update({
       name: o.name,
+      auteur: o.auteur,
       categoryId: o.categoryId,
       url: o.url,
       date: o.date,
-      voteId: o.voteId,
+      voteNumber: o.voteNumber,
       description: o.description,
       contributeurs: o.contributeurs,
       realisation: o.realisation,

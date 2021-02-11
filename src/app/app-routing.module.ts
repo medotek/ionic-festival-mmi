@@ -44,7 +44,6 @@ const routes: Routes = [
     loadChildren: () => import('./oeuvre-details/oeuvre-details.module').then( m => m.OeuvreDetailsPageModule)
   },
 
-
 ];
 
 @NgModule({

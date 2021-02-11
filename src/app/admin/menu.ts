@@ -17,6 +17,10 @@ export class Menu
     {
         title: "Statut",
         url: "/admin/statut", 
-    }
+    },
+    {
+        title: "Vote",
+        url: "/admin/vote", 
+    },
     ];
 }
