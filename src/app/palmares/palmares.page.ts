@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Category} from '../Interfaces/category';
-import {Oeuvre} from '../Interfaces/oeuvre';
-import {Router} from '@angular/router';
-import {CategorieCRUDService} from '../services/categorie-crud.service';
-import {DaoService} from './../services/dao.service';
+import { Category } from '../Interfaces/category';
+import { Oeuvre } from '../Interfaces/oeuvre';
+import { Router } from '@angular/router';
+import { CategorieCRUDService } from '../services/categorie-crud.service';
+import { DaoService } from './../services/dao.service';
 import { PrixCategorie } from './../Interfaces/prix-categorie';
-import {StatusCrudService} from '../services/status-crud.service';
+import { StatusCrudService } from '../services/status-crud.service';
 
 @Component({
   selector: 'app-palmares',
@@ -18,17 +18,17 @@ export class PalmaresPage implements OnInit {
   public listPrix: PrixCategorie[] = [];
   public listOeuvre: Oeuvre[] = [];
   status: any;
-  
+
   constructor(private router: Router,
-              private categorieService: CategorieCRUDService,
-              private dao: DaoService,
-              private statusService: StatusCrudService,
+    private categorieService: CategorieCRUDService,
+    private dao: DaoService,
+    private statusService: StatusCrudService,
   ) { }
 
   ngOnInit() {
+    this.getStatus();
     this.getCategories();
     this.getPrixCategorie();
-    this.getStatus();
   }
 
   public getStatus() {
@@ -37,11 +37,13 @@ export class PalmaresPage implements OnInit {
       res.forEach(item => {
         let a = item.payload.toJSON();
         this.status = a;
+
         if (this.status !== 'resultats') {
           this.router.navigate(['/']);
         }
       });
     });
+
   }
 
   public getCategories() {
@@ -62,7 +64,7 @@ export class PalmaresPage implements OnInit {
     });
   }
 
-  public getPrixCategorie(){
+  public getPrixCategorie() {
     let listPrixParCategorie = this.dao.getPrixList();
     listPrixParCategorie.snapshotChanges().subscribe(res => {
       res.forEach(item => {
@@ -85,7 +87,7 @@ export class PalmaresPage implements OnInit {
     });
   }
 
-  public getOeuvre(key: string){
+  public getOeuvre(key: string) {
     let results = this.dao.getOeuvre(key);
     results.snapshotChanges().subscribe(res => {
       let o = res.payload.toJSON();
@@ -100,7 +102,8 @@ export class PalmaresPage implements OnInit {
         contributeurs: o['contributeurs'],
         technique: o['technique'],
         realisation: o['realisation'],
-        date: o['date']
+        date: o['date'],
+        voteNumber: o['voteNumber']
       };
       console.log(monOeuvre);
       this.listOeuvre.push(monOeuvre);
