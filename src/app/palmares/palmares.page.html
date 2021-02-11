@@ -24,6 +24,7 @@
             <p>Sans plus attendre, les gagnants sont ...</p>
             <iframe src="https://www.youtube.com/embed/W1g7M2sVQwM" frameborder="0" allow="autoplay; encrypted-media"
                 allowfullscreen></iframe>
+                
             <div class="category col-md-10 col-sm-10 col-lg-10 col-xs-10" *ngFor="let oeuvreTop1 of listOeuvreClassement">
                 <div>
                     <p>{{oeuvreTop1.categoryId}}</p><br>
@@ -44,17 +45,29 @@
                     </div>
                 </div>
             </div>
-            <div class="section-winner" #winner>
-                <div class="category col-md-10 col-sm-10 col-lg-10 col-xs-10" *ngFor="let oeuvre of listOeuvre">
-                    <div #{{categorie.key}}>
-                        <p>{{oeuvre.categoryId}}</p><br>
+        </div>
+        <div class="winner-category" style="padding:0;" *ngFor="let oeuvre of listOeuvre" #winner>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-sm-6">
+                    <div class="prix">
+                        <p>Prix de la catégorie : <br> {{oeuvre.categoryId}}</p><br>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-sm-6">
+                    <div class="oeuvre">
+                        <ion-item [routerLink]="'/oeuvre-details/' + oeuvre.key">
+                            <img [src]="this.path" alt="" class="oeuvre-image">
+                        </ion-item>
                         <p>{{oeuvre.name}}</p><br>
-                        <p>{{oeuvre.auteur}}</p><br>
-                        <img [src]="this.imagePath.get(oeuvre.key)" alt="" class="img-fluid oeuvre-image">
+                        
                     </div>
                 </div>
             </div>
+            <img [src]="this.imagePath.get(oeuvre.key)" alt="" class="img-fluid oeuvre-image">
         </div>
+
     </div>
     <div class="footer"></div>
 </ion-content>

@@ -6,6 +6,11 @@ ion-header {
   --ion-background-color: black;
 }
 
+.prix {
+  font-weight: 700;
+  font-size: 24px;
+}
+
 .header {
   padding-top: 1em;
   margin-bottom: 2em;
@@ -18,10 +23,10 @@ ion-header {
       display: inline-block;
 
       .videalps-button {
-        border: 2px solid #91ACCD;
+        border: 2px solid #91accd;
         padding: 5px 10px;
         background-color: transparent;
-        color: #91ACCD;
+        color: #91accd;
       }
     }
 
@@ -29,9 +34,7 @@ ion-header {
       float: right;
       padding: 15px 0;
     }
-
   }
-
 }
 
 * {
@@ -45,7 +48,6 @@ h1 {
   font-size: 60px;
   letter-spacing: 10px;
   font-family: Montserrat, sans-serif;
-
 }
 
 p:first-of-type {
@@ -61,7 +63,6 @@ p:first-of-type {
   padding: 0;
 }
 
-
 .category {
   position: relative;
   text-transform: uppercase;
@@ -70,7 +71,7 @@ p:first-of-type {
 }
 
 .category::after {
-  content: '';
+  content: "";
   display: block;
   padding-bottom: 100%;
 }
@@ -87,13 +88,12 @@ p:first-of-type {
 
 .category div:hover {
   cursor: pointer;
-  background: rgb(255,210,123);
-  background: linear-gradient(17deg, rgba(255,210,123,1) 0%, rgba(200,225,255,1) 100%);
-
+  background: rgb(255, 210, 123);
+  background: linear-gradient(17deg, rgba(255, 210, 123, 1) 0%, rgba(200, 225, 255, 1) 100%);
 }
 
 .category::after {
-  content: '';
+  content: "";
   display: block;
   padding-bottom: 100%;
 }
@@ -105,20 +105,31 @@ h2 {
 }
 
 ion-icon {
-  color:white;
+  color: white;
   font-size: 30px;
-  bottom:30px;
+  bottom: 30px;
   position: absolute;
 }
 
 .oeuvre-image {
   margin: 0px;
 }
+.prix {
+  padding: 20px;
 
+  p  {
+    font-weight: bold;
+  }
+}
 
-.winner-category {
-  width: 100vw;
-  padding: 4em 2em;
+.oeuvre {
+  padding: 20px;
+  p {
+    margin: 10px;
+    text-align:center;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
 }
 
 @media only screen and (max-width: 575px) {
@@ -133,12 +144,24 @@ ion-icon {
     height: auto;
   }
   h1 {
-    font-size:40px;
+    font-size: 40px;
+  }
+  .winner-category {
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0;
   }
 }
 
 @media only screen and (min-width: 576px) {
   .grid {
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+  }
+  .winner-category {
     width: 100vw;
     margin-left: auto;
     margin-right: auto;
@@ -156,6 +179,12 @@ ion-icon {
     width: 100vw;
     margin-left: auto;
     margin-right: auto;
+  }
+  .winner-category {
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
   }
   iframe {
     width: calc(100vw - 50px);
@@ -175,6 +204,11 @@ ion-icon {
     height: 450px;
     margin: 2em 0;
   }
+  .winner-category {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -188,5 +222,9 @@ ion-icon {
     height: 450px;
     margin: 2em 0;
   }
+  .winner-category {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
-

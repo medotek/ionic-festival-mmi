@@ -6,6 +6,7 @@ import {AlertController} from '@ionic/angular';
 import {AuthenticationService} from '../services/authentication.service';
 import {Router} from '@angular/router';
 import {StatusCrudService} from '../services/status-crud.service';
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
     selector: 'app-oeuvre-details',
@@ -19,16 +20,21 @@ export class OeuvreDetailsPage implements OnInit {
   status: any;
   protected imagePath: string;
   protected path: string = "";
+  voteUser = true;
+  unUser;
+  userKey;
 
   constructor(private route: ActivatedRoute,
     private dao: DaoService,
     public alertController: AlertController,
     private auth: AuthenticationService,
     private statusService: StatusCrudService,
-    private router: Router,) {}
+    private router: Router,
+    public dialog: MatDialog) {}
 
   ngOnInit() {
     this.getStatus();
+    this.getUserVote();
   }
 
   public getStatus() {
@@ -44,6 +50,23 @@ export class OeuvreDetailsPage implements OnInit {
       });
 
   }
+
+    public getUserVote() {
+        const mail = this.auth.getCurrentUser();
+        const listUser = this.auth.getAllUser();
+        listUser.snapshotChanges().subscribe(res => {
+            res.forEach(item => {
+                const a = item.payload.toJSON();
+
+                if (a.mail === mail) {
+                    if (a.voteToken <= 0) {
+                        console.log('je suis la');
+                        this.voteUser = false;
+                    }
+                }
+            });
+        });
+    }
 
   ionViewWillEnter() {
     let oeuvreId = this.route.snapshot.paramMap.get('id');
@@ -102,8 +125,48 @@ export class OeuvreDetailsPage implements OnInit {
   }
 
   public vote() {
-      console.log(this.oeuvreKey);
+      const mail = this.auth.getCurrentUser();
+      const listUser = this.auth.getAllUser();
+      listUser.snapshotChanges().subscribe(res => {
+          res.forEach(item => {
+              const a = item.payload.toJSON();
+
+              if (a.mail === mail) {
+                  this.userKey = item.key;
+                  this.unUser = a;
+                  this.voteAlertConfirm();
+                      // console.log(r.voteToken);
+              }
+          });
+      });
   }
+
+    async voteAlertConfirm() {
+        const alert = await this.alertController.create({
+            cssClass: 'my-custom-class',
+            header: 'Confirmation',
+            message: 'Êtes-vous sûre de vouloir voter la catégorie voter pour cette oeuvre ?',
+            buttons: [
+                {
+                    text: 'Non',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: (blah) => {
+                        console.log('Ne pas supprimer');
+                    }
+                }, {
+                    text: 'Oui',
+                    handler: () => {
+                        console.log('Supprimer');
+                        this.auth.updateUser(this.userKey, this.unUser);
+                        window.location.reload();
+                    }
+                }
+            ]
+        });
+
+        await alert.present();
+    }
 
   login() {
       this.router.navigate(['/form-inscription']);

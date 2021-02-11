@@ -18,11 +18,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
+    MatDialogModule,
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
