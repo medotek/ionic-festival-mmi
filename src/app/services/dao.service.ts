@@ -253,5 +253,12 @@ getPrixList() {
   this.dbList = this.database.list('/PrixCategorie');
   return this.dbList;
 }
-
+  ////
+  // GET USER BY ROLE
+  ////
+  getJury(){
+    this.dbList = this.database.list('/User', ref => ref.orderByChild('role').equalTo('jury'));
+    return this.dbList;
+  }
 }
+
