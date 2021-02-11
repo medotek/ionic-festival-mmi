@@ -12,6 +12,8 @@ import {CategorieCRUDService} from '../services/categorie-crud.service';
 export class PalmaresPage implements OnInit {
 
   private categories: Category[] = [];
+  status: any;
+  statusService: any;
 
   constructor(private router: Router,
               private categorieService: CategorieCRUDService,
@@ -48,4 +50,9 @@ export class PalmaresPage implements OnInit {
       });
     });
   }
+
+  home() {
+    this.router.navigate(['/']);
+  }
+
 }

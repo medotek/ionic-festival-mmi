@@ -61,4 +61,7 @@ export class OeuvreDetailsPage implements OnInit {
     this.auth.logout();
   }
 
+  home() {
+    this.router.navigate(['/']);
+  }
 }
