@@ -16,12 +16,8 @@ export class FormInscriptionPage implements OnInit {
     }
 
     signUp(email, password){
-        this.authentication.SignIn(email.value, password.value)
-            .then((res) => {
-                this.router.navigate(['/home']);
-            }).catch((error) => {
-            window.alert(error.message);
-        });
+        this.authentication.logUserIn(email.value, password.value);
+        this.router.navigate(['/home']);
     }
 
     changePassword() {

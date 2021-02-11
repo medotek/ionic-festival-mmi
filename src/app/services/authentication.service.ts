@@ -11,6 +11,8 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 export class AuthenticationService {
 
   userData: any;
+  public loggedIn = false;
+  private userDetails: firebase.User;
 
   constructor(
       public afStore: AngularFirestore,
@@ -28,6 +30,7 @@ export class AuthenticationService {
         JSON.parse(localStorage.getItem('users'));
       }
     });
+    this.loggedIn = !!sessionStorage.getItem('user');
   }
 
   // Register user with email/password
@@ -35,20 +38,58 @@ export class AuthenticationService {
     return this.ngFireAuth.createUserWithEmailAndPassword(email, password);
   }
 
-  // Email verification when new user register
-  /*SendVerificationMail() {
-    return this.ngFireAuth.auth.currentUser.sendEmailVerification()
-        .then(() => {
-          this.router.navigate(['verify-email']);
-        });
-  }*/
-
   // Login in with email/password
   SignIn(email, password) {
     return this.ngFireAuth.signInWithEmailAndPassword(email, password);
   }
 
+  logUserIn(email, pass) {
+    firebase.auth().signInWithEmailAndPassword(email, pass).then( res => {
+      this.userDetails = res.user;
+      this.stockConnexion(email);
+    }).catch( error => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log('error' + error);
+    });
+  }
+
+  stockConnexion(email) {
+    if (this.userDetails) {
+      email = this.userDetails.email;
+      console.log('hello im user' + ' ' + email);
+      // setting user in session here --->
+      this.setCurrentUser(email);
+    } else {
+      console.log('not working');
+    }
+  }
+
   changePassword(email) {
     return this.ngFireAuth.sendPasswordResetEmail(email);
+  }
+
+// Set current user in your session after a successful login
+  setCurrentUser(email: string): void {
+    sessionStorage.setItem('user', email);
+    this.loggedIn = true;
+  }
+
+// Get currently logged in user from session
+  getCurrentUser(): string | any {
+    return sessionStorage.getItem('user') || undefined;
+  }
+
+// Clear the session for current user & log the user out
+  logout() {
+    sessionStorage.removeItem('user');
+    this.loggedIn = false;
+    // ... other code for logout
+  }
+
+// The method to check whether user is logged in or not
+  isLoggedIn() {
+    return this.loggedIn;
   }
 }

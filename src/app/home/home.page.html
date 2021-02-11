@@ -14,7 +14,8 @@
             <div class="header">
                 <ul>
                     <li><img class="logo" src="../../assets/img/videalps.png" alt="Videalps logo"><br></li>
-                    <li><button class="videalps-button"><a (click)="login()">Se connecter</a></button></li>
+                    <li><button *ngIf="!this.auth.getCurrentUser()" class="videalps-button"><a (click)="login()">Se connecter</a></button>
+                    <button *ngIf="this.auth.getCurrentUser()" class="videalps-button"><a (click)="logout()">Se déconnecter</a></button></li>
                 </ul>
             </div>
             <div class="status" *ngIf="status == 'debut'">
