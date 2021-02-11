@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {CategorieCRUDService} from '../services/categorie-crud.service';
 import {DaoService} from './../services/dao.service';
 import { PrixCategorie } from './../Interfaces/prix-categorie';
+import {StatusCrudService} from '../services/status-crud.service';
 
 @Component({
   selector: 'app-palmares',
@@ -17,11 +18,11 @@ export class PalmaresPage implements OnInit {
   public listPrix: PrixCategorie[] = [];
   public listOeuvre: Oeuvre[] = [];
   status: any;
-  statusService: any;
   
   constructor(private router: Router,
               private categorieService: CategorieCRUDService,
               private dao: DaoService,
+              private statusService: StatusCrudService,
   ) { }
 
   ngOnInit() {
@@ -99,8 +100,7 @@ export class PalmaresPage implements OnInit {
         contributeurs: o['contributeurs'],
         technique: o['technique'],
         realisation: o['realisation'],
-        date: o['date'],
-        voteNumber: o['voteNumber']
+        date: o['date']
       };
       console.log(monOeuvre);
       this.listOeuvre.push(monOeuvre);

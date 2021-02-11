@@ -81,7 +81,7 @@ export class DaoService {
     this.dbObject = this.database.object('/Categorie/' + id);
     return this.dbObject.update({
       name: cat.name,
-    })
+    });
   }
 
   deleteCategorie(id: string) {
@@ -113,7 +113,7 @@ export class DaoService {
       contributeurs: o.contributeurs,
       realisation: o.realisation,
       technique: o.technique,
-    })
+    });
   }
 
   getOeuvre(key: string) {
@@ -139,7 +139,7 @@ export class DaoService {
       contributeurs: o.contributeurs,
       realisation: o.realisation,
       technique: o.technique,
-    })
+    });
   }
 
   deleteOeuvre(key: string) {

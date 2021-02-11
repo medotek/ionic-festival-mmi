@@ -36,7 +36,7 @@ export class OeuvreDetailsPage implements OnInit {
             res.forEach(item => {
                 let a = item.payload.toJSON();
                 this.status = a;
-                if (this.status == 'debut') {
+                if (this.status === 'debut') {
                     this.router.navigate(['/']);
                 }
             });
