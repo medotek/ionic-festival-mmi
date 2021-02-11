@@ -31,6 +31,9 @@ export class DaoService {
   imgName: string;
   imgSize: number;
 
+  // Upload progress
+  percentageVal: Observable<number>;
+
   // Uploaded image collection
   files: Observable<imgFile[]>;
 
@@ -103,6 +106,7 @@ export class DaoService {
       url: o.url,
       date: o.date,
       voteId: o.voteId,
+      nbImages: o.nbImages,
       description: o.description,
       contributeurs: o.contributeurs,
       realisation: o.realisation,
@@ -176,6 +180,8 @@ export class DaoService {
       this.fileUploadTask = this.storage.upload(fileStoragePath, file);
 
       // Show uploading progress
+      this.percentageVal = this.fileUploadTask.percentageChanges();
+      console.log(this.percentageVal);
       this.trackSnapshot = this.fileUploadTask.snapshotChanges().pipe(
         
         finalize(() => {
@@ -183,11 +189,14 @@ export class DaoService {
           this.UploadedImageURL = imageRef.getDownloadURL();
           
           this.UploadedImageURL.subscribe(resp=>{
+            console.log("storeFilesFirebase()");
             this.storeFilesFirebase({
               name: file.name,
               filepath: resp,
-              size: this.imgSize
-            });
+              size: this.imgSize,
+              }, 
+              key
+            );
             this.isFileUploading = false;
             this.isFileUploaded = true;
           },error=>{
@@ -195,18 +204,25 @@ export class DaoService {
           })
         }),
         tap(snap => {
-            this.imgSize = snap.totalBytes;
+          this.imgSize = snap.totalBytes;
         })
       )
+      this.trackSnapshot.subscribe(
+        null,
+        null,
+        () => console.log("pipe terminé!")
+      );
     }
   }
 
-  storeFilesFirebase(image: imgFile) {
+  storeFilesFirebase(image: imgFile, key: string) {
     const fileId = this.firestore.createId();
     
-    this.filesCollection.doc(fileId).set(image).then(res => {
+    this.filesCollection.doc(key).set(image).then(res => {
+      console.log("firestore réussi");
       console.log(res);
     }).catch(err => {
+      console.log("firestore raté");
       console.log(err);
     });
   }

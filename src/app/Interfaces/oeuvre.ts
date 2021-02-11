@@ -4,6 +4,7 @@ export interface Oeuvre {
     categoryId: number;
     url: string;
     voteId: number;
+    nbImages: number;
     description?: string;
     contributeurs?: string;
     technique?: string;

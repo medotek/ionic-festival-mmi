@@ -24,7 +24,7 @@ export class CategoriesPage implements OnInit {
     private categorieService: CategorieCRUDService,
     public fb: FormBuilder,
     public alertController: AlertController,
-    protected menu: Menu) { }
+      protected menu: Menu) { }
 
   ngOnInit() {
     this.getCategories();

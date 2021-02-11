@@ -43,7 +43,7 @@
             </ion-item>
             <ion-item lines="full">
               <ion-label>Catégories</ion-label>
-              <ion-select [(ngModel)]="selectedCategorie" formControlName="categoryId">
+              <ion-select [(ngModel)]="selectedCategorie" formControlName="categoryId" required>
                 <ion-select-option *ngFor="let categorie of categories" [value]="categorie.name">{{categorie.name}}</ion-select-option>
               </ion-select>
             </ion-item>
@@ -62,14 +62,14 @@
             <ng-template #youtube>
               <ion-item>
                 <ion-label position="floating">Lien Youtube</ion-label>
-                <ion-input formControlName="url" type="url" placeholder="https://youtu.be/... ou https://www.youtube.com/watch?v=..."></ion-input>
+                <ion-input formControlName="url" type="url" placeholder="https://youtu.be/... ou https://www.youtube.com/watch?v=..." required></ion-input>
               </ion-item>
             </ng-template>
             <ng-template #image>
               <ion-item>
                 <ion-label>Importer des images</ion-label>
                 <ion-button color="primary" shape="round" size="medium">
-                  <input type="file" (change)="saveImage($event.target.files)" multiple/>
+                  <input type="file" (change)="saveImage($event.target.files)" multiple required/>
                 </ion-button> 
               </ion-item>
             </ng-template>
@@ -83,7 +83,7 @@
             </ion-item>
             <ion-item lines="full">
               <ion-label position="floating">Votes</ion-label>
-              <ion-input formControlName="voteId" type="number" required></ion-input>
+              <ion-input formControlName="voteId" type="number"></ion-input>
             </ion-item>
             <ion-item lines="full">
               <ion-label position="floating">Description</ion-label>
