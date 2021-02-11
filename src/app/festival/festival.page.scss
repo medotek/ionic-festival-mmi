@@ -189,7 +189,6 @@ ion-select {
   font-weight:900;
 }
 .gradient-text:hover {
- background-color: red;
 }
 
 @keyframes rainbow {
@@ -208,6 +207,8 @@ ion-select {
   .banner {
     .palmares {
       top: 20%;
+      margin:auto 0;
+      width: 100%;
     }
 
     .palmares-info {
