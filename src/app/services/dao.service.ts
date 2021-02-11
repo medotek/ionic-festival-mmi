@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
-
 export interface imgFile {
   name: string;
   filepath: string;
@@ -156,6 +155,10 @@ export class DaoService {
   // IMAGE  //
   /////////////////////////////////////////////////////////////////////////////////////////////
 
+  getImage(key: string) {
+    return this.filesCollection.doc(key).snapshotChanges()
+  }
+  
   createImages(files: FileList, key: string) {
     console.log("CreateImages() dans le DAO");
     console.log(key);
@@ -215,9 +218,7 @@ export class DaoService {
     }
   }
 
-  storeFilesFirebase(image: imgFile, key: string) {
-    const fileId = this.firestore.createId();
-    
+  storeFilesFirebase(image: imgFile, key: string) {    
     this.filesCollection.doc(key).set(image).then(res => {
       console.log("firestore réussi");
       console.log(res);

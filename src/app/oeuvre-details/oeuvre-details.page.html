@@ -24,7 +24,7 @@
             </div>
             <div class="row" style="color:white; font-weight: bold;">
                 <div class="col-sm-5 col-md-5 col-lg-5">
-                    <img src="https://i.ytimg.com/vi/YrcyW38bUVI/hq3.jpg" alt="" class="oeuvre-image">
+                    <img [src]="this.path" alt="" class="oeuvre-image">
                     <h1>{{oeuvre?.name}}</h1>
                     <div >Auteur :</div>
                     <div>Date de réalisation : <span class="info">{{oeuvre?.date}}</span></div>
