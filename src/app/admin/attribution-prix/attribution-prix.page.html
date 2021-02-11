@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Administrateur: Vote</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-split-pane contentId="main-content">
+
+    <!-- MENU LATERAL -->
+    <ion-menu contentId="main-content" type="overlay">
+
+      <ion-content>
+        <ion-list id="menu" inset=true>
+          <ion-list-header>{{ menu.title }}</ion-list-header>
+          <ion-note>{{ menu.subtitle }}</ion-note>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of menu.pages; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none"
+              detail="false">
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+      </ion-content>
+
+    </ion-menu>
+
+    <!-- CONTENU DE LA PAGE -->
+    <ion-router-outlet id="main-content">
+      <ion-content>
+        <ion-title>Décerner les prix</ion-title>
+
+        <ion-list>
+          <ion-col size="2">
+            <ion-label color="medium">Catégorie</ion-label>
+            <ion-select interface="popover" [compareWith]="compareWith" [(ngModel)]="categorySelected" (ngModelChange)="getOeuvres()">
+              <ion-select-option *ngFor="let categorie of categories" [value]="categorie">
+                {{categorie.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label color="medium">Oeuvre</ion-label>
+            <ion-select interface="popover" [compareWith]="compareWith" [(ngModel)]="oeuvreSelected">
+              <ion-select-option *ngFor="let oeuvre of oeuvres" [value]="oeuvre">{{oeuvre.name}}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-item style="width: 100%;">
+            <ion-label color="medium" position="floating">Commentaire</ion-label>
+            <ion-textarea></ion-textarea>
+          </ion-item>
+
+          <ion-button slot="end" (click)="vote(categorySelected, oeuvreSelected)">Voter</ion-button>
+        </ion-list>
+
+      </ion-content>
+    </ion-router-outlet>
+
+  </ion-split-pane>
+</ion-content>

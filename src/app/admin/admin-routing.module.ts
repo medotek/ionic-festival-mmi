@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: () => import('./statut/statut.module').then( m => m.StatutPageModule)
   },
   {
+    path: 'vote',
+    loadChildren: () => import('./attribution-prix/attribution-prix.module').then( m => m.AttributionPrixPageModule)
+  },
+  {
     path: 'invitation',
     loadChildren: () => import('./invitation/invitation.module').then( m => m.InvitationPageModule)
   }

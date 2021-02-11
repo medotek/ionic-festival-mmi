@@ -42,10 +42,10 @@ export class OeuvrePage implements OnInit {
     //Formulaire
     this.form = this.fb.group({
       name: [''],
+      auteur: [''],
       categoryId: [''],
       url: [''],
       date: [''],
-      voteId: [''],
       description: [''],
       contributeurs: [''],
       realisation: [''],
@@ -69,11 +69,12 @@ export class OeuvrePage implements OnInit {
       } else {
         this.dao.createOeuvre({
           key: "",
+          auteur: this.form.get("auteur").value,
           name: this.form.get("name").value,
           categoryId: this.form.get("categoryId").value, 
           url: this.form.get("url").value, 
           date: this.form.get("date").value,
-          voteId: this.form.get("voteId").value,  
+          voteNumber: this.form.get("voteNumber").value,  
           nbImages: this.files instanceof FileList ? this.files.length : 0,
           description: this.form.get("description").value,
           contributeurs: this.form.get("contributeurs").value,
@@ -164,10 +165,10 @@ export class OeuvrePage implements OnInit {
   updateForm(o: Oeuvre): void {
     this.form = this.fb.group({
       name: [o.name],
+      auteur: [o.auteur],
       categoryId: [o.categoryId],
       url: [o.url],
       date: [o.date],
-      voteId: [o.voteId],
       description: [o.description],
       contributeurs: [o.contributeurs],
       realisation: [o.realisation],

@@ -1,9 +1,10 @@
 export interface Oeuvre {
     key: string;
     name: string;
+    auteur: string;
     categoryId: number;
     url: string;
-    voteId: number;
+    voteNumber?: number;
     nbImages: number;
     description?: string;
     contributeurs?: string;

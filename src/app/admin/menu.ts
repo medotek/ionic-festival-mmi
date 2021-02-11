@@ -1,7 +1,8 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from "@angular/core";
 
 @Injectable()
-export class Menu {
+export class Menu
+{
     title = "CRUD"
     subtitle = "Créer, modifier, supprimer et consulter"
     pages = [
@@ -20,6 +21,10 @@ export class Menu {
         {
             title: "Invitation",
             url: "/admin/invitation",
-        }
+        },
+        {
+            title: "Vote",
+            url: "/admin/vote",
+        },
     ];
 }

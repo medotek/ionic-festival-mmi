@@ -3,6 +3,7 @@ import {Category} from '../Interfaces/category';
 import {Oeuvre} from '../Interfaces/oeuvre';
 import {Router} from '@angular/router';
 import {CategorieCRUDService} from '../services/categorie-crud.service';
+import {StatusCrudService} from '../services/status-crud.service';
 
 @Component({
   selector: 'app-palmares',
@@ -12,9 +13,11 @@ import {CategorieCRUDService} from '../services/categorie-crud.service';
 export class PalmaresPage implements OnInit {
 
   private categories: Category[] = [];
+  private status: any;
 
   constructor(private router: Router,
               private categorieService: CategorieCRUDService,
+              private statusService: StatusCrudService,
   ) { }
 
   ngOnInit() {

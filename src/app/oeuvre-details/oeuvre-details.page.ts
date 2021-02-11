@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DaoService } from './../services/dao.service';
 import { Oeuvre } from 'src/app/Interfaces/oeuvre';
+import { AlertController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 
@@ -15,7 +16,11 @@ export class OeuvreDetailsPage implements OnInit {
   private oeuvre: Oeuvre;
   private oeuvreKey;
 
-  constructor(private route: ActivatedRoute, private dao: DaoService, private auth: AuthenticationService, private router: Router) { }
+  constructor(private route: ActivatedRoute, 
+    private dao: DaoService,
+    public alertController: AlertController,
+    private auth: AuthenticationService, 
+    private router: Router,) { }
 
   ngOnInit() {
   }
@@ -28,22 +33,55 @@ export class OeuvreDetailsPage implements OnInit {
       let o = res.payload.toJSON();
       let testOeuvre: Oeuvre = {
         name: o['name'],
+        auteur: o['auteur'],
         key: oeuvreId,
         categoryId: o['categoryId'],
         url: o['url'],
-        voteId: o['voteId'],
+        voteNumber: o['voteNumber'],
         description: o['description'],
         contributeurs: o['contributeurs'],
         technique: o['technique'],
         realisation: o['realisation'],
         date: o['date'],
+        nbImages: o['nbImages']
       };
       this.oeuvre = testOeuvre;
     })
   }
   
   public vote(){
-    console.log(this.oeuvreKey);
+    this.voteAlertConfirm();
+  }
+
+  async voteAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirmation',
+      message: "Êtes-vous sûre de vouloir voter pour l'oeuvre : <strong>" + this.oeuvre.name + "</strong> de <strong>" 
+      + this.oeuvre.auteur + "</strong> ?",
+      buttons: [
+        {
+          text: 'Non',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Ne pas voter');
+          }
+        }, {
+          text: 'Oui',
+          handler: () => {
+            console.log('Voter');
+            this.oeuvre.voteNumber += 1;
+            console.log(this.oeuvre.voteNumber);
+            console.log(this.oeuvreKey);
+            this.dao.updateOeuvre(this.oeuvreKey, this.oeuvre);
+            window.location.reload();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   login() {
