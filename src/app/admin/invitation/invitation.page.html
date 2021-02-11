@@ -57,6 +57,11 @@
                     <ion-checkbox color="danger" #role value="jury" slot="start"></ion-checkbox>
                 </ion-item>
 
+                <ion-item lines="full">
+                    <ion-label position="floating">Profession</ion-label>
+                    <ion-input type="text" #profession required></ion-input>
+                </ion-item>
+
                 <br>
                 <ion-label [style]="{marginLeft: '15px'}">Vous pouvez insérer une photo de profil !</ion-label>
                 <ion-item lines="full">
@@ -64,7 +69,7 @@
                 </ion-item>
 
                 <ion-col>
-                    <ion-button type="submit" (click)="sendMail(nom, prenom, email, role, image)" expand="block">Envoyer
+                    <ion-button type="submit" (click)="sendMail(nom, prenom, email, role, image, profession)" expand="block">Envoyer
                         le lien d'invitation
                     </ion-button>
                 </ion-col>
