@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Category} from '../Interfaces/category';
-import {Oeuvre} from '../Interfaces/oeuvre';
-import {Router} from '@angular/router';
-import {CategorieCRUDService} from '../services/categorie-crud.service';
-import {DaoService} from './../services/dao.service';
+import { Category } from '../Interfaces/category';
+import { Oeuvre } from '../Interfaces/oeuvre';
+import { Router } from '@angular/router';
+import { CategorieCRUDService } from '../services/categorie-crud.service';
+import { DaoService } from './../services/dao.service';
 import { PrixCategorie } from './../Interfaces/prix-categorie';
+import { StatusCrudService } from '../services/status-crud.service';
 
 @Component({
   selector: 'app-palmares',
@@ -17,18 +18,16 @@ export class PalmaresPage implements OnInit {
   public listPrix: PrixCategorie[] = [];
   public listOeuvre: Oeuvre[] = [];
   status: any;
-  statusService: any;
-  
+
   constructor(private router: Router,
-              private categorieService: CategorieCRUDService,
-              private dao: DaoService,
+    private categorieService: CategorieCRUDService,
+    private dao: DaoService,
+    private statusService: StatusCrudService,
   ) { }
 
   ngOnInit() {
-    if (this.status !== 'resultats') {
-      this.router.navigate(['/']);
-    }
 
+    this.getStatus();
     this.getCategories();
     this.getPrixCategorie();
   }
@@ -39,8 +38,13 @@ export class PalmaresPage implements OnInit {
       res.forEach(item => {
         let a = item.payload.toJSON();
         this.status = a;
+        console.log(this.status);
+        if (this.status !== 'resultats') {
+          this.router.navigate(['/']);
+        }
       });
     });
+
   }
 
   public getCategories() {
@@ -61,7 +65,7 @@ export class PalmaresPage implements OnInit {
     });
   }
 
-  public getPrixCategorie(){
+  public getPrixCategorie() {
     let listPrixParCategorie = this.dao.getPrixList();
     listPrixParCategorie.snapshotChanges().subscribe(res => {
       res.forEach(item => {
@@ -84,7 +88,7 @@ export class PalmaresPage implements OnInit {
     });
   }
 
-  public getOeuvre(key: string){
+  public getOeuvre(key: string) {
     let results = this.dao.getOeuvre(key);
     results.snapshotChanges().subscribe(res => {
       let o = res.payload.toJSON();
