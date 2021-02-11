@@ -76,7 +76,7 @@ p:first-of-type {
 }
 
 .category div {
-  background-color: #C4C4C4;
+  background-color: #aecfee;
   position: absolute;
   width: calc(100% - 40px);
   height: calc(100% - 40px);
@@ -87,6 +87,9 @@ p:first-of-type {
 
 .category div:hover {
   cursor: pointer;
+  background: rgb(255,210,123);
+  background: linear-gradient(17deg, rgba(255,210,123,1) 0%, rgba(200,225,255,1) 100%);
+
 }
 
 .category::after {
@@ -117,6 +120,9 @@ ion-icon {
   iframe {
     width: calc(100vw - 50px);
     height: auto;
+  }
+  h1 {
+    font-size:40px;
   }
 }
 

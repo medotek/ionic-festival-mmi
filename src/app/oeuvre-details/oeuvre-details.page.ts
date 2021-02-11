@@ -21,27 +21,27 @@ export class OeuvreDetailsPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    let oeuvreId = this.route.snapshot.paramMap.get('id');
+    const oeuvreId = this.route.snapshot.paramMap.get('id');
     this.oeuvreKey = oeuvreId;
-    let results = this.dao.getOeuvre(oeuvreId);
+    const results = this.dao.getOeuvre(oeuvreId);
     results.snapshotChanges().subscribe(res => {
-      let o = res.payload.toJSON();
-      let testOeuvre: Oeuvre = {
-        name: o['name'],
+      const o = res.payload.toJSON();
+      const testOeuvre: Oeuvre = {
+        name: o.name,
         key: oeuvreId,
-        categoryId: o['categoryId'],
-        url: o['url'],
-        voteId: o['voteId'],
-        description: o['description'],
-        contributeurs: o['contributeurs'],
-        technique: o['technique'],
-        realisation: o['realisation'],
-        date: o['date'],
+        categoryId: o.categoryId,
+        url: o.url,
+        voteId: o.voteId,
+        description: o.description,
+        contributeurs: o.contributeurs,
+        technique: o.technique,
+        realisation: o.realisation,
+        date: o.date,
       };
       this.oeuvre = testOeuvre;
-    })
+    });
   }
-  
+
   public vote(){
     console.log(this.oeuvreKey);
   }
@@ -54,4 +54,7 @@ export class OeuvreDetailsPage implements OnInit {
     this.auth.logout();
   }
 
+  home() {
+    this.router.navigate(['/']);
+  }
 }

@@ -106,4 +106,9 @@ export class FestivalPage implements OnInit {
     logout() {
         this.auth.logout();
     }
+
+    home() {
+        this.router.navigate(['/']);
+    }
+
 }
