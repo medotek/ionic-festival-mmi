@@ -4,11 +4,13 @@ import { Users} from '../Interfaces/users';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+  userListRef: AngularFireList<any>;
 
   userData: any;
   public loggedIn = false;
@@ -18,7 +20,8 @@ export class AuthenticationService {
       public afStore: AngularFirestore,
       public ngFireAuth: AngularFireAuth,
       public router: Router,
-      public ngZone: NgZone
+      public ngZone: NgZone,
+      public database: AngularFireDatabase,
   ) {
     this.ngFireAuth.authState.subscribe(user => {
       if (user) {
@@ -93,5 +96,16 @@ export class AuthenticationService {
 // The method to check whether user is logged in or not
   isLoggedIn() {
     return this.loggedIn;
+  }
+
+  // Create
+  createUser(newUser: Users) {
+    this.userListRef = this.database.list('/User');
+    return this.userListRef.push({
+      nom: newUser.Nom,
+      prenom: newUser.Prenom,
+      mail: newUser.Email,
+      voteToken: 1,
+    });
   }
 }
