@@ -7,27 +7,27 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true"  *ngIf="status === 'enCours' || status === 'votesFermes' || status === 'resultats'">
+<ion-content [fullscreen]="true" *ngIf="status === 'enCours' || status === 'votesFermes' || status === 'resultats'">
     <div class="main">
         <div class="container">
             <div class="header" style="z-index: 2;">
                 <ul>
                     <li>
                         <img (click)="home()" width="150" class="logo" src="../../assets/img/videalps-white.png"
-                             alt="Videalps logo">
+                            alt="Videalps logo">
                     </li>
                     <li>
                         <button *ngIf="!this.auth.getCurrentUser()" class="videalps-button"><a (click)="login()">Se
-                            connecter</a></button>
+                                connecter</a></button>
                         <button *ngIf="this.auth.getCurrentUser()" class="videalps-button"><a (click)="logout()">Se
-                            déconnecter</a></button>
+                                déconnecter</a></button>
                     </li>
 
                 </ul>
             </div>
             <div class="row" style="color:white; font-weight: bold;">
                 <div class="col-sm-5 col-md-5 col-lg-5">
-                    <ion-item [href]="oeuvre.url" >
+                    <ion-item [href]="oeuvre.url">
                         <img [src]="this.path" alt="" class="oeuvre-image">
                     </ion-item>
                     <h1>{{oeuvre?.name}}</h1>
@@ -42,13 +42,10 @@
                     <div class="oeuvreInfo">Techniques utilisées <span></span></div>
                     <p class="textDetails">{{oeuvre?.technique}}</p>
                     <div class="oeuvreInfo">Condition de réalisation <span></span></div>
-<<<<<<< HEAD
+
                     <p class="textDetails">{{oeuvre?.realisation}}</p>
-                    <ion-button *ngIf="this.auth.getCurrentUser()" (click)="vote()">Voter pour cette oeuvre</ion-button>
-=======
-                    <span class="textDetails">{{oeuvre?.realisation}}</span>
-                    <ion-button *ngIf="this.auth.getCurrentUser() && this.voteUser === true" (click)="vote()">Voter pour cette oeuvre</ion-button>
->>>>>>> 59ec3afd21c69a391cfb03dd6727e79257c9011a
+                    <ion-button *ngIf="this.auth.getCurrentUser() && this.voteUser === true" (click)="vote()">Voter pour
+                        cette oeuvre</ion-button>
                 </div>
             </div>
         </div>
