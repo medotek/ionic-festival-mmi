@@ -36,12 +36,13 @@ export class HomePage implements OnInit{
               Prenom: '',
               Email: '',
               Role: '',
-              Image: ''
-
+              Image: '',
+              Profession: '',
             };
 
             monJury.Nom =  a['nom'];
             monJury.Prenom = a['prenom'];
+            monJury.Profession = a['profession'];
             this.jury.push(monJury);
         });
     });

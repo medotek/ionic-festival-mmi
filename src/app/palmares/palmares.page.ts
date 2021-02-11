@@ -18,6 +18,7 @@ export class PalmaresPage implements OnInit {
   private categories: Category[] = [];
   public listPrix: PrixCategorie[] = [];
   public listOeuvre: Oeuvre[] = [];
+  public listOeuvreClassement: Oeuvre[] = [];
   status: any;
   private path: string;
   protected imagePath: Map<string, string>;
@@ -34,6 +35,7 @@ export class PalmaresPage implements OnInit {
     this.getStatus();
     this.getCategories();
     this.getPrixCategorie();
+    this.getOeuvreClassement();
   }
 
   public getStatus() {
@@ -120,32 +122,59 @@ export class PalmaresPage implements OnInit {
   public getImage(o: Oeuvre): void {
 
     switch (o.categoryId) {
-        case "Photo":
-            this.dao.getImage(o.key).subscribe(res => {
-                let image = res.payload.data();
-                console.log(image);
-                this.path = image.filepath != "" ? image.filepath : "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png";
-            })
-            break;
-        case "Web":
-            this.path = `https://api.thumbnail.ws/api/abfcd13f120af04d2a4f7e80cd2fbf434e250fa02f4b/thumbnail/get?url=${o.url}&width=640`;
-            break;
-        case "Animation":
-            let url = this.youtube_parser(o.url) ? "https://i.ytimg.com/vi/" + this.youtube_parser(o.url) + "/hq3.jpg" : "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png";
-            this.path = url as string;
-            break;
-        default:
-            this.path = 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png';
-            break;
+      case "Photo":
+        this.dao.getImage(o.key).subscribe(res => {
+          let image = res.payload.data();
+          //console.log(image);
+          this.path = image.filepath != "" ? image.filepath : "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png";
+        })
+        break;
+      case "Web":
+        this.path = `https://api.thumbnail.ws/api/abfcd13f120af04d2a4f7e80cd2fbf434e250fa02f4b/thumbnail/get?url=${o.url}&width=640`;
+        break;
+      case "Animation":
+        let url = this.youtube_parser(o.url) ? "https://i.ytimg.com/vi/" + this.youtube_parser(o.url) + "/hq3.jpg" : "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png";
+        this.path = url as string;
+        break;
+      default:
+        this.path = 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png';
+        break;
     }
     console.log(this.path);
     this.imagePath.set(o.key, this.path);
-}
+  }
 
   youtube_parser(url: string) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     var match = url.match(regExp);
     return (match && match[7].length == 11) ? match[7] : false;
+  }
+
+  public getOeuvreClassement() {
+    let results = this.dao.getOeuvreClassement();
+    results.snapshotChanges().subscribe(res => {
+      res.forEach(item => {
+        let o = item.payload.toJSON();
+        let monOeuvre: Oeuvre = {
+          name: o['name'],
+          auteur: o['auteur'],
+          voteNumber: o['voteNumber'],
+          nbImages: o['auteur'],
+          key: o['key'],
+          categoryId: 'Prix du public',
+          url: o['url'],
+          description: o['description'],
+          contributeurs: o['contributeurs'],
+          technique: o['technique'],
+          realisation: o['realisation'],
+          date: o['date'],
+          
+        };
+        this.getImage(o as Oeuvre);
+        console.log(monOeuvre);
+        this.listOeuvreClassement.push(monOeuvre);
+      })
+    })
   }
 
 

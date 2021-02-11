@@ -125,6 +125,11 @@ export class DaoService {
     return this.dbList;
   }
 
+  getOeuvreClassement() {
+    this.dbList = this.database.list('/Oeuvre', ref => ref.orderByChild('voteNumber').limitToLast(1));
+    return this.dbList;
+  }
+
   updateOeuvre(key: string, o: Oeuvre) {
     this.dbObject = this.database.object('/Oeuvre/'+ key);
     return this.dbObject.update({
