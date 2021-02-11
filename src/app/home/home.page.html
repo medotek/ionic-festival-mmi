@@ -68,44 +68,12 @@
                 <div class="jury">
 
                     <h2>Le Jury <span></span></h2>
-                    <div class="row">
+                    <div class="row" *ngFor="let j of jury">
                         <div class="col-md-3 col-sm-6 col-lg-3">
                             <div class="jury-card">
                                 <img class="img-fluid"
                                      src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
-                                <div class="jury-name">François Gaillard</div>
-                                <div class="jury-job">Artiste enseignant</div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-lg-3">
-                            <div class="jury-card">
-                                <img class="img-fluid"
-                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
-                                <div class="jury-name">François Gaillard</div>
-                                <div class="jury-job">Artiste enseignant</div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-lg-3">
-                            <div class="jury-card">
-                                <img class="img-fluid"
-                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
-                                <div class="jury-name">François Gaillard</div>
-                                <div class="jury-job">Artiste enseignant</div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-lg-3">
-                            <div class="jury-card">
-                                <img class="img-fluid"
-                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
-                                <div class="jury-name">François Gaillard</div>
-                                <div class="jury-job">Artiste enseignant</div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-lg-3">
-                            <div class="jury-card">
-                                <img class="img-fluid"
-                                     src="https://www.villa-thermae.fr/wp-content/uploads/2017/04/profile-icon-9.png">
-                                <div class="jury-name">François Gaillard</div>
+                                <div class="jury-name">{{j.prenom}} {{j.nom}}</div>
                                 <div class="jury-job">Artiste enseignant</div>
                             </div>
                         </div>

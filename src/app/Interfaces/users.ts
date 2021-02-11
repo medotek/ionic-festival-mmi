@@ -4,4 +4,5 @@ export interface Users {
     Email: string;
     Role: string;
     Image: string;
+    Profession: string;
 }
