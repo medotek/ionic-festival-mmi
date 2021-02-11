@@ -86,6 +86,15 @@ export class AuthenticationService {
     return sessionStorage.getItem('user') || undefined;
   }
 
+  getAllUser() {
+    this.userListRef = this.database.list('/User');
+    return this.userListRef;
+  }
+
+  getUser(id) {
+    return this.database.object('/User/' + id);
+  }
+
 // Clear the session for current user & log the user out
   logout() {
     sessionStorage.removeItem('user');
@@ -107,6 +116,11 @@ export class AuthenticationService {
     if (!newUser.Image) {
       newUser.Image = '';
     }
+
+    if (!newUser.Profession) {
+      newUser.Profession = '';
+    }
+
     this.userListRef = this.database.list('/User');
     return this.userListRef.push({
       nom: newUser.Nom,
@@ -115,6 +129,7 @@ export class AuthenticationService {
       voteToken: 1,
       role: newUser.Role,
       image: newUser.Image,
+      profession: newUser.Profession,
     });
   }
 }

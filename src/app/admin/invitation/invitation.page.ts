@@ -26,6 +26,7 @@ export class InvitationPage implements OnInit {
     Email: '',
     Role: '',
     Image: '',
+    Profession: '',
   };
 
   constructor(private auth: AuthenticationService, private router: Router, protected menu: Menu) { }
@@ -49,10 +50,11 @@ export class InvitationPage implements OnInit {
     });
   }
 
-  sendMail(nom, prenom, mail, role, image) {
+  sendMail(nom, prenom, mail, role, image, profession) {
     const name = nom.value;
     const firstname = prenom.value;
     const email = mail.value;
+    const travaille = profession.value;
     let r;
     const i = image.value;
     if (role.checked === true) {
@@ -66,6 +68,7 @@ export class InvitationPage implements OnInit {
       Email: email,
       Role: r,
       Image: i,
+      Profession: travaille,
     };
     this.createUser(email);
     this.nbAjout = 1;

@@ -6,6 +6,7 @@ import { CategorieCRUDService } from '../services/categorie-crud.service';
 import { DaoService } from './../services/dao.service';
 import { PrixCategorie } from './../Interfaces/prix-categorie';
 import { StatusCrudService } from '../services/status-crud.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-palmares',
@@ -23,6 +24,7 @@ export class PalmaresPage implements OnInit {
     private categorieService: CategorieCRUDService,
     private dao: DaoService,
     private statusService: StatusCrudService,
+    private auth: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -58,7 +60,7 @@ export class PalmaresPage implements OnInit {
         };
 
         maCategorie.key = item.key;
-        maCategorie.name = a['name'];
+        maCategorie.name = a['name'].toLowerCase();
         this.categories.push(maCategorie);
       });
     });
@@ -115,4 +117,17 @@ export class PalmaresPage implements OnInit {
     this.router.navigate(['/']);
   }
 
+  login() {
+    this.router.navigate(['/form-inscription']);
+  } 
+
+  logout() {
+    this.auth.logout();
+  }
+  scrollToElement($element): void {
+    console.log($element);
+    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
+
+  
 }
