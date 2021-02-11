@@ -3,7 +3,6 @@ import {Category} from '../Interfaces/category';
 import {Oeuvre} from '../Interfaces/oeuvre';
 import {Router} from '@angular/router';
 import {CategorieCRUDService} from '../services/categorie-crud.service';
-import {StatusCrudService} from '../services/status-crud.service';
 
 @Component({
   selector: 'app-palmares',
@@ -13,15 +12,18 @@ import {StatusCrudService} from '../services/status-crud.service';
 export class PalmaresPage implements OnInit {
 
   private categories: Category[] = [];
-  private status: any;
+  status: any;
+  statusService: any;
 
   constructor(private router: Router,
               private categorieService: CategorieCRUDService,
-              private statusService: StatusCrudService,
   ) { }
 
   ngOnInit() {
     this.getCategories();
+    if (this.status !== 'resultats') {
+      this.router.navigate(['/']);
+    }
   }
 
   public getStatus() {
@@ -51,4 +53,9 @@ export class PalmaresPage implements OnInit {
       });
     });
   }
+
+  home() {
+    this.router.navigate(['/']);
+  }
+
 }

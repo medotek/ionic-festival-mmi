@@ -1,10 +1,10 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true"  *ngIf="status !== 'debut'">
     <div class="main">
         <div class="container">
             <div class="header" style="z-index: 2;">
                 <ul>
                     <li>
-                        <img width="150" class="logo" src="../../assets/img/videalps.png" alt="Videalps logo">
+                        <img (click)="home()" width="150" class="logo" src="../../assets/img/videalps-white.png" alt="Videalps logo">
                     </li>
                     <li><button *ngIf="!this.auth.getCurrentUser()" class="videalps-button"><a (click)="login()">Se connecter</a></button>
                         <button *ngIf="this.auth.getCurrentUser()" class="videalps-button"><a (click)="logout()">Se déconnecter</a></button></li>
@@ -12,7 +12,7 @@
                 </ul>
             </div>
             <div class="banner">
-                <div class="palmares">LES RÉSUTATS</div>
+                <div class="palmares">LES RÉSULTATS</div>
                 <div class="palmares-info" *ngIf="status === 'enCours' || 'votesFermes' && status !== 'resultats';"><span>21 Mai</span><br><span>à</span> 16h00</div>
                 <div class="palmares-info palmares-result gradient-text" *ngIf="status === 'resultats';"><a (click)="gotoResult()">Voir les résultats</a></div>
             </div>

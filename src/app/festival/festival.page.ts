@@ -35,6 +35,7 @@ export class FestivalPage implements OnInit {
         this.getCategories();
         this.getOeuvres();
         this.getStatus();
+
     }
 
     public getStatus() {
@@ -43,8 +44,12 @@ export class FestivalPage implements OnInit {
             res.forEach(item => {
                 let a = item.payload.toJSON();
                 this.status = a;
+                if (this.status == 'debut') {
+                    this.router.navigate(['/']);
+                }
             });
         });
+
     }
 
     public getCategories() {
@@ -106,4 +111,9 @@ export class FestivalPage implements OnInit {
     logout() {
         this.auth.logout();
     }
+
+    home() {
+        this.router.navigate(['/']);
+    }
+
 }
