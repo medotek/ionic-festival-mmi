@@ -2,7 +2,7 @@ export interface Oeuvre {
     key: string;
     name: string;
     auteur: string;
-    categoryId: number;
+    categoryId: string;
     url: string;
     voteNumber?: number;
     nbImages: number;

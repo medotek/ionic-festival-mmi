@@ -64,7 +64,7 @@ p:first-of-type {
 
 .category {
   position: relative;
-
+  text-transform: uppercase;
   width: 100%;
   padding: 20px;
 }
@@ -110,6 +110,17 @@ ion-icon {
   bottom:30px;
   position: absolute;
 }
+
+.row img {
+  object-fit: cover;
+  height: 150px;
+}
+
+.winner-category {
+  width: 100vw;
+  padding: 4em 2em;
+}
+
 @media only screen and (max-width: 575px) {
   .grid {
     width: 100vw;

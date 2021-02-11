@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-md-3 col-lg-3 col-sm-4" *ngFor="let oeuvre of oeuvres" [routerLink]="'/oeuvre-details/' + oeuvre.key">
                     <div class="oeuvre-card">
-                        <img src="https://i.ytimg.com/vi/YrcyW38bUVI/hq3.jpg" alt="" class="img-fluid oeuvre-image">
+                        <img [src]="this.imagePath.get(oeuvre.key)" alt="" class="img-fluid oeuvre-image">
                         <div class="oeuvre-name">{{oeuvre.name}}</div>
                     </div>
                 </div>

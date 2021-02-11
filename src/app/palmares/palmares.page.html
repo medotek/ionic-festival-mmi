@@ -13,9 +13,11 @@
                         <img width="150" class="logo" src="../../assets/img/videalps-white.png" alt="Videalps logo">
                     </li>
                     <li>
-                        <button class="videalps-button"><a (click)="login()">Se connecter</a></button>
+                        <button *ngIf="!this.auth.getCurrentUser()" class="videalps-button"><a (click)="login()">Se
+                            connecter</a></button>
+                        <button *ngIf="this.auth.getCurrentUser()" class="videalps-button"><a (click)="logout()">Se
+                            déconnecter</a></button>
                     </li>
-
                 </ul>
             </div>
             <h1>Le <br>palmares</h1>
@@ -25,7 +27,7 @@
             <h2>Catégories</h2>
             <div class="categories row">
                 <div class="category col-md-4 col-sm-4 col-lg-4 col-xs-6" *ngFor="let categorie of categories">
-                    <div (click)="scrollToElement(categorie.key)">{{categorie.name}}</div>
+                    <div>{{categorie.name}}</div>
                 </div>
                 <div class="category col-md-4 col-sm-4 col-lg-4 col-xs-6">
                     <div (click)="scrollToElement(winner)">FAITES DÉFILER LA PAGE POUR VOIR LES GAGNANTS
@@ -36,10 +38,10 @@
             <div class="section-winner" #winner>
                 <div class="category col-md-10 col-sm-10 col-lg-10 col-xs-10" *ngFor="let oeuvre of listOeuvre">
                     <div #{{categorie.key}}>
-                        <div>{{oeuvre.categoryId}}</div>
-                        <div>{{oeuvre.name}}</div>
-                        <div>{{oeuvre.auteur}}</div>
-                        <div>{{oeuvre.url}}</div>
+                        <p>{{oeuvre.categoryId}}</p><br>
+                        <p>{{oeuvre.name}}</p><br>
+                        <p>{{oeuvre.auteur}}</p><br>
+                        <img [src]="this.imagePath.get(oeuvre.key)" alt="" class="img-fluid oeuvre-image">
                     </div>
                 </div>
             </div>
