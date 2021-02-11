@@ -67,7 +67,19 @@ export class OeuvrePage implements OnInit {
           this.onSwitchMode(null);
         })
       } else {
-        this.dao.createOeuvre(this.form.value).then(res => {
+        this.dao.createOeuvre({
+          key: "",
+          name: this.form.get("name").value,
+          categoryId: this.form.get("categoryId").value, 
+          url: this.form.get("url").value, 
+          date: this.form.get("date").value,
+          voteId: this.form.get("voteId").value,  
+          nbImages: this.files.length,
+          description: this.form.get("description").value,
+          contributeurs: this.form.get("contributeurs").value,
+          realisation: this.form.get("realisation").value, 
+          technique: this.form.get("technique").value,   
+        }).then(res => {
           if(this.form.value.categoryId == "Photo") {
             this.imageKey = res.key.toString();
             console.log(this.imageKey);
