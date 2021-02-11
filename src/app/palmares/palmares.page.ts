@@ -21,6 +21,9 @@ export class PalmaresPage implements OnInit {
 
   ngOnInit() {
     this.getCategories();
+    if (this.status !== 'resultats') {
+      this.router.navigate(['/']);
+    }
   }
 
   public getStatus() {

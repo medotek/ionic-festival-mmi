@@ -5,6 +5,7 @@ import { Oeuvre } from 'src/app/Interfaces/oeuvre';
 import { AlertController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import {StatusCrudService} from '../services/status-crud.service';
 
 @Component({
   selector: 'app-oeuvre-details',
@@ -15,16 +16,32 @@ export class OeuvreDetailsPage implements OnInit {
 
   private oeuvre: Oeuvre;
   private oeuvreKey;
+  status: any;
 
   constructor(private route: ActivatedRoute,
     private dao: DaoService,
               public alertController: AlertController,
               private auth: AuthenticationService,
-    private router: Router,) { }
+              private statusService: StatusCrudService,
+              private router: Router,) { }
 
   ngOnInit() {
+     this.getStatus();
   }
 
+  public getStatus() {
+    let test = this.statusService.getStatusList();
+    test.snapshotChanges().subscribe(res => {
+        res.forEach(item => {
+            let a = item.payload.toJSON();
+            this.status = a;
+            if (this.status == 'debut') {
+                this.router.navigate(['/']);
+            }
+        });
+    });
+
+}
   ionViewWillEnter(){
     let oeuvreId = this.route.snapshot.paramMap.get('id');
     this.oeuvreKey = oeuvreId;
