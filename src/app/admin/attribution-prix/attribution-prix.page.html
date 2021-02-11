@@ -49,7 +49,7 @@
           </ion-col>
           <ion-item style="width: 100%;">
             <ion-label color="medium" position="floating">Commentaire</ion-label>
-            <ion-textarea></ion-textarea>
+            <ion-textarea [(ngModel)]="commentaire"></ion-textarea>
           </ion-item>
 
           <ion-button slot="end" (click)="vote(categorySelected, oeuvreSelected)">Voter</ion-button>
