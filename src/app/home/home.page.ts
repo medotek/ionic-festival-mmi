@@ -12,7 +12,6 @@ import {StatusCrudService} from '../services/status-crud.service';
 })
 export class HomePage implements OnInit{
 
-  private user:Users;
   dateOpening: string;
   email: '';
   private status: any;
@@ -23,9 +22,9 @@ export class HomePage implements OnInit{
   public ngOnInit() {
     this.dateOpening = '21 Avril à 16h00';
     this.getStatus();
+ 
   }
-
-  public getJury() {
+  ionViewWillEnter() {
     let listJury = this.dao.getJury();
     listJury.snapshotChanges().subscribe(res => {
         res.forEach(item => {
@@ -36,16 +35,18 @@ export class HomePage implements OnInit{
               Prenom: '',
               Email: '',
               Role: '',
-              Image: ''
-
+              Image: '',
+              Profession: ''
             };
 
             monJury.Nom =  a['nom'];
             monJury.Prenom = a['prenom'];
+            monJury.Profession = a['profession'];
             this.jury.push(monJury);
+     
         });
     });
-}
+  }
 
 
   login() {

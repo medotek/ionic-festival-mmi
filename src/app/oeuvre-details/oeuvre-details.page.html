@@ -27,7 +27,7 @@
             </div>
             <div class="row" style="color:white; font-weight: bold;">
                 <div class="col-sm-5 col-md-5 col-lg-5">
-                    <ion-item [href]="oeuvre.url">
+                    <ion-item [href]="oeuvre.url" >
                         <img [src]="this.path" alt="" class="oeuvre-image">
                     </ion-item>
                     <h1>{{oeuvre?.name}}</h1>
@@ -38,11 +38,11 @@
                 </div>
                 <div class="col-sm-7 col-md-7 col-lg-7">
                     <div class="oeuvreInfo">Description <span></span></div>
-                    <span class="textDetails">{{oeuvre?.description}}</span>
+                    <p class="textDetails">{{oeuvre?.description}}</p>
                     <div class="oeuvreInfo">Techniques utilisées <span></span></div>
-                    <span class="textDetails">{{oeuvre?.technique}}</span>
+                    <p class="textDetails">{{oeuvre?.technique}}</p>
                     <div class="oeuvreInfo">Condition de réalisation <span></span></div>
-                    <span class="textDetails">{{oeuvre?.realisation}}</span>
+                    <p class="textDetails">{{oeuvre?.realisation}}</p>
                     <ion-button *ngIf="this.auth.getCurrentUser()" (click)="vote()">Voter pour cette oeuvre</ion-button>
                 </div>
             </div>
