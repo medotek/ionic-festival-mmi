@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService} from '../../services/authentication.service';
 import { Users } from '../../Interfaces/users';
+import {Menu} from '../menu';
 
 @Component({
   selector: 'app-invitation',
   templateUrl: './invitation.page.html',
   styleUrls: ['./invitation.page.scss'],
+  providers: [Menu],
 })
 export class InvitationPage implements OnInit {
 
@@ -26,7 +28,7 @@ export class InvitationPage implements OnInit {
     Image: '',
   };
 
-  constructor(private auth: AuthenticationService, private router: Router) { }
+  constructor(private auth: AuthenticationService, private router: Router, protected menu: Menu) { }
 
   ngOnInit() {
   }
