@@ -22,9 +22,7 @@ export class HomePage implements OnInit{
   public ngOnInit() {
     this.dateOpening = '21 Avril à 16h00';
     this.getStatus();
- 
-  }
-  ionViewWillEnter() {
+
     let listJury = this.dao.getJury();
     listJury.snapshotChanges().subscribe(res => {
         res.forEach(item => {
@@ -46,6 +44,10 @@ export class HomePage implements OnInit{
      
         });
     });
+ 
+  }
+  ionViewWillEnter() {
+    
   }
 
 
