@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService} from '../../services/authentication.service';
+import { Users } from '../../Interfaces/users';
 
 @Component({
   selector: 'app-invitation',
@@ -16,6 +17,12 @@ export class InvitationPage implements OnInit {
   length = 0;
   nombre = 0;
   nbAjout = 0;
+  URLrandom: string;
+  unUser: Users = {
+    Nom: '',
+    Prenom: '',
+    Email: '',
+  };
 
   constructor(private auth: AuthenticationService, private router: Router) { }
 
@@ -23,7 +30,8 @@ export class InvitationPage implements OnInit {
   }
 
   createUser(mail) {
-    this.auth.RegisterUser(mail, '0000null').then(() => {
+    this.genererChaineAleatoire();
+    this.auth.RegisterUser(mail, this.URLrandom).then(() => {
       this.auth.changePassword(mail).then(() => {
         this.nombre++;
         if (this.nbAjout === this.nombre) {
@@ -37,11 +45,18 @@ export class InvitationPage implements OnInit {
     });
   }
 
-  sendMail(mail) {
+  sendMail(nom, prenom, mail) {
+    const name = nom.value;
+    const firstname = prenom.value;
     const email = mail.value;
-    // this.createUser(email);
+    this.unUser = {
+      Nom: name,
+      Prenom: firstname,
+      Email: email,
+    };
+    this.createUser(email);
     this.nbAjout = 1;
-    this.addUserInformation(mail);
+    this.addUserInformation(this.unUser);
   }
 
   public changeListener(event) {
@@ -79,12 +94,48 @@ export class InvitationPage implements OnInit {
   }
 
   retreiveMail(tabMail) {
-    // this.createUser(tabMail.Email);
+    this.createUser(tabMail.Email);
     this.addUserInformation(tabMail);
   }
 
   addUserInformation(userInformation) {
     this.auth.createUser(userInformation);
+  }
+
+  genererChaineAleatoire()
+  {
+    this.strRandom({
+      includeUpperCase: true,
+      includeNumbers: true,
+      length: 20,
+      startsWithLowerCase: true
+    });
+  }
+
+  strRandom(o) {
+    let a = 10;
+    const b = 'abcdefghijklmnopqrstuvwxyz';
+    this.URLrandom = '';
+    let d = 0;
+    let e = '' + b;
+    if (o) {
+      if (o.startsWithLowerCase) {
+        this.URLrandom = b[Math.floor(Math.random() * b.length)];
+        d = 1;
+      }
+      if (o.length) {
+        a = o.length;
+      }
+      if (o.includeUpperCase) {
+        e += b.toUpperCase();
+      }
+      if (o.includeNumbers) {
+        e += '1234567890';
+      }
+    }
+    for (; d < a; d++) {
+      this.URLrandom += e[Math.floor(Math.random() * e.length)];
+    }
   }
 
 }
