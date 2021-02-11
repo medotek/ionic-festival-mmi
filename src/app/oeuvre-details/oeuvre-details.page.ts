@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DaoService } from './../services/dao.service';
 import { Oeuvre } from 'src/app/Interfaces/oeuvre';
+import { AuthenticationService } from '../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-oeuvre-details',
@@ -13,7 +15,7 @@ export class OeuvreDetailsPage implements OnInit {
   private oeuvre: Oeuvre;
   private oeuvreKey;
 
-  constructor(private route: ActivatedRoute, private dao: DaoService,) { }
+  constructor(private route: ActivatedRoute, private dao: DaoService, private auth: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -42,6 +44,14 @@ export class OeuvreDetailsPage implements OnInit {
   
   public vote(){
     console.log(this.oeuvreKey);
+  }
+
+  login() {
+    this.router.navigate(['/form-inscription']);
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
 }

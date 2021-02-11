@@ -5,6 +5,7 @@ import {DaoService} from './../services/dao.service';
 import {Oeuvre} from 'src/app/Interfaces/oeuvre';
 import {StatusCrudService} from '../services/status-crud.service';
 import {Router} from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
     selector: 'app-festival',
@@ -25,7 +26,8 @@ export class FestivalPage implements OnInit {
     constructor(private router: Router,
                 private categorieService: CategorieCRUDService,
                 private dao: DaoService,
-                private statusService: StatusCrudService) {
+                private statusService: StatusCrudService,
+                private auth: AuthenticationService) {
     }
 
     ngOnInit() {
@@ -95,5 +97,13 @@ export class FestivalPage implements OnInit {
 
     login() {
         this.router.navigate(['/form-inscription']);
+    }
+
+    gotoResult() {
+        this.router.navigate(['/palmares']);
+    }
+
+    logout() {
+        this.auth.logout();
     }
 }
