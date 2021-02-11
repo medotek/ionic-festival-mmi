@@ -12,6 +12,11 @@ ion-toolbar{
   transform: translateY(-50%);
 }
 
+.row img {
+  object-fit: cover;
+  height: 150px;
+}
+
 .palmares-resultat {
   border: 2px solid white;
 }
@@ -141,6 +146,7 @@ h1 {
   .oeuvre-name {
     font-family: Assitant, sans-serif;
     font-weight: 600;
+    margin-top:10px;
   }
 }
 
@@ -219,7 +225,9 @@ ion-select {
       top: 55%;
     }
   }
-
+  .row img {
+    height: auto;
+  }
   .computer {
     display: none;
   }

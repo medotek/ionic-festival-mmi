@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Users } from '../Interfaces/users';
 import { AuthenticationService} from '../services/authentication.service';
+import { DaoService } from '../services/dao.service';
 import {StatusCrudService} from '../services/status-crud.service';
 
 @Component({
@@ -10,17 +12,41 @@ import {StatusCrudService} from '../services/status-crud.service';
 })
 export class HomePage implements OnInit{
 
+  private user:Users;
   dateOpening: string;
-  URLrandom: string;
   email: '';
   private status: any;
+  private jury : Users[] = [];
 
-  constructor(private router: Router, private auth: AuthenticationService, private statusService: StatusCrudService) {}
+  constructor(private router: Router,  private dao: DaoService, private auth: AuthenticationService, private statusService: StatusCrudService) {}
 
   public ngOnInit() {
     this.dateOpening = '21 Avril à 16h00';
     this.getStatus();
   }
+
+  public getJury() {
+    let listJury = this.dao.getJury();
+    listJury.snapshotChanges().subscribe(res => {
+        res.forEach(item => {
+            let a = item.payload.toJSON();
+
+            let monJury: Users = {
+              Nom: '',
+              Prenom: '',
+              Email: '',
+              Role: '',
+              Image: ''
+
+            };
+
+            monJury.Nom =  a['nom'];
+            monJury.Prenom = a['prenom'];
+            this.jury.push(monJury);
+        });
+    });
+}
+
 
   login() {
     this.router.navigate(['/form-inscription']);
@@ -39,6 +65,10 @@ export class HomePage implements OnInit{
       });
     });
   }
+
+
+
+
 
   logout() {
     this.auth.logout();
