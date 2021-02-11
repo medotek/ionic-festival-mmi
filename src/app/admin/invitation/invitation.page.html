@@ -5,11 +5,11 @@
 </ion-header>
 
 <ion-content>
-  <h1>Lancez les invitations</h1>
-  <div class="uploadFile" [style]="{marginBottom : '15px', marginTop: '15px'}">
+  <h1 [style]="{marginLeft: '15px'}">Lancez les invitations</h1>
+  <div class="uploadFile" [style]="{marginBottom : '15px', marginTop: '15px', marginLeft: '15px'}">
     <input type="file" class="upload" (change)="changeListener($event)">
   </div>
-  <ion-label><B>OU</B></ion-label>
+  <h1 [style]="{marginLeft: '15px'}"><B>OU</B></h1>
   <form>
     <ion-item lines="full">
       <ion-label position="floating">Nom</ion-label>
@@ -26,9 +26,21 @@
       <ion-input type="email" #email required></ion-input>
     </ion-item>
 
+    <br>
+    <ion-label [style]="{marginLeft: '15px'}">Jury : </ion-label>
+    <ion-item lines="full">
+      <ion-checkbox color="danger" #role value="jury" slot="start"></ion-checkbox>
+    </ion-item>
+
+    <br>
+    <ion-label [style]="{marginLeft: '15px'}">Vous pouvez insérer une photo de profil !</ion-label>
+    <ion-item lines="full">
+      <input type="file" class="upload" #image>
+    </ion-item>
+
     <ion-row>
       <ion-col>
-        <ion-button type="submit" (click)="sendMail(nom, prenom, email)" expand="block">Envoyer le lien d'invitation</ion-button>
+        <ion-button type="submit" (click)="sendMail(nom, prenom, email, role, image)" expand="block">Envoyer le lien d'invitation</ion-button>
       </ion-col>
     </ion-row>
   </form>

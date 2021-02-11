@@ -22,6 +22,8 @@ export class InvitationPage implements OnInit {
     Nom: '',
     Prenom: '',
     Email: '',
+    Role: '',
+    Image: '',
   };
 
   constructor(private auth: AuthenticationService, private router: Router) { }
@@ -45,14 +47,23 @@ export class InvitationPage implements OnInit {
     });
   }
 
-  sendMail(nom, prenom, mail) {
+  sendMail(nom, prenom, mail, role, image) {
     const name = nom.value;
     const firstname = prenom.value;
     const email = mail.value;
+    let r;
+    const i = image.value;
+    if (role.checked === true) {
+      r = 'jury';
+    } else {
+      r = 'public';
+    }
     this.unUser = {
       Nom: name,
       Prenom: firstname,
       Email: email,
+      Role: r,
+      Image: i,
     };
     this.createUser(email);
     this.nbAjout = 1;

@@ -25,6 +25,10 @@ export class PalmaresPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (this.status !== 'resultats') {
+      this.router.navigate(['/']);
+    }
+
     this.getCategories();
     this.getPrixCategorie();
   }

@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true"  *ngIf="status ==='enCours' || status ==='votesFermes || status ==='resultats">
     <div class="main">
         <div class="container">
             <div class="header" style="z-index: 2;">
@@ -12,7 +12,7 @@
                 </ul>
             </div>
             <div class="banner">
-                <div class="palmares">LES RÉSUTATS</div>
+                <div class="palmares">LES RÉSULTATS</div>
                 <div class="palmares-info" *ngIf="status === 'enCours' || 'votesFermes' && status !== 'resultats';"><span>21 Mai</span><br><span>à</span> 16h00</div>
                 <div class="palmares-info palmares-result gradient-text" *ngIf="status === 'resultats';"><a (click)="gotoResult()">Voir les résultats</a></div>
             </div>
