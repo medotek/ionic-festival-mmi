@@ -6,7 +6,8 @@
                     <li>
                         <img width="150" class="logo" src="../../assets/img/videalps.png" alt="Videalps logo">
                     </li>
-                    <li><button class="videalps-button"><a (click)="login()">Se connecter</a></button></li>
+                    <li><button *ngIf="!this.auth.getCurrentUser()" class="videalps-button"><a (click)="login()">Se connecter</a></button>
+                        <button *ngIf="this.auth.getCurrentUser()" class="videalps-button"><a (click)="logout()">Se déconnecter</a></button></li>
 
                 </ul>
             </div>
