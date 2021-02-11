@@ -26,7 +26,6 @@ export class PalmaresPage implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this.getStatus();
     this.getCategories();
     this.getPrixCategorie();
@@ -38,7 +37,7 @@ export class PalmaresPage implements OnInit {
       res.forEach(item => {
         let a = item.payload.toJSON();
         this.status = a;
-        console.log(this.status);
+
         if (this.status !== 'resultats') {
           this.router.navigate(['/']);
         }
