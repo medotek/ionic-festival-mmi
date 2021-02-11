@@ -47,10 +47,12 @@ export class AuthenticationService {
     firebase.auth().signInWithEmailAndPassword(email, pass).then( res => {
       this.userDetails = res.user;
       this.stockConnexion(email);
+      this.router.navigate(['/home']);
     }).catch( error => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
+        alert(error);
         console.log('error' + error);
     });
   }
