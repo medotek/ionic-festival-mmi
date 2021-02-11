@@ -79,7 +79,6 @@ export class PalmaresPage implements OnInit {
         lePrix.name = a['name'];
         lePrix.commentaire = a['commentaire'];
         lePrix.oeuvreId = a['oeuvreId'];
-        console.log(lePrix);
         this.listPrix.push(lePrix);
         this.getOeuvre(lePrix.oeuvreId);
       });
@@ -105,10 +104,14 @@ export class PalmaresPage implements OnInit {
         date: o['date'],
         voteNumber: o['voteNumber']
       };
-      console.log(monOeuvre);
       this.listOeuvre.push(monOeuvre);
     })
 
+  }
+
+  scrollToElement(elem): void{
+    elem = elem.toLowerCase();
+    elem.scrollIntoView({behavior: "smooth", block: "start"});
   }
 
   home() {
