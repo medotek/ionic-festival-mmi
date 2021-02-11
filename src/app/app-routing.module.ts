@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'invitation',
-    loadChildren: () => import('./invitation/invitation.module').then( m => m.InvitationPageModule)
+    loadChildren: () => import('./admin/invitation/invitation.module').then(m => m.InvitationPageModule)
   },
   {
     path: 'admin',
@@ -39,7 +39,6 @@ const routes: Routes = [
     path: 'palmares',
     loadChildren: () => import('./palmares/palmares.module').then( m => m.PalmaresPageModule)
   },
-
 
 
 ];

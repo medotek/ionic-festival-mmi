@@ -3,6 +3,7 @@ import {Category} from '../Interfaces/category';
 import {Oeuvre} from '../Interfaces/oeuvre';
 import {Router} from '@angular/router';
 import {CategorieCRUDService} from '../services/categorie-crud.service';
+import {StatusCrudService} from '../services/status-crud.service';
 
 @Component({
   selector: 'app-palmares',
@@ -17,6 +18,7 @@ export class PalmaresPage implements OnInit {
 
   constructor(private router: Router,
               private categorieService: CategorieCRUDService,
+              private statusService: StatusCrudService,
   ) { }
 
   ngOnInit() {
@@ -24,28 +26,28 @@ export class PalmaresPage implements OnInit {
   }
 
   public getStatus() {
-    const test = this.statusService.getStatusList();
+    let test = this.statusService.getStatusList();
     test.snapshotChanges().subscribe(res => {
       res.forEach(item => {
-        const a = item.payload.toJSON();
+        let a = item.payload.toJSON();
         this.status = a;
       });
     });
   }
 
   public getCategories() {
-    const listCategorie = this.categorieService.getCategoryList();
+    let listCategorie = this.categorieService.getCategoryList();
     listCategorie.snapshotChanges().subscribe(res => {
       res.forEach(item => {
-        const a = item.payload.toJSON();
+        let a = item.payload.toJSON();
 
-        const maCategorie: Category = {
+        let maCategorie: Category = {
           name: '',
           key: '',
         };
 
         maCategorie.key = item.key;
-        maCategorie.name = a.name;
+        maCategorie.name = a['name'];
         this.categories.push(maCategorie);
       });
     });

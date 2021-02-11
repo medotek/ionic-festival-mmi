@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { PrixCategorie } from './../Interfaces/prix-categorie';
 
 
 export interface imgFile {
@@ -102,10 +103,11 @@ export class DaoService {
     console.log(this.dbList);
     return this.dbList.push({
       name: o.name,
+      auteur: o.auteur,
       categoryId: o.categoryId,
       url: o.url,
       date: o.date,
-      voteId: o.voteId,
+      voteNumber: 0,
       nbImages: o.nbImages,
       description: o.description,
       contributeurs: o.contributeurs,
@@ -128,10 +130,11 @@ export class DaoService {
     this.dbObject = this.database.object('/Oeuvre/'+ key);
     return this.dbObject.update({
       name: o.name,
+      auteur: o.auteur,
       categoryId: o.categoryId,
       url: o.url,
       date: o.date,
-      voteId: o.voteId,
+      voteNumber: o.voteNumber,
       description: o.description,
       contributeurs: o.contributeurs,
       realisation: o.realisation,
@@ -226,4 +229,28 @@ export class DaoService {
       console.log(err);
     });
   }
+
+/////////////////////
+// PRIX CATEGORIE  //
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+createPrix(prix: PrixCategorie) {
+  this.dbList = this.database.list('/PrixCategorie');
+  return this.dbList.push({
+    name: prix.name,
+    commentaire: prix.commentaire,
+    oeuvreId: prix.oeuvreId,
+  })
+}
+
+getPrix(key: string) {
+  this.dbObject = this.database.object('/PrixCategorie/'+ key);
+  return this.dbObject;
+}
+
+getPrixList() {
+  this.dbList = this.database.list('/PrixCategorie');
+  return this.dbList;
+}
+
 }
