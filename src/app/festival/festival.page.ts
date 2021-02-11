@@ -96,4 +96,8 @@ export class FestivalPage implements OnInit {
     login() {
         this.router.navigate(['/form-inscription']);
     }
+
+    gotoResult() {
+        this.router.navigate(['/palmares']);
+    }
 }

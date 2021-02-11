@@ -12,8 +12,8 @@
             </div>
             <div class="banner">
                 <div class="palmares">LES RÉSUTATS</div>
-                <div class="palmares-info" *ngIf="status === 'enCours' || 'votesFermes';"><span>21 Mai</span><br><span>à</span> 16h00</div>
-                <div class="palmares-info" *ngIf="status === 'resultats';"><a (click)="login()">Voir les résultats</a></div>
+                <div class="palmares-info" *ngIf="status === 'enCours' || 'votesFermes' && status !== 'resultats';"><span>21 Mai</span><br><span>à</span> 16h00</div>
+                <div class="palmares-info palmares-result gradient-text" *ngIf="status === 'resultats';"><a (click)="gotoResult()">Voir les résultats</a></div>
             </div>
 
             <h1>LES NOMMÉS DU FESTIVAL</h1>
