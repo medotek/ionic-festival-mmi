@@ -11,6 +11,8 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angula
 })
 export class AuthenticationService {
   userListRef: AngularFireList<any>;
+  userRef: AngularFireObject<any>;
+  dbObject: AngularFireObject<any>;
 
   userData: any;
   public loggedIn = false;
@@ -91,8 +93,19 @@ export class AuthenticationService {
     return this.userListRef;
   }
 
-  getUser(id) {
-    return this.database.object('/User/' + id);
+  updateUser(key: string, u) {
+    console.log(key);
+    this.dbObject = this.database.object('/User/' + key);
+    const vote = u.voteToken - 1;
+    this.dbObject.update({
+      voteToken: vote,
+    });
+    return u;
+  }
+
+  getUserVote(mail: string) {
+    this.userRef = this.database.object('/User/' + mail);
+    return this.userRef;
   }
 
 // Clear the session for current user & log the user out
