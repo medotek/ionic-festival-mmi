@@ -4,7 +4,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true"  *ngIf="status == 'resultats'">
+<ion-content>
     <div class="main">
         <div class="grid">
             <div class="header" style="z-index: 2;">
@@ -35,16 +35,17 @@
                     </div>
                 </div>
             </div>
-        </div>
-    <div class="section-winner" #winner>
-        <div class="winner-category" *ngFor="let prix of listPrix">
-            <div id="{{prix.name}}">
-                {{prix.oeuvreId}} 
+            <div class="section-winner" #winner>
+                <div class="category col-md-10 col-sm-10 col-lg-10 col-xs-10" *ngFor="let oeuvre of listOeuvre">
+                    <div #{{categorie.key}}>
+                        <p>{{oeuvre.categoryId}}</p><br>
+                        <p>{{oeuvre.name}}</p><br>
+                        <p>{{oeuvre.auteur}}</p><br>
+                        <img [src]="this.imagePath.get(oeuvre.key)" alt="" class="img-fluid oeuvre-image">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-        
     </div>
     <div class="footer"></div>
 </ion-content>
