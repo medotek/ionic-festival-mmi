@@ -14,7 +14,7 @@ import {StatusCrudService} from '../services/status-crud.service';
 })
 export class OeuvreDetailsPage implements OnInit {
 
-  private oeuvre: Oeuvre;
+  protected oeuvre: Oeuvre;
   private oeuvreKey;
   status: any;
   protected imagePath: string;
@@ -67,6 +67,7 @@ export class OeuvreDetailsPage implements OnInit {
         };
         this.oeuvre = testOeuvre;
         this.getImage(this.oeuvre);
+        console.log(this.oeuvre);
     });
   }
 
