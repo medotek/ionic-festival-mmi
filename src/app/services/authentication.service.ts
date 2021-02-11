@@ -100,12 +100,21 @@ export class AuthenticationService {
 
   // Create
   createUser(newUser: Users) {
+    if (!newUser.Role) {
+      newUser.Role = 'public';
+    }
+
+    if (!newUser.Image) {
+      newUser.Image = '';
+    }
     this.userListRef = this.database.list('/User');
     return this.userListRef.push({
       nom: newUser.Nom,
       prenom: newUser.Prenom,
       mail: newUser.Email,
       voteToken: 1,
+      role: newUser.Role,
+      image: newUser.Image,
     });
   }
 }

@@ -26,9 +26,21 @@
       <ion-input type="email" #email required></ion-input>
     </ion-item>
 
+    <br>
+    <ion-label>Jury : </ion-label>
+    <ion-item lines="full">
+      <ion-checkbox color="danger" #role value="jury" slot="start"></ion-checkbox>
+    </ion-item>
+
+    <br>
+    <ion-label>Vous pouvez insérer une photo de profil !</ion-label>
+    <ion-item lines="full">
+      <input type="file" class="upload" #image>
+    </ion-item>
+
     <ion-row>
       <ion-col>
-        <ion-button type="submit" (click)="sendMail(nom, prenom, email)" expand="block">Envoyer le lien d'invitation</ion-button>
+        <ion-button type="submit" (click)="sendMail(nom, prenom, email, role, image)" expand="block">Envoyer le lien d'invitation</ion-button>
       </ion-col>
     </ion-row>
   </form>
