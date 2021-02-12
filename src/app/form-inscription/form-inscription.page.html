@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>Register User</ion-title>
+        <ion-title>Connexion</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -28,13 +28,7 @@
 
             <ion-row>
                 <ion-col>
-                    <div class="d-sm-none">
-                        <ion-button type="submit" (click)="signUp(email, password)" expand="block">Se connecter
-                        </ion-button>
-                    </div>
-                    <div class="">
-                        <ion-button type="submit" (click)="signUp(email, password)" expand="block">Se connecter</ion-button>
-                    </div>
+                    <ion-button type="submit" (click)="signUp(email, password)" expand="block">Se connecter</ion-button>
                 </ion-col>
             </ion-row>
         </form>
