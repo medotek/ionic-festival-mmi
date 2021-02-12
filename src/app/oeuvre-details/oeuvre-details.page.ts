@@ -58,10 +58,8 @@ export class OeuvreDetailsPage implements OnInit {
             res.forEach(item => {
                 let a: any; 
                 a = item.payload.toJSON();
-                console.log(a);
                 if (a.mail === mail) {
                     if (a.voteToken <= 0) {
-                        console.log('je suis la');
                         this.voteUser = false;
                     }
                 }
