@@ -112,6 +112,7 @@ export class FestivalPage implements OnInit {
                     let image = res.payload.data();
                     console.log(image);
                     this.path = image.filepath != "" ? image.filepath : "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png";
+                    console.log("path : " + this.path);
                 })
                 break;
             case "Web":
@@ -125,7 +126,7 @@ export class FestivalPage implements OnInit {
                 this.path = 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png';
                 break;
         }
-        console.log(this.path);
+        console.log("path fin " + this.path);
         this.imagePath.set(o.key, this.path);
     }
 

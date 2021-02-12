@@ -160,17 +160,17 @@ export class PalmaresPage implements OnInit {
           auteur: o['auteur'],
           voteNumber: o['voteNumber'],
           nbImages: o['auteur'],
-          key: o['key'],
-          categoryId: 'Prix du public',
+          key: item.key,
+          categoryId: o['categoryId'],
           url: o['url'],
           description: o['description'],
           contributeurs: o['contributeurs'],
           technique: o['technique'],
           realisation: o['realisation'],
           date: o['date'],
-          
         };
-        this.getImage(o as Oeuvre);
+        this.getImage(monOeuvre as Oeuvre);
+        monOeuvre.categoryId = 'Prix du public',
         console.log(monOeuvre);
         this.listOeuvreClassement.push(monOeuvre);
       })
