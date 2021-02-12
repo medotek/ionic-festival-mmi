@@ -23,6 +23,9 @@ export class OeuvreDetailsPage implements OnInit {
   voteUser = true;
   unUser;
   userKey;
+  voteToken: any;
+  mail: any;
+  
 
   constructor(private route: ActivatedRoute,
     private dao: DaoService,
