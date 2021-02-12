@@ -8,6 +8,16 @@ ion-content {
   font-family: Assitant, sans-serif;
 }
 
+ion-item {
+  img {
+      transition: 0.2s ease-in-out;
+  }
+  img:hover {
+    transition: 0.2s ease-in-out;
+    transform:scale(1.2);
+  }
+}
+
 .header {
   padding-top: 1em;
   margin-bottom: 2em;
@@ -58,7 +68,7 @@ h1 {
   font-weight: bold;
   position: relative;
   margin-bottom: 1em;
-
+  font-size:18px;
   span {
     background-color: black;
   }
@@ -78,7 +88,7 @@ h1 {
 }
 
 .textDetails {
-  margin-bottom: 2em;
+  font-weight: 100;
 }
 
 .info, p {

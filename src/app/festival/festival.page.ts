@@ -86,22 +86,22 @@ export class FestivalPage implements OnInit {
         });
     }
 
-    // public categoryName(maCategorie: Category) {
-    //     if (maCategorie.key != '0') {
+    public categoryName(maCategorie: Category) {
+        if (maCategorie.key != '0') {
 
-    //         let results = this.dao.getByCategoryName(maCategorie.name);
-    //         results.snapshotChanges().subscribe(res => {
-    //             this.oeuvres = [];
-    //             res.forEach(item => {
-    //                 let o = item.payload.toJSON();
-    //                 o['key'] = item.key;
-    //                 this.oeuvres.push(o as Oeuvre);
-    //             });
-    //         });
-    //     } else {
-    //         this.getOeuvres();
-    //     }
-    // }
+            let results = this.dao.getByCategoryName(maCategorie.name);
+            results.snapshotChanges().subscribe(res => {
+                this.oeuvres = [];
+                res.forEach(item => {
+                    let o = item.payload.toJSON();
+                    o['key'] = item.key;
+                    this.oeuvres.push(o as Oeuvre);
+                });
+            });
+        } else {
+            this.getOeuvres();
+        }
+    }
 
     //Retourne l'url de la miniature d'une oeuvre
     public getImage(o: Oeuvre): void {
