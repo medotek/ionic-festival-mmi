@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { Category } from '../Interfaces/category';
 import { Oeuvre } from '../Interfaces/oeuvre';
 import { Router } from '@angular/router';
@@ -189,10 +189,12 @@ export class PalmaresPage implements OnInit {
   logout() {
     this.auth.logout();
   }
-  scrollToElement($element): void {
-    console.log($element);
-    $element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+  
+  @ViewChild('winner') targetEl: ElementRef;
+
+  scrollToElement(): void {
+     this.targetEl.nativeElement.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
   }
 
-
+   
 }
