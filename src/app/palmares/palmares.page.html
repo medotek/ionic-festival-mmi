@@ -24,13 +24,22 @@
             <p>Sans plus attendre, les gagnants sont ...</p>
             <iframe src="https://www.youtube.com/embed/W1g7M2sVQwM" frameborder="0" allow="autoplay; encrypted-media"
                 allowfullscreen></iframe>
-                
+
             <div class="prix-public" *ngFor="let oeuvreTop1 of listOeuvreClassement">
-                <div>
-                    <p>{{oeuvreTop1.categoryId}}</p><br>
-                    <p>{{oeuvreTop1.name}}</p><br>
-                    <p>{{oeuvreTop1.auteur}}</p><br>
-                    <img [src]="this.imagePath.get(oeuvreTop1.key)" alt="" class="img-fluid oeuvre-image">
+                <div [routerLink]="'/oeuvre-details/' + oeuvreTop1.key ">
+                    <p class="title">
+                        <ion-icon name="trophy-outline"></ion-icon> {{oeuvreTop1.categoryId}}
+                    </p><br>
+                    <div class="img-div">
+                        <img [src]="this.imagePath.get(oeuvreTop1.key)" alt="" class="img-fluid oeuvre-image">
+                        <div class="prix-banner"></div>
+                    </div>
+
+                    <div class="prix-info">
+                        <p>{{oeuvreTop1.name}}</p>
+                        <p>{{oeuvreTop1.auteur}}</p>
+                    </div>
+
                 </div>
             </div>
             <h2>Catégories</h2>
@@ -61,7 +70,7 @@
                             <img [src]="this.path" alt="" class="oeuvre-image">
                         </ion-item>
                         <p>{{oeuvre.name}}</p><br>
-                        
+
                     </div>
                 </div>
             </div>
