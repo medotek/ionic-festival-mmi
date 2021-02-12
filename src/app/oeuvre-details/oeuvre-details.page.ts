@@ -127,6 +127,7 @@ export class OeuvreDetailsPage implements OnInit {
   }
 
   public vote() {
+      if (this.status === 'enCours') {
       const mail = this.auth.getCurrentUser();
       const listUser = this.auth.getAllUser();
       listUser.snapshotChanges().subscribe(res => {
@@ -142,6 +143,8 @@ export class OeuvreDetailsPage implements OnInit {
               }
           });
       });
+    } 
+    console.log(this.status);
   }
 
     async voteAlertConfirm() {

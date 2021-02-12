@@ -44,7 +44,7 @@
                     <div class="oeuvreInfo">Condition de réalisation <span></span></div>
 
                     <p class="textDetails">{{oeuvre?.realisation}}</p>
-                    <ion-button *ngIf="this.auth.getCurrentUser() && this.voteUser === true" (click)="vote()">Voter pour
+                    <ion-button *ngIf="this.auth.getCurrentUser() && this.voteUser === true && this.status === 'enCours'" (click)="vote()">Voter pour
                         cette oeuvre</ion-button>
                 </div>
             </div>
