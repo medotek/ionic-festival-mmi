@@ -36,8 +36,8 @@ export class HomePage implements OnInit{
               Prenom: '',
               Email: '',
               Role: '',
-              Image: ''
-
+              Image: '',
+              Profession: '',
             };
 
             monJury.Nom =  a['nom'];

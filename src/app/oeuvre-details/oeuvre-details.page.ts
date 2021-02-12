@@ -56,8 +56,9 @@ export class OeuvreDetailsPage implements OnInit {
         const listUser = this.auth.getAllUser();
         listUser.snapshotChanges().subscribe(res => {
             res.forEach(item => {
-                const a = item.payload.toJSON();
-
+                let a: any; 
+                a = item.payload.toJSON();
+                console.log(a);
                 if (a.mail === mail) {
                     if (a.voteToken <= 0) {
                         console.log('je suis la');
@@ -129,7 +130,8 @@ export class OeuvreDetailsPage implements OnInit {
       const listUser = this.auth.getAllUser();
       listUser.snapshotChanges().subscribe(res => {
           res.forEach(item => {
-              const a = item.payload.toJSON();
+            let a: any; 
+             a = item.payload.toJSON();
 
               if (a.mail === mail) {
                   this.userKey = item.key;
