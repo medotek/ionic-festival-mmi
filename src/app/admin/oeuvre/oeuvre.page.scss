@@ -1,0 +1,17 @@
+.main-content {
+    display: flex;
+    flex-direction: row;
+}
+
+ion-title {
+    --color: #3880ff;
+    margin: 20px;
+}
+
+.form {
+    max-width: 1000px;
+}
+
+ion-note {
+    margin-left: 3%;
+}

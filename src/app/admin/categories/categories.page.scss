@@ -1,0 +1,27 @@
+ion-input{
+    background-color:white; 
+    color: black;
+    width: 200px;
+}  
+
+ion-button{
+    width: 100px;
+}
+
+.my-custom-menu {
+    --width: 500px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+ion-title {
+    --color: #3880ff;
+    margin: 20px;
+}
+
+ion-note {
+    margin-left: 3%;
+}

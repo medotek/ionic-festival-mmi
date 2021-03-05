@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Connexion</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="container">
+        <form>
+            <ion-item lines="full">
+                <ion-label position="floating">Email</ion-label>
+                <ion-input type="email" #email required></ion-input>
+            </ion-item>
+
+            <ion-item lines="full">
+                <ion-label position="floating">Password</ion-label>
+                <ion-input type="password" #password required></ion-input>
+            </ion-item>
+
+            <div class="forgotPassword" [ngStyle]="{marginLeft: '10px', marginTop: '10px', cursor: 'pointer'}">
+                <a (click)="changePassword()">
+                    <ion-label>Mot de passe oublié !</ion-label>
+                </a>
+            </div>
+
+            <ion-row>
+                <ion-col>
+                    <ion-button type="submit" (click)="signUp(email, password)" expand="block">Se connecter</ion-button>
+                </ion-col>
+            </ion-row>
+        </form>
+    </div>
+</ion-content>

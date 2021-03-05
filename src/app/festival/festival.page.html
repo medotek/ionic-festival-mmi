@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true"  *ngIf="status =='enCours' || status =='votesFermes' || status =='resultats'">
+    <div class="main">
+        <div class="container">
+            <div class="header" style="z-index: 2;">
+                <ul>
+                    <li>
+                        <img (click)="home()" width="150" class="logo" src="../../assets/img/videalps-white.png" alt="Videalps logo">
+                    </li>
+                    <li><button *ngIf="!this.auth.getCurrentUser()" class="videalps-button"><a (click)="login()">Se connecter</a></button>
+                        <button *ngIf="this.auth.getCurrentUser()" class="videalps-button"><a (click)="logout()">Se déconnecter</a></button></li>
+
+                </ul>
+            </div>
+            <div class="banner">
+                <div class="palmares">LES RÉSULTATS</div>
+                <div class="palmares-info" *ngIf="status === 'enCours' || 'votesFermes' && status !== 'resultats';"><span>21 Mai</span><br><span>à</span> 16h00</div>
+                <div class="palmares-info palmares-result gradient-text" *ngIf="status === 'resultats';"><a (click)="gotoResult()">Voir les résultats</a></div>
+            </div>
+
+            <h1>LES NOMMÉS DU FESTIVAL</h1>
+
+
+            <ion-select class="mobile" placeholder="Toutes les participations" okText="Valider" cancelText="Annuler">
+                <ion-select-option *ngFor="let categorie of categories" (click)="categoryName(categorie)">
+                    {{categorie.name}}
+                </ion-select-option>
+            </ion-select>
+
+            <ul class="oeuvre-category-list computer">
+                <li class="categorie" *ngFor="let categorie of categories" (click)="categoryName(categorie)">
+                    {{categorie.name}}
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-md-3 col-lg-3 col-sm-4" *ngFor="let oeuvre of oeuvres" [routerLink]="'/oeuvre-details/' + oeuvre.key">
+                    <div class="oeuvre-card">
+                        <img [src]="this.imagePath.get(oeuvre.key)" alt="" class="img-fluid oeuvre-image">
+                        <div class="oeuvre-name">{{oeuvre.name}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

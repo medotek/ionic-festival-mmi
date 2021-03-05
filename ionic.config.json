@@ -1,0 +1,7 @@
+{
+  "name": "videalpes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

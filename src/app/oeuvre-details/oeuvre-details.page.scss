@@ -1,0 +1,126 @@
+ion-header {
+  --ion-background-color: black;
+  color: white;
+}
+
+ion-content {
+  --ion-background-color: black;
+  font-family: Assitant, sans-serif;
+}
+
+ion-item {
+  img {
+      transition: 0.2s ease-in-out;
+  }
+  img:hover {
+    transition: 0.2s ease-in-out;
+    transform:scale(1.2);
+  }
+}
+
+.header {
+  padding-top: 1em;
+  margin-bottom: 2em;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+
+      .videalps-button {
+        border: 2px solid #91ACCD;
+        padding: 5px 10px;
+        background-color: transparent;
+        color: #91ACCD;
+      }
+    }
+
+    li:last-child {
+      float: right;
+      padding: 15px 0;
+    }
+  }
+}
+
+#container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.oeuvre-image {
+  margin: 0px;
+}
+
+h1 {
+  font-family: Montserrat, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
+.oeuvreInfo {
+  color: #C8E1FF;
+  font-weight: bold;
+  position: relative;
+  margin-bottom: 1em;
+  font-size:18px;
+  span {
+    background-color: black;
+  }
+}
+
+.oeuvreInfo ::after {
+  display: inline-block;
+  vertical-align: middle;
+  height: 5px;
+  width: 50%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #C8E1FF;
+  content: ""
+}
+
+.textDetails {
+  font-weight: 100;
+}
+
+.info, p {
+  font-weight: 400;
+}
+
+.main {
+  margin-bottom: 4em;
+}
+
+@media only screen and (max-width: 575px) {
+  .last-margin {
+    margin-bottom: 2em;
+  }
+  .oeuvreInfo ::after {
+    width: 40%;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 992px) {
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+
+}

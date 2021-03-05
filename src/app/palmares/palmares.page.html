@@ -1,0 +1,75 @@
+<ion-content *ngIf=" this.status === 'resultats'">
+    <div class="main">
+        <div class="grid">
+            <div class="header" style="z-index: 2;">
+                <ul>
+                    <li (click)="home()">
+                        <img width="150" class="logo" src="../../assets/img/videalps-white.png" alt="Videalps logo">
+                    </li>
+                    <li>
+                        <button *ngIf="!this.auth.getCurrentUser()" class="videalps-button"><a (click)="login()">Se
+                                connecter</a></button>
+                        <button *ngIf="this.auth.getCurrentUser()" class="videalps-button"><a (click)="logout()">Se
+                                déconnecter</a></button>
+                    </li>
+                </ul>
+            </div>
+            <h1>Le <br>palmares</h1>
+            <p>Sans plus attendre, les gagnants sont ...</p>
+            <iframe src="https://www.youtube.com/embed/W1g7M2sVQwM" frameborder="0" allow="autoplay; encrypted-media"
+                allowfullscreen></iframe>
+
+            <div class="prix-public" *ngFor="let oeuvreTop1 of listOeuvreClassement">
+                <div [routerLink]="'/oeuvre-details/' + oeuvreTop1.key ">
+                    <p class="title">
+                        <ion-icon name="trophy-outline"></ion-icon> {{oeuvreTop1.categoryId}}
+                    </p><br>
+                    <div class="img-div">
+                        <img [src]="this.imagePath.get(oeuvreTop1.key)" alt="" class="img-fluid oeuvre-image">
+                        <div class="prix-banner"></div>
+                    </div>
+
+                    <div class="prix-info">
+                        <p>{{oeuvreTop1.name}}</p>
+                        <p>{{oeuvreTop1.auteur}}</p>
+                    </div>
+
+                </div>
+            </div>
+            <h2>Catégories</h2>
+            <div class="categories row">
+                <div class="category col-md-4 col-sm-4 col-lg-4 col-xs-6" *ngFor="let categorie of categories">
+                    <div>{{categorie.name}}</div>
+                </div>
+                <div class="category col-md-4 col-sm-4 col-lg-4 col-xs-6">
+                    <div (click)="scrollToElement(winner)">FAITES DÉFILER LA PAGE POUR VOIR LES GAGNANTS
+                        <br>
+                        <ion-icon name="arrow-down"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="winner-category" style="padding:0;" *ngFor="let oeuvre of listOeuvre" #winner>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-sm-6">
+                    <div class="prix">
+                        <p>Prix de la catégorie : <br> {{oeuvre.categoryId}}</p><br>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-sm-6">
+                    <div class="oeuvre">
+                        <ion-item [routerLink]="'/oeuvre-details/' + oeuvre.key">
+                            <img [src]="this.path" alt="" class="oeuvre-image">
+                        </ion-item>
+                        <p>{{oeuvre.name}}</p><br>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer"></div>
+</ion-content>

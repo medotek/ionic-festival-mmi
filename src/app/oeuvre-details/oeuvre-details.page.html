@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Détails de l'oeuvre</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="status === 'enCours' || status === 'votesFermes' || status === 'resultats'">
+    <div class="main">
+        <div class="container">
+            <div class="header" style="z-index: 2;">
+                <ul>
+                    <li>
+                        <img (click)="home()" width="150" class="logo" src="../../assets/img/videalps-white.png"
+                            alt="Videalps logo">
+                    </li>
+                    <li>
+                        <button *ngIf="!this.auth.getCurrentUser()" class="videalps-button"><a (click)="login()">Se
+                                connecter</a></button>
+                        <button *ngIf="this.auth.getCurrentUser()" class="videalps-button"><a (click)="logout()">Se
+                                déconnecter</a></button>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="row" style="color:white; font-weight: bold;">
+                <div class="col-sm-5 col-md-5 col-lg-5">
+                    <ion-item [href]="oeuvre.url">
+                        <img [src]="this.path" alt="" class="oeuvre-image">
+                    </ion-item>
+                    <h1>{{oeuvre?.name}}</h1>
+                    <div>Auteur : <span class="info">{{oeuvre?.auteur}}</span></div>
+                    <div>Date de réalisation : <span class="info">{{oeuvre?.date}}</span></div>
+                    <div>Catégorie : <span class="info">{{oeuvre?.categoryId}}</span></div>
+                    <div class="last-margin">Contributeurs : <span class="info">{{oeuvre?.contributeurs}}</span></div>
+                </div>
+                <div class="col-sm-7 col-md-7 col-lg-7">
+                    <div class="oeuvreInfo">Description <span></span></div>
+                    <p class="textDetails">{{oeuvre?.description}}</p>
+                    <div class="oeuvreInfo">Techniques utilisées <span></span></div>
+                    <p class="textDetails">{{oeuvre?.technique}}</p>
+                    <div class="oeuvreInfo">Condition de réalisation <span></span></div>
+
+                    <p class="textDetails">{{oeuvre?.realisation}}</p>
+                    <ion-button *ngIf="this.auth.getCurrentUser() && this.voteUser === true && this.status === 'enCours'" (click)="vote()">Voter pour
+                        cette oeuvre</ion-button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+</ion-content>
